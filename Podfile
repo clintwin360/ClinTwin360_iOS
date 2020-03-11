@@ -7,4 +7,6 @@ target 'ClinTwin360' do
 
   # Pods for ClinTwin360
 
+  pod 'ResearchKit'
+
 end

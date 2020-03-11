@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		752EBF989F4BE0A402F91332 /* Pods_ClinTwin360.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A303310BEA7AE46604F8D75 /* Pods_ClinTwin360.framework */; };
 		FF529F48240CD4AA000A9C35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529F47240CD4AA000A9C35 /* AppDelegate.swift */; };
 		FF529F4A240CD4AA000A9C35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529F49240CD4AA000A9C35 /* ViewController.swift */; };
 		FF529F4D240CD4AA000A9C35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF529F4B240CD4AA000A9C35 /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		174A4D8F9237B519304FA248 /* Pods-ClinTwin360.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClinTwin360.release.xcconfig"; path = "Target Support Files/Pods-ClinTwin360/Pods-ClinTwin360.release.xcconfig"; sourceTree = "<group>"; };
+		8A303310BEA7AE46604F8D75 /* Pods_ClinTwin360.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClinTwin360.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DDB9242444DAB1E6A261704 /* Pods-ClinTwin360.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClinTwin360.debug.xcconfig"; path = "Target Support Files/Pods-ClinTwin360/Pods-ClinTwin360.debug.xcconfig"; sourceTree = "<group>"; };
 		FF529F44240CD4AA000A9C35 /* ClinTwin360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClinTwin360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF529F47240CD4AA000A9C35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF529F49240CD4AA000A9C35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				752EBF989F4BE0A402F91332 /* Pods_ClinTwin360.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF5C543B8754848350049D05 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8A303310BEA7AE46604F8D75 /* Pods_ClinTwin360.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C015432FA3E54999C130288C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8DDB9242444DAB1E6A261704 /* Pods-ClinTwin360.debug.xcconfig */,
+				174A4D8F9237B519304FA248 /* Pods-ClinTwin360.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FF529F3B240CD4A9000A9C35 = {
 			isa = PBXGroup;
 			children = (
 				FF529F46240CD4AA000A9C35 /* ClinTwin360 */,
 				FF529F45240CD4AA000A9C35 /* Products */,
+				C015432FA3E54999C130288C /* Pods */,
+				BF5C543B8754848350049D05 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +96,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF529F56240CD4AC000A9C35 /* Build configuration list for PBXNativeTarget "ClinTwin360" */;
 			buildPhases = (
+				C8538F810DEEDABA8343C3C6 /* [CP] Check Pods Manifest.lock */,
 				FF529F40240CD4A9000A9C35 /* Sources */,
 				FF529F41240CD4A9000A9C35 /* Frameworks */,
 				FF529F42240CD4A9000A9C35 /* Resources */,
+				816D348A056F99B502690B86 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +156,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		816D348A056F99B502690B86 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ClinTwin360/Pods-ClinTwin360-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ResearchKit/ResearchKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ResearchKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ClinTwin360/Pods-ClinTwin360-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8538F810DEEDABA8343C3C6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ClinTwin360-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FF529F40240CD4A9000A9C35 /* Sources */ = {
@@ -280,6 +354,7 @@
 		};
 		FF529F57240CD4AC000A9C35 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DDB9242444DAB1E6A261704 /* Pods-ClinTwin360.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +373,7 @@
 		};
 		FF529F58240CD4AC000A9C35 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 174A4D8F9237B519304FA248 /* Pods-ClinTwin360.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
