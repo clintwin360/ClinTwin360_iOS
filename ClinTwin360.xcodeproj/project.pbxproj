@@ -13,6 +13,10 @@
 		FF529F4D240CD4AA000A9C35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF529F4B240CD4AA000A9C35 /* Main.storyboard */; };
 		FF529F4F240CD4AC000A9C35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF529F4E240CD4AC000A9C35 /* Assets.xcassets */; };
 		FF529F52240CD4AC000A9C35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF529F50240CD4AC000A9C35 /* LaunchScreen.storyboard */; };
+		FFBDC94E241CAA180056F552 /* ConsentDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDC94D241CAA180056F552 /* ConsentDocument.swift */; };
+		FFBDC950241CAAFF0056F552 /* ConsentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDC94F241CAAFF0056F552 /* ConsentTask.swift */; };
+		FFBDC953241CADE10056F552 /* SurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDC952241CADE10056F552 /* SurveyTask.swift */; };
+		FFBDC955241CAF610056F552 /* ResearchImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBDC954241CAF610056F552 /* ResearchImages.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		FF529F4E240CD4AC000A9C35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF529F51240CD4AC000A9C35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF529F53240CD4AC000A9C35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFBDC94D241CAA180056F552 /* ConsentDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentDocument.swift; sourceTree = "<group>"; };
+		FFBDC94F241CAAFF0056F552 /* ConsentTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentTask.swift; sourceTree = "<group>"; };
+		FFBDC952241CADE10056F552 /* SurveyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTask.swift; sourceTree = "<group>"; };
+		FFBDC954241CAF610056F552 /* ResearchImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ResearchImages.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +62,6 @@
 				8DDB9242444DAB1E6A261704 /* Pods-ClinTwin360.debug.xcconfig */,
 				174A4D8F9237B519304FA248 /* Pods-ClinTwin360.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -79,6 +86,7 @@
 		FF529F46240CD4AA000A9C35 /* ClinTwin360 */ = {
 			isa = PBXGroup;
 			children = (
+				FFBDC951241CADBA0056F552 /* ResearchTasks */,
 				FF529F47240CD4AA000A9C35 /* AppDelegate.swift */,
 				FF529F49240CD4AA000A9C35 /* ViewController.swift */,
 				FF529F4B240CD4AA000A9C35 /* Main.storyboard */,
@@ -87,6 +95,17 @@
 				FF529F53240CD4AC000A9C35 /* Info.plist */,
 			);
 			path = ClinTwin360;
+			sourceTree = "<group>";
+		};
+		FFBDC951241CADBA0056F552 /* ResearchTasks */ = {
+			isa = PBXGroup;
+			children = (
+				FFBDC94D241CAA180056F552 /* ConsentDocument.swift */,
+				FFBDC94F241CAAFF0056F552 /* ConsentTask.swift */,
+				FFBDC952241CADE10056F552 /* SurveyTask.swift */,
+				FFBDC954241CAF610056F552 /* ResearchImages.xcassets */,
+			);
+			path = ResearchTasks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +170,7 @@
 			files = (
 				FF529F52240CD4AC000A9C35 /* LaunchScreen.storyboard in Resources */,
 				FF529F4F240CD4AC000A9C35 /* Assets.xcassets in Resources */,
+				FFBDC955241CAF610056F552 /* ResearchImages.xcassets in Resources */,
 				FF529F4D240CD4AA000A9C35 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,12 +187,14 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ClinTwin360/Pods-ClinTwin360-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ResearchKit/ResearchKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ResearchKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,6 +232,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF529F4A240CD4AA000A9C35 /* ViewController.swift in Sources */,
+				FFBDC950241CAAFF0056F552 /* ConsentTask.swift in Sources */,
+				FFBDC953241CADE10056F552 /* SurveyTask.swift in Sources */,
+				FFBDC94E241CAA180056F552 /* ConsentDocument.swift in Sources */,
 				FF529F48240CD4AA000A9C35 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
