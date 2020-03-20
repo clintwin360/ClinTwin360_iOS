@@ -16,13 +16,18 @@ class OnboardingViewController: UIViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
 
-		navigationController?.setNavigationBarHidden(true, animated: false)
+		navigationController?.setNavigationBarHidden(false, animated: false)
 		
 		beginButton.layer.cornerRadius = 10.0
 		beginButton.layer.borderWidth = 0.5
 		beginButton.layer.borderColor = CommonColors.mediumGrey.cgColor
     }
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		navigationItem.setHidesBackButton(true, animated: false)
+	}
 	
 	@IBAction func didTapBegin(_ sender: UIButton) {
 		let appleHealthVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AHConfirmViewController")

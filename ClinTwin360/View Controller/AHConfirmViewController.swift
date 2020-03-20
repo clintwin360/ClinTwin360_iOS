@@ -39,8 +39,12 @@ class AHConfirmViewController: UIViewController {
 				
 				return
 			}
-			  
-			print("HealthKit Successfully Authorized.")
+			
+			DispatchQueue.main.async {
+				let healthDetailsConfirmVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HDConfirmViewController")
+				self.navigationController?.pushViewController(healthDetailsConfirmVC, animated: true)
+				print("HealthKit Successfully Authorized.")
+			}
 		}
 	}
 	

@@ -12,8 +12,8 @@ class SignInViewController: UIViewController {
 	
 	@IBOutlet weak var emailField: LabeledTextFieldView!
 	@IBOutlet weak var passwordField: LabeledTextFieldView!
-	
 	@IBOutlet weak var signInButton: UIButton!
+	@IBOutlet weak var createAccountButton: UIButton!
 	
 	var buttonGradient: CAGradientLayer?
 	
@@ -60,12 +60,28 @@ class SignInViewController: UIViewController {
 	}
 	
 	@IBAction func didTapSignIn(_ sender: UIButton) {
-		// TODO: authenticate
-		let onboardingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OnboardingViewController")
-		navigationController?.pushViewController(onboardingVC, animated: true)
+		if sender.tag == 0 { // sign in
+			// TODO: authenticate
+			let onboardingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OnboardingViewController")
+			navigationController?.pushViewController(onboardingVC, animated: true)
+		} else if sender.tag == 1 { // sign up
+			// TODO: create account
+		}
+		
 	}
 	
 	@IBAction func didTapCreateAccount(_ sender: UIButton) {
+		if sender.tag == 0 { // sign up
+			signInButton.setTitle("Sign Up", for: .normal)
+			signInButton.tag = 1
+			createAccountButton.setTitle("Sign In", for: .normal)
+			createAccountButton.tag = 1
+		} else if sender.tag == 1 { // sign in
+			signInButton.setTitle("Sign In", for: .normal)
+			signInButton.tag = 0
+			createAccountButton.setTitle("Create Account", for: .normal)
+			createAccountButton.tag = 0
+		}
 	}
 	
 	

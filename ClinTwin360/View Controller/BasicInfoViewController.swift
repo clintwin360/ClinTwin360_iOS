@@ -11,6 +11,7 @@ import UIKit
 class BasicInfoViewController: UIViewController {
 	
 	@IBOutlet weak var birthdateField: LabeledTextFieldView!
+	@IBOutlet weak var bioSexField: LabeledTextFieldView!
 	@IBOutlet weak var heightField: LabeledTextFieldView!
 	@IBOutlet weak var weightField: LabeledTextFieldView!
 	@IBOutlet weak var zipcodeField: LabeledTextFieldView!
@@ -19,7 +20,7 @@ class BasicInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		navigationController?.setNavigationBarHidden(true, animated: false)
+//		navigationController?.setNavigationBarHidden(false, animated: false)
 
         setUpFields()
 		
@@ -30,12 +31,15 @@ class BasicInfoViewController: UIViewController {
     
 	private func setUpFields() {
 		birthdateField.configure(title: "Birth Date")
+		bioSexField.configure(title: "Biological Sex")
 		heightField.configure(title: "Height")
 		weightField.configure(title: "Weight")
 		zipcodeField.configure(title: "Zipcode")
 	}
 	
 	@IBAction func didTapNext(_ sender: UIButton) {
+		let healthDetailsConfirmVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HDConfirmViewController")
+		navigationController?.pushViewController(healthDetailsConfirmVC, animated: true)
 	}
 	
 }

@@ -90,6 +90,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Fc7-5T-Uut"/>
                     <connections>
+                        <outlet property="createAccountButton" destination="DMe-rb-MRm" id="tfU-1C-QkA"/>
                         <outlet property="emailField" destination="rd3-7v-fLi" id="pnK-cZ-gxj"/>
                         <outlet property="passwordField" destination="Pum-v8-Flv" id="iyH-PQ-5OV"/>
                         <outlet property="signInButton" destination="524-se-yMN" id="R2Y-zO-ZVS"/>
@@ -108,7 +109,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C97-Eh-EQ6">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sna-JB-uIW" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="634"/>
@@ -170,9 +171,9 @@ Are you ready to get started? If so click the button below and we can begin with
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="C97-Eh-EQ6" secondAttribute="bottom" id="5Pr-DX-IRf"/>
                             <constraint firstItem="C97-Eh-EQ6" firstAttribute="top" secondItem="SYh-F9-oYO" secondAttribute="top" id="CaA-XC-I14"/>
                             <constraint firstItem="C97-Eh-EQ6" firstAttribute="leading" secondItem="SYh-F9-oYO" secondAttribute="leading" id="PDW-Fb-8XB"/>
+                            <constraint firstItem="SYh-F9-oYO" firstAttribute="bottom" secondItem="C97-Eh-EQ6" secondAttribute="bottom" id="bGc-Bb-QiD"/>
                             <constraint firstItem="C97-Eh-EQ6" firstAttribute="trailing" secondItem="SYh-F9-oYO" secondAttribute="trailing" id="i1t-NS-kVl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SYh-F9-oYO"/>
@@ -183,7 +184,7 @@ Are you ready to get started? If so click the button below and we can begin with
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ppt-6X-4Oa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1823.1884057971015" y="110.49107142857143"/>
+            <point key="canvasLocation" x="1892.753623188406" y="109.82142857142857"/>
         </scene>
         <!--Confirm View Controller-->
         <scene sceneID="8mu-fq-3KL">
@@ -194,7 +195,7 @@ Are you ready to get started? If so click the button below and we can begin with
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Col-cl-JSJ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bv4-ds-ntp" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="571"/>
@@ -280,7 +281,7 @@ Would you like us to pull this information from Apple Health?</string>
                             <constraint firstItem="xbf-X9-Txf" firstAttribute="trailing" secondItem="Col-cl-JSJ" secondAttribute="trailing" id="7M9-sV-g3X"/>
                             <constraint firstItem="Col-cl-JSJ" firstAttribute="top" secondItem="xbf-X9-Txf" secondAttribute="top" id="CPi-Uy-QkX"/>
                             <constraint firstItem="Col-cl-JSJ" firstAttribute="leading" secondItem="xbf-X9-Txf" secondAttribute="leading" id="I4n-Jz-zl1"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="Col-cl-JSJ" secondAttribute="bottom" constant="-34" id="efK-4q-n0x"/>
+                            <constraint firstItem="xbf-X9-Txf" firstAttribute="bottom" secondItem="Col-cl-JSJ" secondAttribute="bottom" id="uXO-KB-s08"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xbf-X9-Txf"/>
                     </view>
@@ -323,19 +324,23 @@ Would you like us to pull this information from Apple Health?</string>
                                                 <rect key="frame" x="20" y="238" width="374" height="200"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ieg-3Y-T6n" customClass="LabeledTextFieldView" customModule="ClinTwin360" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQU-Pp-ZqK" customClass="LabeledTextFieldView" customModule="ClinTwin360" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="40" width="374" height="40"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JTd-cm-hox" customClass="LabeledTextFieldView" customModule="ClinTwin360" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="50" width="374" height="50"/>
+                                                        <rect key="frame" x="0.0" y="80" width="374" height="40"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LOo-ze-0q8" customClass="LabeledTextFieldView" customModule="ClinTwin360" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="100" width="374" height="50"/>
+                                                        <rect key="frame" x="0.0" y="120" width="374" height="40"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EsX-vp-9bb" customClass="LabeledTextFieldView" customModule="ClinTwin360" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="150" width="374" height="50"/>
+                                                        <rect key="frame" x="0.0" y="160" width="374" height="40"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     </view>
                                                 </subviews>
@@ -393,6 +398,7 @@ Would you like us to pull this information from Apple Health?</string>
                         <viewLayoutGuide key="safeArea" id="SRv-5h-XrK"/>
                     </view>
                     <connections>
+                        <outlet property="bioSexField" destination="jQU-Pp-ZqK" id="hBX-ul-Yzi"/>
                         <outlet property="birthdateField" destination="ieg-3Y-T6n" id="PNJ-Dg-Izi"/>
                         <outlet property="heightField" destination="JTd-cm-hox" id="gui-UR-tcw"/>
                         <outlet property="nextButton" destination="3x2-ys-FH0" id="0ww-40-WjO"/>
@@ -403,6 +409,92 @@ Would you like us to pull this information from Apple Health?</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QZq-dB-DQD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3300.0000000000005" y="109.82142857142857"/>
+        </scene>
+        <!--Confirm View Controller-->
+        <scene sceneID="lrd-Il-eUq">
+            <objects>
+                <viewController storyboardIdentifier="HDConfirmViewController" id="3c2-VD-lIe" customClass="HDConfirmViewController" customModule="ClinTwin360" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LdV-KF-uJ4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zqP-P0-w0H">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c3J-uQ-6iK" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="571"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Health Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djp-ns-eu9">
+                                                <rect key="frame" x="20" y="80" width="200" height="36"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                                                <color key="textColor" red="0.4549019608" green="0.91764705879999997" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WK4-Hi-m73">
+                                                <rect key="frame" x="20" y="156" width="374" height="252"/>
+                                                <string key="text">Now it’s time to jump into some details about you! We are going to ask a series of health related questions that will allow us to find perfectly tailored Clinical Trials.
+
+These questions will ask about about health conditions as well as details specific to your health conditions.We will also ask about things like fitness and dietary habits.
+
+
+Shall we begin?</string>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8q-ej-1dx">
+                                                <rect key="frame" x="127" y="468" width="160" height="43"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="47e-rh-4si"/>
+                                                    <constraint firstAttribute="height" constant="43" id="tc1-Ch-oWb"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                                <state key="normal" title="We Shall!">
+                                                    <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTapStart:" destination="3c2-VD-lIe" eventType="touchUpInside" id="874-eK-pfl"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="WK4-Hi-m73" firstAttribute="top" secondItem="Djp-ns-eu9" secondAttribute="bottom" constant="40" id="E5f-ih-N8q"/>
+                                            <constraint firstItem="A8q-ej-1dx" firstAttribute="centerX" secondItem="c3J-uQ-6iK" secondAttribute="centerX" id="Ep5-hh-u3g"/>
+                                            <constraint firstItem="Djp-ns-eu9" firstAttribute="top" secondItem="c3J-uQ-6iK" secondAttribute="top" constant="80" id="Pgm-Ms-7qF"/>
+                                            <constraint firstItem="WK4-Hi-m73" firstAttribute="leading" secondItem="c3J-uQ-6iK" secondAttribute="leading" constant="20" id="oul-mC-0UB"/>
+                                            <constraint firstAttribute="bottom" secondItem="A8q-ej-1dx" secondAttribute="bottom" constant="60" id="uMe-sO-xyB"/>
+                                            <constraint firstAttribute="trailing" secondItem="WK4-Hi-m73" secondAttribute="trailing" constant="20" id="vMX-ee-Tot"/>
+                                            <constraint firstItem="A8q-ej-1dx" firstAttribute="top" secondItem="WK4-Hi-m73" secondAttribute="bottom" constant="60" id="vyh-TY-QTr"/>
+                                            <constraint firstItem="Djp-ns-eu9" firstAttribute="leading" secondItem="c3J-uQ-6iK" secondAttribute="leading" constant="20" id="zIg-oQ-cYP"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="c3J-uQ-6iK" secondAttribute="trailing" id="3Wu-NQ-lJW"/>
+                                    <constraint firstItem="c3J-uQ-6iK" firstAttribute="width" secondItem="zqP-P0-w0H" secondAttribute="width" id="9ew-ke-ZQ7"/>
+                                    <constraint firstItem="c3J-uQ-6iK" firstAttribute="top" secondItem="zqP-P0-w0H" secondAttribute="top" id="CjF-Wj-5fR"/>
+                                    <constraint firstItem="c3J-uQ-6iK" firstAttribute="leading" secondItem="zqP-P0-w0H" secondAttribute="leading" id="O4E-zU-E6h"/>
+                                    <constraint firstAttribute="bottom" secondItem="c3J-uQ-6iK" secondAttribute="bottom" id="rCE-ub-cuD"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="CK7-wU-ATf" firstAttribute="bottom" secondItem="zqP-P0-w0H" secondAttribute="bottom" id="82s-fe-VzP"/>
+                            <constraint firstItem="zqP-P0-w0H" firstAttribute="top" secondItem="CK7-wU-ATf" secondAttribute="top" id="Kpq-R0-ZSe"/>
+                            <constraint firstItem="zqP-P0-w0H" firstAttribute="leading" secondItem="CK7-wU-ATf" secondAttribute="leading" id="YGd-yR-GzA"/>
+                            <constraint firstItem="zqP-P0-w0H" firstAttribute="trailing" secondItem="CK7-wU-ATf" secondAttribute="trailing" id="hjc-aY-Xsz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CK7-wU-ATf"/>
+                    </view>
+                    <connections>
+                        <outlet property="startButton" destination="A8q-ej-1dx" id="pbV-kj-ZUz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WGe-li-GKd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4002.898550724638" y="109.82142857142857"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SdK-3l-N66">

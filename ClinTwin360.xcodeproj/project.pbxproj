@@ -12,6 +12,7 @@
 		FF3D84642421699B0013E0E4 /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D84632421699B0013E0E4 /* BasicInfoViewController.swift */; };
 		FF3D8467242172EF0013E0E4 /* HealthKitSetupAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D8466242172EF0013E0E4 /* HealthKitSetupAssistant.swift */; };
 		FF3D846A2421762D0013E0E4 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3D84692421762D0013E0E4 /* HealthKit.framework */; };
+		FF3D846C242454B20013E0E4 /* HDConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D846B242454B20013E0E4 /* HDConfirmViewController.swift */; };
 		FF529F48240CD4AA000A9C35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529F47240CD4AA000A9C35 /* AppDelegate.swift */; };
 		FF529F4A240CD4AA000A9C35 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529F49240CD4AA000A9C35 /* SignInViewController.swift */; };
 		FF529F4D240CD4AA000A9C35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF529F4B240CD4AA000A9C35 /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 		FF3D8466242172EF0013E0E4 /* HealthKitSetupAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitSetupAssistant.swift; sourceTree = "<group>"; };
 		FF3D84682421762D0013E0E4 /* ClinTwin360.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClinTwin360.entitlements; sourceTree = "<group>"; };
 		FF3D84692421762D0013E0E4 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		FF3D846B242454B20013E0E4 /* HDConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDConfirmViewController.swift; sourceTree = "<group>"; };
 		FF529F44240CD4AA000A9C35 /* ClinTwin360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClinTwin360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF529F47240CD4AA000A9C35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF529F49240CD4AA000A9C35 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				FFBDE187242163D000E81685 /* OnboardingViewController.swift */,
 				FF3D8461242167D70013E0E4 /* AHConfirmViewController.swift */,
 				FF3D84632421699B0013E0E4 /* BasicInfoViewController.swift */,
+				FF3D846B242454B20013E0E4 /* HDConfirmViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			files = (
 				FF529F4A240CD4AA000A9C35 /* SignInViewController.swift in Sources */,
 				FF3D8467242172EF0013E0E4 /* HealthKitSetupAssistant.swift in Sources */,
+				FF3D846C242454B20013E0E4 /* HDConfirmViewController.swift in Sources */,
 				FFBDC97A2421505D0056F552 /* LabeledTextFieldView.swift in Sources */,
 				FF529F48240CD4AA000A9C35 /* AppDelegate.swift in Sources */,
 				FFBDE188242163D000E81685 /* OnboardingViewController.swift in Sources */,
