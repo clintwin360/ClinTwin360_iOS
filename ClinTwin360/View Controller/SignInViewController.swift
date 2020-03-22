@@ -62,8 +62,15 @@ class SignInViewController: UIViewController {
 	@IBAction func didTapSignIn(_ sender: UIButton) {
 		if sender.tag == 0 { // sign in
 			// TODO: authenticate
+			let navController = UINavigationController()
 			let onboardingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OnboardingViewController")
-			navigationController?.pushViewController(onboardingVC, animated: true)
+			navController.viewControllers = [onboardingVC]
+		
+			present(navController, animated: true) {
+				let trialsListVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "MatchingTrialsListViewController")
+
+				self.navigationController?.setViewControllers([trialsListVC], animated: false)
+			}
 		} else if sender.tag == 1 { // sign up
 			// TODO: create account
 		}

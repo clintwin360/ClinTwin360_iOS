@@ -13,6 +13,13 @@
 		FF3D8467242172EF0013E0E4 /* HealthKitSetupAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D8466242172EF0013E0E4 /* HealthKitSetupAssistant.swift */; };
 		FF3D846A2421762D0013E0E4 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3D84692421762D0013E0E4 /* HealthKit.framework */; };
 		FF3D846C242454B20013E0E4 /* HDConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D846B242454B20013E0E4 /* HDConfirmViewController.swift */; };
+		FF3D846E2426CE950013E0E4 /* TrialsInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF3D846D2426CE950013E0E4 /* TrialsInfo.storyboard */; };
+		FF3D84702426CEB70013E0E4 /* TrialIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D846F2426CEB70013E0E4 /* TrialIntroViewController.swift */; };
+		FF3D84732426D99F0013E0E4 /* MatchingTrialsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D84722426D99F0013E0E4 /* MatchingTrialsListViewController.swift */; };
+		FF3D84752426DA0C0013E0E4 /* MatchingTrialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3D84742426DA0C0013E0E4 /* MatchingTrialCell.xib */; };
+		FF3D84772426DA700013E0E4 /* MatchingTrialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D84762426DA700013E0E4 /* MatchingTrialCell.swift */; };
+		FF3D84792426DF820013E0E4 /* MatchedTrialInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D84782426DF820013E0E4 /* MatchedTrialInfoViewController.swift */; };
+		FF3D847B2426E0EC0013E0E4 /* TrialNextStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D847A2426E0EC0013E0E4 /* TrialNextStepsViewController.swift */; };
 		FF529F48240CD4AA000A9C35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529F47240CD4AA000A9C35 /* AppDelegate.swift */; };
 		FF529F4A240CD4AA000A9C35 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529F49240CD4AA000A9C35 /* SignInViewController.swift */; };
 		FF529F4D240CD4AA000A9C35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF529F4B240CD4AA000A9C35 /* Main.storyboard */; };
@@ -34,6 +41,13 @@
 		FF3D84682421762D0013E0E4 /* ClinTwin360.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClinTwin360.entitlements; sourceTree = "<group>"; };
 		FF3D84692421762D0013E0E4 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		FF3D846B242454B20013E0E4 /* HDConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDConfirmViewController.swift; sourceTree = "<group>"; };
+		FF3D846D2426CE950013E0E4 /* TrialsInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrialsInfo.storyboard; sourceTree = "<group>"; };
+		FF3D846F2426CEB70013E0E4 /* TrialIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialIntroViewController.swift; sourceTree = "<group>"; };
+		FF3D84722426D99F0013E0E4 /* MatchingTrialsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingTrialsListViewController.swift; sourceTree = "<group>"; };
+		FF3D84742426DA0C0013E0E4 /* MatchingTrialCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchingTrialCell.xib; sourceTree = "<group>"; };
+		FF3D84762426DA700013E0E4 /* MatchingTrialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingTrialCell.swift; sourceTree = "<group>"; };
+		FF3D84782426DF820013E0E4 /* MatchedTrialInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedTrialInfoViewController.swift; sourceTree = "<group>"; };
+		FF3D847A2426E0EC0013E0E4 /* TrialNextStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialNextStepsViewController.swift; sourceTree = "<group>"; };
 		FF529F44240CD4AA000A9C35 /* ClinTwin360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClinTwin360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF529F47240CD4AA000A9C35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF529F49240CD4AA000A9C35 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +100,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		FF3D84712426D97B0013E0E4 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				FF3D84742426DA0C0013E0E4 /* MatchingTrialCell.xib */,
+				FF3D84762426DA700013E0E4 /* MatchingTrialCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 		FF529F3B240CD4A9000A9C35 = {
 			isa = PBXGroup;
 			children = (
@@ -121,7 +144,9 @@
 		FFBDC97624214F830056F552 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FF3D84712426D97B0013E0E4 /* TableViewCells */,
 				FF529F4B240CD4AA000A9C35 /* Main.storyboard */,
+				FF3D846D2426CE950013E0E4 /* TrialsInfo.storyboard */,
 				FF529F4E240CD4AC000A9C35 /* Assets.xcassets */,
 				FFBDE1892421659400E81685 /* CommonColors.swift */,
 				FFBDC97724214F9D0056F552 /* LabeledTextFieldView.xib */,
@@ -138,6 +163,10 @@
 				FF3D8461242167D70013E0E4 /* AHConfirmViewController.swift */,
 				FF3D84632421699B0013E0E4 /* BasicInfoViewController.swift */,
 				FF3D846B242454B20013E0E4 /* HDConfirmViewController.swift */,
+				FF3D846F2426CEB70013E0E4 /* TrialIntroViewController.swift */,
+				FF3D84722426D99F0013E0E4 /* MatchingTrialsListViewController.swift */,
+				FF3D84782426DF820013E0E4 /* MatchedTrialInfoViewController.swift */,
+				FF3D847A2426E0EC0013E0E4 /* TrialNextStepsViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -205,7 +234,9 @@
 				FF529F52240CD4AC000A9C35 /* LaunchScreen.storyboard in Resources */,
 				FF529F4F240CD4AC000A9C35 /* Assets.xcassets in Resources */,
 				FFBDC97824214F9D0056F552 /* LabeledTextFieldView.xib in Resources */,
+				FF3D846E2426CE950013E0E4 /* TrialsInfo.storyboard in Resources */,
 				FF529F4D240CD4AA000A9C35 /* Main.storyboard in Resources */,
+				FF3D84752426DA0C0013E0E4 /* MatchingTrialCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,13 +294,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF3D847B2426E0EC0013E0E4 /* TrialNextStepsViewController.swift in Sources */,
 				FF529F4A240CD4AA000A9C35 /* SignInViewController.swift in Sources */,
+				FF3D84792426DF820013E0E4 /* MatchedTrialInfoViewController.swift in Sources */,
 				FF3D8467242172EF0013E0E4 /* HealthKitSetupAssistant.swift in Sources */,
 				FF3D846C242454B20013E0E4 /* HDConfirmViewController.swift in Sources */,
 				FFBDC97A2421505D0056F552 /* LabeledTextFieldView.swift in Sources */,
 				FF529F48240CD4AA000A9C35 /* AppDelegate.swift in Sources */,
+				FF3D84732426D99F0013E0E4 /* MatchingTrialsListViewController.swift in Sources */,
 				FFBDE188242163D000E81685 /* OnboardingViewController.swift in Sources */,
+				FF3D84702426CEB70013E0E4 /* TrialIntroViewController.swift in Sources */,
 				FF3D8462242167D70013E0E4 /* AHConfirmViewController.swift in Sources */,
+				FF3D84772426DA700013E0E4 /* MatchingTrialCell.swift in Sources */,
 				FF3D84642421699B0013E0E4 /* BasicInfoViewController.swift in Sources */,
 				FFBDE18A2421659400E81685 /* CommonColors.swift in Sources */,
 			);
