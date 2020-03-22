@@ -8,24 +8,59 @@
 
 /* Begin PBXBuildFile section */
 		752EBF989F4BE0A402F91332 /* Pods_ClinTwin360.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A303310BEA7AE46604F8D75 /* Pods_ClinTwin360.framework */; };
+		FF3D8462242167D70013E0E4 /* AHConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D8461242167D70013E0E4 /* AHConfirmViewController.swift */; };
+		FF3D84642421699B0013E0E4 /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D84632421699B0013E0E4 /* BasicInfoViewController.swift */; };
+		FF3D8467242172EF0013E0E4 /* HealthKitSetupAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D8466242172EF0013E0E4 /* HealthKitSetupAssistant.swift */; };
+		FF3D846A2421762D0013E0E4 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3D84692421762D0013E0E4 /* HealthKit.framework */; };
+		FF3D846C242454B20013E0E4 /* HDConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D846B242454B20013E0E4 /* HDConfirmViewController.swift */; };
+		FF3D846E2426CE950013E0E4 /* TrialsInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF3D846D2426CE950013E0E4 /* TrialsInfo.storyboard */; };
+		FF3D84702426CEB70013E0E4 /* TrialIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D846F2426CEB70013E0E4 /* TrialIntroViewController.swift */; };
+		FF3D84732426D99F0013E0E4 /* MatchingTrialsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D84722426D99F0013E0E4 /* MatchingTrialsListViewController.swift */; };
+		FF3D84752426DA0C0013E0E4 /* MatchingTrialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3D84742426DA0C0013E0E4 /* MatchingTrialCell.xib */; };
+		FF3D84772426DA700013E0E4 /* MatchingTrialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D84762426DA700013E0E4 /* MatchingTrialCell.swift */; };
+		FF3D84792426DF820013E0E4 /* MatchedTrialInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D84782426DF820013E0E4 /* MatchedTrialInfoViewController.swift */; };
+		FF3D847B2426E0EC0013E0E4 /* TrialNextStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D847A2426E0EC0013E0E4 /* TrialNextStepsViewController.swift */; };
+		FF3D847D2426E7C20013E0E4 /* SurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D847C2426E7C20013E0E4 /* SurveyTask.swift */; };
 		FF529F48240CD4AA000A9C35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529F47240CD4AA000A9C35 /* AppDelegate.swift */; };
-		FF529F4A240CD4AA000A9C35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529F49240CD4AA000A9C35 /* ViewController.swift */; };
+		FF529F4A240CD4AA000A9C35 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529F49240CD4AA000A9C35 /* SignInViewController.swift */; };
 		FF529F4D240CD4AA000A9C35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF529F4B240CD4AA000A9C35 /* Main.storyboard */; };
 		FF529F4F240CD4AC000A9C35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF529F4E240CD4AC000A9C35 /* Assets.xcassets */; };
 		FF529F52240CD4AC000A9C35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF529F50240CD4AC000A9C35 /* LaunchScreen.storyboard */; };
+		FFBDC97824214F9D0056F552 /* LabeledTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFBDC97724214F9D0056F552 /* LabeledTextFieldView.xib */; };
+		FFBDC97A2421505D0056F552 /* LabeledTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */; };
+		FFBDE188242163D000E81685 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDE187242163D000E81685 /* OnboardingViewController.swift */; };
+		FFBDE18A2421659400E81685 /* CommonColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDE1892421659400E81685 /* CommonColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		174A4D8F9237B519304FA248 /* Pods-ClinTwin360.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClinTwin360.release.xcconfig"; path = "Target Support Files/Pods-ClinTwin360/Pods-ClinTwin360.release.xcconfig"; sourceTree = "<group>"; };
 		8A303310BEA7AE46604F8D75 /* Pods_ClinTwin360.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClinTwin360.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DDB9242444DAB1E6A261704 /* Pods-ClinTwin360.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClinTwin360.debug.xcconfig"; path = "Target Support Files/Pods-ClinTwin360/Pods-ClinTwin360.debug.xcconfig"; sourceTree = "<group>"; };
+		FF3D8461242167D70013E0E4 /* AHConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHConfirmViewController.swift; sourceTree = "<group>"; };
+		FF3D84632421699B0013E0E4 /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
+		FF3D8466242172EF0013E0E4 /* HealthKitSetupAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitSetupAssistant.swift; sourceTree = "<group>"; };
+		FF3D84682421762D0013E0E4 /* ClinTwin360.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClinTwin360.entitlements; sourceTree = "<group>"; };
+		FF3D84692421762D0013E0E4 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		FF3D846B242454B20013E0E4 /* HDConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDConfirmViewController.swift; sourceTree = "<group>"; };
+		FF3D846D2426CE950013E0E4 /* TrialsInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrialsInfo.storyboard; sourceTree = "<group>"; };
+		FF3D846F2426CEB70013E0E4 /* TrialIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialIntroViewController.swift; sourceTree = "<group>"; };
+		FF3D84722426D99F0013E0E4 /* MatchingTrialsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingTrialsListViewController.swift; sourceTree = "<group>"; };
+		FF3D84742426DA0C0013E0E4 /* MatchingTrialCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchingTrialCell.xib; sourceTree = "<group>"; };
+		FF3D84762426DA700013E0E4 /* MatchingTrialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingTrialCell.swift; sourceTree = "<group>"; };
+		FF3D84782426DF820013E0E4 /* MatchedTrialInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedTrialInfoViewController.swift; sourceTree = "<group>"; };
+		FF3D847A2426E0EC0013E0E4 /* TrialNextStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialNextStepsViewController.swift; sourceTree = "<group>"; };
+		FF3D847C2426E7C20013E0E4 /* SurveyTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyTask.swift; sourceTree = "<group>"; };
 		FF529F44240CD4AA000A9C35 /* ClinTwin360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClinTwin360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF529F47240CD4AA000A9C35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FF529F49240CD4AA000A9C35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FF529F49240CD4AA000A9C35 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		FF529F4C240CD4AA000A9C35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF529F4E240CD4AC000A9C35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF529F51240CD4AC000A9C35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF529F53240CD4AC000A9C35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFBDC97724214F9D0056F552 /* LabeledTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabeledTextFieldView.xib; sourceTree = "<group>"; };
+		FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextFieldView.swift; sourceTree = "<group>"; };
+		FFBDE187242163D000E81685 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		FFBDE1892421659400E81685 /* CommonColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				752EBF989F4BE0A402F91332 /* Pods_ClinTwin360.framework in Frameworks */,
+				FF3D846A2421762D0013E0E4 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +79,7 @@
 		BF5C543B8754848350049D05 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF3D84692421762D0013E0E4 /* HealthKit.framework */,
 				8A303310BEA7AE46604F8D75 /* Pods_ClinTwin360.framework */,
 			);
 			name = Frameworks;
@@ -54,8 +91,25 @@
 				8DDB9242444DAB1E6A261704 /* Pods-ClinTwin360.debug.xcconfig */,
 				174A4D8F9237B519304FA248 /* Pods-ClinTwin360.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FF3D8465242172CB0013E0E4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FF3D8466242172EF0013E0E4 /* HealthKitSetupAssistant.swift */,
+				FF3D847C2426E7C20013E0E4 /* SurveyTask.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FF3D84712426D97B0013E0E4 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				FF3D84742426DA0C0013E0E4 /* MatchingTrialCell.xib */,
+				FF3D84762426DA700013E0E4 /* MatchingTrialCell.swift */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 		FF529F3B240CD4A9000A9C35 = {
@@ -79,14 +133,45 @@
 		FF529F46240CD4AA000A9C35 /* ClinTwin360 */ = {
 			isa = PBXGroup;
 			children = (
+				FF3D84682421762D0013E0E4 /* ClinTwin360.entitlements */,
+				FF3D8465242172CB0013E0E4 /* Model */,
+				FFBDC97624214F830056F552 /* View */,
+				FFBDE1862421639C00E81685 /* View Controller */,
 				FF529F47240CD4AA000A9C35 /* AppDelegate.swift */,
-				FF529F49240CD4AA000A9C35 /* ViewController.swift */,
-				FF529F4B240CD4AA000A9C35 /* Main.storyboard */,
-				FF529F4E240CD4AC000A9C35 /* Assets.xcassets */,
 				FF529F50240CD4AC000A9C35 /* LaunchScreen.storyboard */,
 				FF529F53240CD4AC000A9C35 /* Info.plist */,
 			);
 			path = ClinTwin360;
+			sourceTree = "<group>";
+		};
+		FFBDC97624214F830056F552 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FF3D84712426D97B0013E0E4 /* TableViewCells */,
+				FF529F4B240CD4AA000A9C35 /* Main.storyboard */,
+				FF3D846D2426CE950013E0E4 /* TrialsInfo.storyboard */,
+				FF529F4E240CD4AC000A9C35 /* Assets.xcassets */,
+				FFBDE1892421659400E81685 /* CommonColors.swift */,
+				FFBDC97724214F9D0056F552 /* LabeledTextFieldView.xib */,
+				FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FFBDE1862421639C00E81685 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FF529F49240CD4AA000A9C35 /* SignInViewController.swift */,
+				FFBDE187242163D000E81685 /* OnboardingViewController.swift */,
+				FF3D8461242167D70013E0E4 /* AHConfirmViewController.swift */,
+				FF3D84632421699B0013E0E4 /* BasicInfoViewController.swift */,
+				FF3D846B242454B20013E0E4 /* HDConfirmViewController.swift */,
+				FF3D846F2426CEB70013E0E4 /* TrialIntroViewController.swift */,
+				FF3D84722426D99F0013E0E4 /* MatchingTrialsListViewController.swift */,
+				FF3D84782426DF820013E0E4 /* MatchedTrialInfoViewController.swift */,
+				FF3D847A2426E0EC0013E0E4 /* TrialNextStepsViewController.swift */,
+			);
+			path = "View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,7 +236,10 @@
 			files = (
 				FF529F52240CD4AC000A9C35 /* LaunchScreen.storyboard in Resources */,
 				FF529F4F240CD4AC000A9C35 /* Assets.xcassets in Resources */,
+				FFBDC97824214F9D0056F552 /* LabeledTextFieldView.xib in Resources */,
+				FF3D846E2426CE950013E0E4 /* TrialsInfo.storyboard in Resources */,
 				FF529F4D240CD4AA000A9C35 /* Main.storyboard in Resources */,
+				FF3D84752426DA0C0013E0E4 /* MatchingTrialCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,8 +297,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF529F4A240CD4AA000A9C35 /* ViewController.swift in Sources */,
+				FF3D847B2426E0EC0013E0E4 /* TrialNextStepsViewController.swift in Sources */,
+				FF529F4A240CD4AA000A9C35 /* SignInViewController.swift in Sources */,
+				FF3D847D2426E7C20013E0E4 /* SurveyTask.swift in Sources */,
+				FF3D84792426DF820013E0E4 /* MatchedTrialInfoViewController.swift in Sources */,
+				FF3D8467242172EF0013E0E4 /* HealthKitSetupAssistant.swift in Sources */,
+				FF3D846C242454B20013E0E4 /* HDConfirmViewController.swift in Sources */,
+				FFBDC97A2421505D0056F552 /* LabeledTextFieldView.swift in Sources */,
 				FF529F48240CD4AA000A9C35 /* AppDelegate.swift in Sources */,
+				FF3D84732426D99F0013E0E4 /* MatchingTrialsListViewController.swift in Sources */,
+				FFBDE188242163D000E81685 /* OnboardingViewController.swift in Sources */,
+				FF3D84702426CEB70013E0E4 /* TrialIntroViewController.swift in Sources */,
+				FF3D8462242167D70013E0E4 /* AHConfirmViewController.swift in Sources */,
+				FF3D84772426DA700013E0E4 /* MatchingTrialCell.swift in Sources */,
+				FF3D84642421699B0013E0E4 /* BasicInfoViewController.swift in Sources */,
+				FFBDE18A2421659400E81685 /* CommonColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,14 +458,16 @@
 			baseConfigurationReference = 8DDB9242444DAB1E6A261704 /* Pods-ClinTwin360.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ClinTwin360/ClinTwin360.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZXMTMWC98H;
 				INFOPLIST_FILE = ClinTwin360/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lbongartz.ClinTwin360;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cscie599.ClinTwin360;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -376,14 +479,16 @@
 			baseConfigurationReference = 174A4D8F9237B519304FA248 /* Pods-ClinTwin360.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ClinTwin360/ClinTwin360.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZXMTMWC98H;
 				INFOPLIST_FILE = ClinTwin360/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lbongartz.ClinTwin360;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cscie599.ClinTwin360;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

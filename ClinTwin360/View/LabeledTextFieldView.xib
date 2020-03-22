@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LabeledTextFieldView" customModule="ClinTwin360" customModuleProvider="target">
+            <connections>
+                <outlet property="textField" destination="BZA-62-Hjw" id="vUu-St-gUd"/>
+                <outlet property="titleLabel" destination="P5g-aM-nyh" id="v0X-c7-NPP"/>
+                <outlet property="view" destination="iN0-l3-epB" id="zNh-Jp-MOy"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5g-aM-nyh">
+                    <rect key="frame" x="0.0" y="15" width="30" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="vPf-cD-aCN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                    <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BZA-62-Hjw">
+                    <rect key="frame" x="0.0" y="38" width="414" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="MdJ-9F-ZeN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="P5g-aM-nyh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0fU-tc-AlP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="BZA-62-Hjw" secondAttribute="bottom" id="eTs-1z-G4y"/>
+                <constraint firstItem="BZA-62-Hjw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="iKc-ql-76p"/>
+                <constraint firstItem="BZA-62-Hjw" firstAttribute="top" secondItem="P5g-aM-nyh" secondAttribute="bottom" constant="2" id="iP6-mk-SZR"/>
+                <constraint firstItem="P5g-aM-nyh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="vmQ-Zx-zHz"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BZA-62-Hjw" secondAttribute="trailing" id="yfb-nX-Y2d"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="139" y="84"/>
+        </view>
+    </objects>
+</document>
