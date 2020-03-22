@@ -65,6 +65,7 @@ class SignInViewController: UIViewController {
 			let navController = UINavigationController()
 			let onboardingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OnboardingViewController")
 			navController.viewControllers = [onboardingVC]
+			navController.modalPresentationStyle = .overFullScreen
 		
 			present(navController, animated: true) {
 				let trialsListVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "MatchingTrialsListViewController")

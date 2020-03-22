@@ -20,6 +20,7 @@
 		FF3D84772426DA700013E0E4 /* MatchingTrialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D84762426DA700013E0E4 /* MatchingTrialCell.swift */; };
 		FF3D84792426DF820013E0E4 /* MatchedTrialInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D84782426DF820013E0E4 /* MatchedTrialInfoViewController.swift */; };
 		FF3D847B2426E0EC0013E0E4 /* TrialNextStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D847A2426E0EC0013E0E4 /* TrialNextStepsViewController.swift */; };
+		FF3D847D2426E7C20013E0E4 /* SurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D847C2426E7C20013E0E4 /* SurveyTask.swift */; };
 		FF529F48240CD4AA000A9C35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529F47240CD4AA000A9C35 /* AppDelegate.swift */; };
 		FF529F4A240CD4AA000A9C35 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529F49240CD4AA000A9C35 /* SignInViewController.swift */; };
 		FF529F4D240CD4AA000A9C35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF529F4B240CD4AA000A9C35 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		FF3D84762426DA700013E0E4 /* MatchingTrialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingTrialCell.swift; sourceTree = "<group>"; };
 		FF3D84782426DF820013E0E4 /* MatchedTrialInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedTrialInfoViewController.swift; sourceTree = "<group>"; };
 		FF3D847A2426E0EC0013E0E4 /* TrialNextStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialNextStepsViewController.swift; sourceTree = "<group>"; };
+		FF3D847C2426E7C20013E0E4 /* SurveyTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyTask.swift; sourceTree = "<group>"; };
 		FF529F44240CD4AA000A9C35 /* ClinTwin360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClinTwin360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF529F47240CD4AA000A9C35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF529F49240CD4AA000A9C35 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				FF3D8466242172EF0013E0E4 /* HealthKitSetupAssistant.swift */,
+				FF3D847C2426E7C20013E0E4 /* SurveyTask.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 			files = (
 				FF3D847B2426E0EC0013E0E4 /* TrialNextStepsViewController.swift in Sources */,
 				FF529F4A240CD4AA000A9C35 /* SignInViewController.swift in Sources */,
+				FF3D847D2426E7C20013E0E4 /* SurveyTask.swift in Sources */,
 				FF3D84792426DF820013E0E4 /* MatchedTrialInfoViewController.swift in Sources */,
 				FF3D8467242172EF0013E0E4 /* HealthKitSetupAssistant.swift in Sources */,
 				FF3D846C242454B20013E0E4 /* HDConfirmViewController.swift in Sources */,

@@ -11,7 +11,7 @@
         <!--Trial Intro View Controller-->
         <scene sceneID="gvN-J6-hbP">
             <objects>
-                <viewController id="hmU-uY-oZx" customClass="TrialIntroViewController" customModule="ClinTwin360" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TrialIntroViewController" id="hmU-uY-oZx" customClass="TrialIntroViewController" customModule="ClinTwin360" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lbx-Eb-JDl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,6 +105,12 @@
                                 <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no matching trials to show at this time." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YuA-ie-Hvh">
+                                <rect key="frame" x="30" y="428" width="354" height="40"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bsK-4S-kdz">
                                 <rect key="frame" x="0.0" y="114" width="414" height="748"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -116,6 +122,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="K2R-de-rbV" firstAttribute="trailing" secondItem="YuA-ie-Hvh" secondAttribute="trailing" constant="30" id="3is-Rs-fBc"/>
+                            <constraint firstItem="YuA-ie-Hvh" firstAttribute="leading" secondItem="K2R-de-rbV" secondAttribute="leading" constant="30" id="FqE-yX-kDm"/>
+                            <constraint firstItem="YuA-ie-Hvh" firstAttribute="centerX" secondItem="Zwh-N2-rga" secondAttribute="centerX" id="FqZ-KK-6c4"/>
+                            <constraint firstItem="YuA-ie-Hvh" firstAttribute="centerY" secondItem="Zwh-N2-rga" secondAttribute="centerY" id="H6a-t0-XEy"/>
                             <constraint firstItem="K2R-de-rbV" firstAttribute="trailing" secondItem="bsK-4S-kdz" secondAttribute="trailing" id="HGR-vx-Ngs"/>
                             <constraint firstItem="bsK-4S-kdz" firstAttribute="leading" secondItem="K2R-de-rbV" secondAttribute="leading" id="KX3-zM-KIC"/>
                             <constraint firstItem="yP4-m9-bCP" firstAttribute="top" secondItem="K2R-de-rbV" secondAttribute="top" constant="15" id="VAS-ZM-BWu"/>
@@ -127,6 +137,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="vrD-Jb-RAM"/>
                     <connections>
+                        <outlet property="noTrialsLabel" destination="YuA-ie-Hvh" id="QrS-oI-s6Q"/>
                         <outlet property="tableView" destination="bsK-4S-kdz" id="GSn-tb-vHi"/>
                     </connections>
                 </viewController>
@@ -146,25 +157,25 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Xr-mS-7IR" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="843.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="803.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Novartis Heart Study" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hne-Wz-Wcx">
-                                                <rect key="frame" x="58.5" y="80" width="297" height="36"/>
+                                                <rect key="frame" x="58.5" y="40" width="297" height="36"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
                                                 <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30W-dv-nRL">
-                                                <rect key="frame" x="20" y="156" width="374" height="524.5"/>
-                                                <mutableString key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin vulputate dolor, et venenatis dui posuere vel. Vivamus diam ipsum, bibendum in orci nec, tempus aliquam dolor. Fusce consectetur porta massa, vitae blandit nunc convallis et. Donec et lacinia tellus. Nam rhoncus eros orci, nec placerat magna pretium ac. Morbi elementum enim ipsum. Etiam a mauris pretium, varius justo in, congue odio. Fusce et tincidunt justo, eget aliquet nisi. Cras mollis pellentesque velit sit amet molestie. Fusce nec nulla at neque gravida sagittis.
+                                                <rect key="frame" x="20" y="116" width="374" height="524.5"/>
+                                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin vulputate dolor, et venenatis dui posuere vel. Vivamus diam ipsum, bibendum in orci nec, tempus aliquam dolor. Fusce consectetur porta massa, vitae blandit nunc convallis et. Donec et lacinia tellus. Nam rhoncus eros orci, nec placerat magna pretium ac. Morbi elementum enim ipsum. Etiam a mauris pretium, varius justo in, congue odio. Fusce et tincidunt justo, eget aliquet nisi. Cras mollis pellentesque velit sit amet molestie. Fusce nec nulla at neque gravida sagittis.
 
-Donec blandit faucibus feugiat. Morbi fermentum vulputate nisi efficitur egestas. Praesent blandit imperdiet diam nec vestibulum. Curabitur semper dui sit amet ultricies venenatis. Vivamus at diam ante. Nullam ornare ante nisi, et dictum lacus aliquet ut. Suspendisse ac aliquet urna. Sed tempus felis vel urna luctus molestie. Vivamus malesuada id orci nec tincidunt. Etiam in scelerisque erat. Nunc sagittis in lacus in imperdiet.</mutableString>
+Donec blandit faucibus feugiat. Morbi fermentum vulputate nisi efficitur egestas. Praesent blandit imperdiet diam nec vestibulum. Curabitur semper dui sit amet ultricies venenatis. Vivamus at diam ante. Nullam ornare ante nisi, et dictum lacus aliquet ut. Suspendisse ac aliquet urna. Sed tempus felis vel urna luctus molestie. Vivamus malesuada id orci nec tincidunt. Etiam in scelerisque erat. Nunc sagittis in lacus in imperdiet.</string>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                 <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="l6d-Si-RUN">
-                                                <rect key="frame" x="30" y="740.5" width="354" height="43"/>
+                                                <rect key="frame" x="30" y="700.5" width="354" height="43"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xT6-BS-svM">
                                                         <rect key="frame" x="0.0" y="0.0" width="167" height="43"/>
@@ -204,7 +215,7 @@ Donec blandit faucibus feugiat. Morbi fermentum vulputate nisi efficitur egestas
                                             <constraint firstAttribute="trailing" secondItem="30W-dv-nRL" secondAttribute="trailing" constant="20" id="HR1-IQ-gRU"/>
                                             <constraint firstAttribute="bottom" secondItem="l6d-Si-RUN" secondAttribute="bottom" constant="60" id="ImK-1t-Xjl"/>
                                             <constraint firstItem="Hne-Wz-Wcx" firstAttribute="centerX" secondItem="9Xr-mS-7IR" secondAttribute="centerX" id="Svn-Ks-8OD"/>
-                                            <constraint firstItem="Hne-Wz-Wcx" firstAttribute="top" secondItem="9Xr-mS-7IR" secondAttribute="top" constant="80" id="eek-sQ-rKF"/>
+                                            <constraint firstItem="Hne-Wz-Wcx" firstAttribute="top" secondItem="9Xr-mS-7IR" secondAttribute="top" constant="40" id="eek-sQ-rKF"/>
                                             <constraint firstItem="30W-dv-nRL" firstAttribute="top" secondItem="Hne-Wz-Wcx" secondAttribute="bottom" constant="40" id="iHY-vw-x3B"/>
                                             <constraint firstAttribute="trailing" secondItem="l6d-Si-RUN" secondAttribute="trailing" constant="30" id="ieB-MD-IAM"/>
                                             <constraint firstItem="l6d-Si-RUN" firstAttribute="leading" secondItem="9Xr-mS-7IR" secondAttribute="leading" constant="30" id="kO6-hk-Wbq"/>
@@ -253,16 +264,16 @@ Donec blandit faucibus feugiat. Morbi fermentum vulputate nisi efficitur egestas
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="InC-dV-VPK" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="602"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="562"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Novartis Heart Study" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuF-dk-XSn">
-                                                <rect key="frame" x="58.5" y="80" width="297" height="36"/>
+                                                <rect key="frame" x="58.5" y="40" width="297" height="36"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
                                                 <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4F-Ml-qNw">
-                                                <rect key="frame" x="20" y="208" width="374" height="231"/>
+                                                <rect key="frame" x="20" y="168" width="374" height="231"/>
                                                 <string key="text">Congratulations. You are ready for the next steps of the application process. 
 
 First you will need to schedule an appointment with your primary care provider.
@@ -273,7 +284,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin vul
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Do1-Lp-hO1">
-                                                <rect key="frame" x="127" y="499" width="160" height="43"/>
+                                                <rect key="frame" x="127" y="459" width="160" height="43"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="69u-gh-S9z"/>
                                                     <constraint firstAttribute="height" constant="43" id="xHF-pB-3fj"/>
@@ -287,7 +298,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin vul
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19u-7g-c1w">
-                                                <rect key="frame" x="20" y="156" width="156.5" height="36"/>
+                                                <rect key="frame" x="20" y="116" width="156.5" height="36"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
                                                 <color key="textColor" red="0.4549019608" green="0.91764705879999997" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -299,7 +310,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin vul
                                             <constraint firstItem="19u-7g-c1w" firstAttribute="leading" secondItem="InC-dV-VPK" secondAttribute="leading" constant="20" id="9kb-LW-bjY"/>
                                             <constraint firstItem="t4F-Ml-qNw" firstAttribute="top" secondItem="19u-7g-c1w" secondAttribute="bottom" constant="16" id="FPg-o9-ao4"/>
                                             <constraint firstItem="Do1-Lp-hO1" firstAttribute="top" secondItem="t4F-Ml-qNw" secondAttribute="bottom" constant="60" id="Fci-7i-71Y"/>
-                                            <constraint firstItem="xuF-dk-XSn" firstAttribute="top" secondItem="InC-dV-VPK" secondAttribute="top" constant="80" id="HZa-LP-qlt"/>
+                                            <constraint firstItem="xuF-dk-XSn" firstAttribute="top" secondItem="InC-dV-VPK" secondAttribute="top" constant="40" id="HZa-LP-qlt"/>
                                             <constraint firstItem="19u-7g-c1w" firstAttribute="top" secondItem="xuF-dk-XSn" secondAttribute="bottom" constant="40" id="Ha2-5v-5as"/>
                                             <constraint firstItem="xuF-dk-XSn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="InC-dV-VPK" secondAttribute="leading" constant="20" id="QeJ-46-vNE"/>
                                             <constraint firstItem="t4F-Ml-qNw" firstAttribute="leading" secondItem="InC-dV-VPK" secondAttribute="leading" constant="20" id="b7v-TV-HjZ"/>

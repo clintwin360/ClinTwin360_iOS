@@ -19,15 +19,7 @@ class TrialIntroViewController: UIViewController {
 	@IBOutlet weak var messageLabel: UILabel!
 	@IBOutlet weak var navigationButton: UIButton!
 	
-	var trialIntroResult: TrialIntroResult = .noneFound {
-		didSet {
-			if trialIntroResult == .noneFound {
-				configureForNoTrials()
-			} else if trialIntroResult == .trialsFound {
-				configureForFoundTrials()
-			}
-		}
-	}
+	var trialIntroResult: TrialIntroResult = .noneFound
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +28,11 @@ class TrialIntroViewController: UIViewController {
 		navigationButton.layer.borderWidth = 0.5
 		navigationButton.layer.borderColor = UIColor.black.cgColor
 		
-        configureForNoTrials()
+		if trialIntroResult == .noneFound {
+			configureForNoTrials()
+		} else {
+			configureForFoundTrials()
+		}
     }
     
 
