@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSHealthShareUsageDescription</key>
-	<string>Allow CinTwin360 to access your Apple Health data to auto-populate your health forms. </string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -17,11 +15,25 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.1</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow ClinTwin360 to access your camera to complete research tasks.</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Allow CinTwin360 to access your Apple Health data to auto-populate your health forms. </string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Allow CinTwin360 to access your Apple Health data to auto-populate your health forms. </string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Allow ClinTwin360 to access your location to complete research tasks.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Allow ClinTwin360 to access your microphone to complete research tasks.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Allow ClinTwin360 to track your motion to complete research tasks.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Allow ClinTwin360 to track your speech to complete research tasks.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
