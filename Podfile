@@ -8,5 +8,6 @@ target 'ClinTwin360' do
   # Pods for ClinTwin360
 
   pod 'ResearchKit'
+  pod 'Alamofire', '~> 5.0'
 
 end

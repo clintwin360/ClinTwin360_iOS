@@ -30,6 +30,14 @@
 		FFBDC97A2421505D0056F552 /* LabeledTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */; };
 		FFBDE188242163D000E81685 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDE187242163D000E81685 /* OnboardingViewController.swift */; };
 		FFBDE18A2421659400E81685 /* CommonColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDE1892421659400E81685 /* CommonColors.swift */; };
+		FFFC6A66243053A60066D11A /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A65243053A60066D11A /* Keys.swift */; };
+		FFFC6A68243054220066D11A /* ApiEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A67243054220066D11A /* ApiEndpoints.swift */; };
+		FFFC6A6A243055BC0066D11A /* AccessTokenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A69243055BC0066D11A /* AccessTokenAdapter.swift */; };
+		FFFC6A6E243056210066D11A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A6D243056210066D11A /* NetworkManager.swift */; };
+		FFFC6A7124305F880066D11A /* GetQuestionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A7024305F880066D11A /* GetQuestionsResponse.swift */; };
+		FFFC6A762430FFE70066D11A /* PostAnswersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A752430FFE70066D11A /* PostAnswersRequest.swift */; };
+		FFFC6A792431052B0066D11A /* UserSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A782431052B0066D11A /* UserSurvey.swift */; };
+		FFFC6A7B2431400F0066D11A /* PostAnswersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A7A2431400F0066D11A /* PostAnswersResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +69,14 @@
 		FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextFieldView.swift; sourceTree = "<group>"; };
 		FFBDE187242163D000E81685 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		FFBDE1892421659400E81685 /* CommonColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonColors.swift; sourceTree = "<group>"; };
+		FFFC6A65243053A60066D11A /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		FFFC6A67243054220066D11A /* ApiEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoints.swift; sourceTree = "<group>"; };
+		FFFC6A69243055BC0066D11A /* AccessTokenAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenAdapter.swift; sourceTree = "<group>"; };
+		FFFC6A6D243056210066D11A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		FFFC6A7024305F880066D11A /* GetQuestionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQuestionsResponse.swift; sourceTree = "<group>"; };
+		FFFC6A752430FFE70066D11A /* PostAnswersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAnswersRequest.swift; sourceTree = "<group>"; };
+		FFFC6A782431052B0066D11A /* UserSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSurvey.swift; sourceTree = "<group>"; };
+		FFFC6A7A2431400F0066D11A /* PostAnswersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAnswersResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +115,7 @@
 			children = (
 				FF3D8466242172EF0013E0E4 /* HealthKitSetupAssistant.swift */,
 				FF3D847C2426E7C20013E0E4 /* SurveyTask.swift */,
+				FFFC6A72243062280066D11A /* Networking */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -136,6 +153,7 @@
 				FF3D84682421762D0013E0E4 /* ClinTwin360.entitlements */,
 				FF3D8465242172CB0013E0E4 /* Model */,
 				FFBDC97624214F830056F552 /* View */,
+				FFFC6A77243105140066D11A /* View Model */,
 				FFBDE1862421639C00E81685 /* View Controller */,
 				FF529F47240CD4AA000A9C35 /* AppDelegate.swift */,
 				FF529F50240CD4AC000A9C35 /* LaunchScreen.storyboard */,
@@ -172,6 +190,52 @@
 				FF3D847A2426E0EC0013E0E4 /* TrialNextStepsViewController.swift */,
 			);
 			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		FFFC6A6F24305F5B0066D11A /* ApiModels */ = {
+			isa = PBXGroup;
+			children = (
+				FFFC6A732430FF9B0066D11A /* Requests */,
+				FFFC6A742430FFAB0066D11A /* Responses */,
+			);
+			path = ApiModels;
+			sourceTree = "<group>";
+		};
+		FFFC6A72243062280066D11A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				FFFC6A6F24305F5B0066D11A /* ApiModels */,
+				FFFC6A65243053A60066D11A /* Keys.swift */,
+				FFFC6A67243054220066D11A /* ApiEndpoints.swift */,
+				FFFC6A69243055BC0066D11A /* AccessTokenAdapter.swift */,
+				FFFC6A6D243056210066D11A /* NetworkManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		FFFC6A732430FF9B0066D11A /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				FFFC6A752430FFE70066D11A /* PostAnswersRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		FFFC6A742430FFAB0066D11A /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				FFFC6A7024305F880066D11A /* GetQuestionsResponse.swift */,
+				FFFC6A7A2431400F0066D11A /* PostAnswersResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		FFFC6A77243105140066D11A /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				FFFC6A782431052B0066D11A /* UserSurvey.swift */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,12 +319,14 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ClinTwin360/Pods-ClinTwin360-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ResearchKit/ResearchKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ResearchKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,19 +363,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFFC6A6E243056210066D11A /* NetworkManager.swift in Sources */,
 				FF3D847B2426E0EC0013E0E4 /* TrialNextStepsViewController.swift in Sources */,
+				FFFC6A66243053A60066D11A /* Keys.swift in Sources */,
 				FF529F4A240CD4AA000A9C35 /* SignInViewController.swift in Sources */,
 				FF3D847D2426E7C20013E0E4 /* SurveyTask.swift in Sources */,
 				FF3D84792426DF820013E0E4 /* MatchedTrialInfoViewController.swift in Sources */,
+				FFFC6A68243054220066D11A /* ApiEndpoints.swift in Sources */,
+				FFFC6A7124305F880066D11A /* GetQuestionsResponse.swift in Sources */,
 				FF3D8467242172EF0013E0E4 /* HealthKitSetupAssistant.swift in Sources */,
 				FF3D846C242454B20013E0E4 /* HDConfirmViewController.swift in Sources */,
+				FFFC6A792431052B0066D11A /* UserSurvey.swift in Sources */,
+				FFFC6A762430FFE70066D11A /* PostAnswersRequest.swift in Sources */,
 				FFBDC97A2421505D0056F552 /* LabeledTextFieldView.swift in Sources */,
 				FF529F48240CD4AA000A9C35 /* AppDelegate.swift in Sources */,
 				FF3D84732426D99F0013E0E4 /* MatchingTrialsListViewController.swift in Sources */,
 				FFBDE188242163D000E81685 /* OnboardingViewController.swift in Sources */,
+				FFFC6A7B2431400F0066D11A /* PostAnswersResponse.swift in Sources */,
 				FF3D84702426CEB70013E0E4 /* TrialIntroViewController.swift in Sources */,
 				FF3D8462242167D70013E0E4 /* AHConfirmViewController.swift in Sources */,
 				FF3D84772426DA700013E0E4 /* MatchingTrialCell.swift in Sources */,
+				FFFC6A6A243055BC0066D11A /* AccessTokenAdapter.swift in Sources */,
 				FF3D84642421699B0013E0E4 /* BasicInfoViewController.swift in Sources */,
 				FFBDE18A2421659400E81685 /* CommonColors.swift in Sources */,
 			);

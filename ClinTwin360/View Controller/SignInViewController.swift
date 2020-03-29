@@ -26,6 +26,10 @@ class SignInViewController: UIViewController {
 		signInButton.layer.cornerRadius = 10.0
 		signInButton.layer.borderWidth = 0.5
 		signInButton.layer.borderColor = UIColor.black.cgColor
+		
+		NetworkManager.shared.getQuestions { response in
+			// TODO
+		}
     }
 	
 	override func viewWillAppear(_ animated: Bool) {

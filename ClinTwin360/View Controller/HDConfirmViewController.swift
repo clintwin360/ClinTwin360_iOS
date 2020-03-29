@@ -15,6 +15,8 @@ class HDConfirmViewController: UIViewController {
 	
 	var blurView: UIVisualEffectView?
 	
+	var currentUserSurvey: UserSurvey?
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -37,9 +39,12 @@ class HDConfirmViewController: UIViewController {
 		blurView?.removeFromSuperview()
 		blurView = nil
 	}
-    
-	@IBAction func didTapStart(_ sender: UIButton) {
-		let taskViewController = ORKTaskViewController(task: SurveyTask, taskRun: nil)
+	
+	private func beginResearchTask(withQuestions response: GetQuestionsResponse) {
+		guard let questions = response.results else { return }
+		currentUserSurvey = UserSurvey(questions: questions)
+		
+		let taskViewController = ORKTaskViewController(task: currentUserSurvey!.surveyTask, taskRun: nil)
 		taskViewController.delegate = self
 		taskViewController.modalPresentationStyle = .overFullScreen
 		
@@ -47,18 +52,49 @@ class HDConfirmViewController: UIViewController {
 		navigationController?.setNavigationBarHidden(true, animated: false)
 		present(taskViewController, animated: true, completion: nil)
 	}
+	
+	private func postResponses(_ responses: [ResearchQuestionAnswer]?, completion: @escaping (_ success: Bool) -> ()) {
+		guard responses?.count ?? 0 > 0 else {
+			completion(true)
+			return
+		}
+		
+		NetworkManager.shared.postSurveyResponse(responses!.first!) { (result) in
+			// Ignoring result for now
+			self.postResponses(Array(responses!.dropFirst())) { (success) in
+				completion(success)
+			}
+		}
+	}
+    
+	@IBAction func didTapStart(_ sender: UIButton) {
+		// TODO: loading indicator
+		
+		NetworkManager.shared.getQuestions { (response) in
+			if let error = response?.error {
+				debugPrint(error.localizedDescription)
+			} else if let value = response?.value {
+				self.beginResearchTask(withQuestions: value)
+			}
+		}
+	}
 
 }
 
 extension HDConfirmViewController: ORKTaskViewControllerDelegate {
 	func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
-		// TODO: Handle results with taskViewController.result
-		taskViewController.dismiss(animated: true, completion: nil)
-		navigationController?.setNavigationBarHidden(false, animated: false)
-		removeBlurView()
+		// Handle results with taskViewController.result
+		currentUserSurvey?.parseAnswers(fromTaskResult: taskViewController.result)
 		
-		let trialIntroVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "TrialIntroViewController") as! TrialIntroViewController
-		trialIntroVC.trialIntroResult = .trialsFound // TODO: update this later
-		navigationController?.pushViewController(trialIntroVC, animated: true)
+		// TODO: loading indicator
+		postResponses(currentUserSurvey?.responses) { [weak self] (success) in
+			taskViewController.dismiss(animated: true, completion: nil)
+			self?.navigationController?.setNavigationBarHidden(false, animated: false)
+			self?.removeBlurView()
+			
+			let trialIntroVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "TrialIntroViewController") as! TrialIntroViewController
+			trialIntroVC.trialIntroResult = .trialsFound // TODO: update this later
+			self?.navigationController?.pushViewController(trialIntroVC, animated: true)
+		}
 	}
 }
