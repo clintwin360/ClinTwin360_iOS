@@ -68,17 +68,17 @@ class HDConfirmViewController: UIViewController {
 	}
     
 	@IBAction func didTapStart(_ sender: UIButton) {
-		// TODO: loading indicator
-		
+		showLoadingView()
 		NetworkManager.shared.getQuestions { (response) in
+			self.hideLoadingView()
 			if let error = response?.error {
 				debugPrint(error.localizedDescription)
+				self.showNetworkError()
 			} else if let value = response?.value {
 				self.beginResearchTask(withQuestions: value)
 			}
 		}
 	}
-
 }
 
 extension HDConfirmViewController: ORKTaskViewControllerDelegate {
@@ -86,15 +86,23 @@ extension HDConfirmViewController: ORKTaskViewControllerDelegate {
 		// Handle results with taskViewController.result
 		currentUserSurvey?.parseAnswers(fromTaskResult: taskViewController.result)
 		
-		// TODO: loading indicator
+		showLoadingView()
 		postResponses(currentUserSurvey?.responses) { [weak self] (success) in
 			taskViewController.dismiss(animated: true, completion: nil)
 			self?.navigationController?.setNavigationBarHidden(false, animated: false)
 			self?.removeBlurView()
 			
-			let trialIntroVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "TrialIntroViewController") as! TrialIntroViewController
-			trialIntroVC.trialIntroResult = .trialsFound // TODO: update this later
-			self?.navigationController?.pushViewController(trialIntroVC, animated: true)
+			NetworkManager.shared.getMatches { (response) in
+				self?.hideLoadingView()
+				if let error = response?.error {
+					debugPrint(error.localizedDescription)
+					self?.showNetworkError()
+				} else {
+					let trialIntroVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "TrialIntroViewController") as! TrialIntroViewController
+					trialIntroVC.trialIntroResult = .trialsFound // TODO: update this later
+					self?.navigationController?.pushViewController(trialIntroVC, animated: true)
+				}
+			}
 		}
 	}
 }

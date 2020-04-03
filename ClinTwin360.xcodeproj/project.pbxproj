@@ -38,6 +38,16 @@
 		FFFC6A762430FFE70066D11A /* PostAnswersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A752430FFE70066D11A /* PostAnswersRequest.swift */; };
 		FFFC6A792431052B0066D11A /* UserSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A782431052B0066D11A /* UserSurvey.swift */; };
 		FFFC6A7B2431400F0066D11A /* PostAnswersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A7A2431400F0066D11A /* PostAnswersResponse.swift */; };
+		FFFC6A7D243452CF0066D11A /* GetMatchesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A7C243452CF0066D11A /* GetMatchesRequest.swift */; };
+		FFFC6A7F243453EF0066D11A /* GetTrialDetailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A7E243453EF0066D11A /* GetTrialDetailsRequest.swift */; };
+		FFFC6A81243455020066D11A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A80243455020066D11A /* UIViewController+Extension.swift */; };
+		FFFC6A832436E9220066D11A /* RegisterUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A822436E9220066D11A /* RegisterUserRequest.swift */; };
+		FFFC6A852436EB610066D11A /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A842436EB610066D11A /* LoginRequest.swift */; };
+		FFFC6A872436EB910066D11A /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A862436EB910066D11A /* LoginResponse.swift */; };
+		FFFC6A892436EC8D0066D11A /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A882436EC8D0066D11A /* KeychainWrapper.swift */; };
+		FFFC6A8C2436ED340066D11A /* KeychainOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A8B2436ED340066D11A /* KeychainOptions.swift */; };
+		FFFC6A8E2436F02E0066D11A /* RegisterUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A8D2436F02E0066D11A /* RegisterUserResponse.swift */; };
+		FFFC6A902436F67B0066D11A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A8F2436F67B0066D11A /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +87,16 @@
 		FFFC6A752430FFE70066D11A /* PostAnswersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAnswersRequest.swift; sourceTree = "<group>"; };
 		FFFC6A782431052B0066D11A /* UserSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSurvey.swift; sourceTree = "<group>"; };
 		FFFC6A7A2431400F0066D11A /* PostAnswersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAnswersResponse.swift; sourceTree = "<group>"; };
+		FFFC6A7C243452CF0066D11A /* GetMatchesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMatchesRequest.swift; sourceTree = "<group>"; };
+		FFFC6A7E243453EF0066D11A /* GetTrialDetailsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTrialDetailsRequest.swift; sourceTree = "<group>"; };
+		FFFC6A80243455020066D11A /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		FFFC6A822436E9220066D11A /* RegisterUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserRequest.swift; sourceTree = "<group>"; };
+		FFFC6A842436EB610066D11A /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		FFFC6A862436EB910066D11A /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		FFFC6A882436EC8D0066D11A /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		FFFC6A8B2436ED340066D11A /* KeychainOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainOptions.swift; sourceTree = "<group>"; };
+		FFFC6A8D2436F02E0066D11A /* RegisterUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserResponse.swift; sourceTree = "<group>"; };
+		FFFC6A8F2436F67B0066D11A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +136,7 @@
 				FF3D8466242172EF0013E0E4 /* HealthKitSetupAssistant.swift */,
 				FF3D847C2426E7C20013E0E4 /* SurveyTask.swift */,
 				FFFC6A72243062280066D11A /* Networking */,
+				FFFC6A8A2436ECEC0066D11A /* Keychain */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -172,6 +193,7 @@
 				FFBDE1892421659400E81685 /* CommonColors.swift */,
 				FFBDC97724214F9D0056F552 /* LabeledTextFieldView.xib */,
 				FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */,
+				FFFC6A8F2436F67B0066D11A /* LoadingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,6 +210,7 @@
 				FF3D84722426D99F0013E0E4 /* MatchingTrialsListViewController.swift */,
 				FF3D84782426DF820013E0E4 /* MatchedTrialInfoViewController.swift */,
 				FF3D847A2426E0EC0013E0E4 /* TrialNextStepsViewController.swift */,
+				FFFC6A80243455020066D11A /* UIViewController+Extension.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -216,7 +239,11 @@
 		FFFC6A732430FF9B0066D11A /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				FFFC6A822436E9220066D11A /* RegisterUserRequest.swift */,
+				FFFC6A842436EB610066D11A /* LoginRequest.swift */,
 				FFFC6A752430FFE70066D11A /* PostAnswersRequest.swift */,
+				FFFC6A7C243452CF0066D11A /* GetMatchesRequest.swift */,
+				FFFC6A7E243453EF0066D11A /* GetTrialDetailsRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -224,8 +251,10 @@
 		FFFC6A742430FFAB0066D11A /* Responses */ = {
 			isa = PBXGroup;
 			children = (
+				FFFC6A862436EB910066D11A /* LoginResponse.swift */,
 				FFFC6A7024305F880066D11A /* GetQuestionsResponse.swift */,
 				FFFC6A7A2431400F0066D11A /* PostAnswersResponse.swift */,
+				FFFC6A8D2436F02E0066D11A /* RegisterUserResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -236,6 +265,15 @@
 				FFFC6A782431052B0066D11A /* UserSurvey.swift */,
 			);
 			path = "View Model";
+			sourceTree = "<group>";
+		};
+		FFFC6A8A2436ECEC0066D11A /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				FFFC6A882436EC8D0066D11A /* KeychainWrapper.swift */,
+				FFFC6A8B2436ED340066D11A /* KeychainOptions.swift */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,19 +403,29 @@
 			files = (
 				FFFC6A6E243056210066D11A /* NetworkManager.swift in Sources */,
 				FF3D847B2426E0EC0013E0E4 /* TrialNextStepsViewController.swift in Sources */,
+				FFFC6A8C2436ED340066D11A /* KeychainOptions.swift in Sources */,
 				FFFC6A66243053A60066D11A /* Keys.swift in Sources */,
 				FF529F4A240CD4AA000A9C35 /* SignInViewController.swift in Sources */,
 				FF3D847D2426E7C20013E0E4 /* SurveyTask.swift in Sources */,
 				FF3D84792426DF820013E0E4 /* MatchedTrialInfoViewController.swift in Sources */,
+				FFFC6A832436E9220066D11A /* RegisterUserRequest.swift in Sources */,
+				FFFC6A8E2436F02E0066D11A /* RegisterUserResponse.swift in Sources */,
+				FFFC6A872436EB910066D11A /* LoginResponse.swift in Sources */,
 				FFFC6A68243054220066D11A /* ApiEndpoints.swift in Sources */,
+				FFFC6A892436EC8D0066D11A /* KeychainWrapper.swift in Sources */,
 				FFFC6A7124305F880066D11A /* GetQuestionsResponse.swift in Sources */,
+				FFFC6A7D243452CF0066D11A /* GetMatchesRequest.swift in Sources */,
+				FFFC6A902436F67B0066D11A /* LoadingView.swift in Sources */,
 				FF3D8467242172EF0013E0E4 /* HealthKitSetupAssistant.swift in Sources */,
+				FFFC6A7F243453EF0066D11A /* GetTrialDetailsRequest.swift in Sources */,
 				FF3D846C242454B20013E0E4 /* HDConfirmViewController.swift in Sources */,
 				FFFC6A792431052B0066D11A /* UserSurvey.swift in Sources */,
 				FFFC6A762430FFE70066D11A /* PostAnswersRequest.swift in Sources */,
+				FFFC6A81243455020066D11A /* UIViewController+Extension.swift in Sources */,
 				FFBDC97A2421505D0056F552 /* LabeledTextFieldView.swift in Sources */,
 				FF529F48240CD4AA000A9C35 /* AppDelegate.swift in Sources */,
 				FF3D84732426D99F0013E0E4 /* MatchingTrialsListViewController.swift in Sources */,
+				FFFC6A852436EB610066D11A /* LoginRequest.swift in Sources */,
 				FFBDE188242163D000E81685 /* OnboardingViewController.swift in Sources */,
 				FFFC6A7B2431400F0066D11A /* PostAnswersResponse.swift in Sources */,
 				FF3D84702426CEB70013E0E4 /* TrialIntroViewController.swift in Sources */,

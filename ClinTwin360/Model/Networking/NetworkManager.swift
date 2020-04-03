@@ -16,11 +16,53 @@ class NetworkManager {
 	var session: Alamofire.Session
 	
 	private init() {
-		let token = Keys.apiToken
-		let adapter = AccessTokenAdapter(accessToken: token, prefix: ApiEndpoints.base)
+		let adapter = AccessTokenAdapter()
 		let interceptor = Interceptor(adapters: [adapter])
 		
 		session = Alamofire.Session(interceptor: interceptor)
+	}
+	
+	func registerUser(username: String, password: String, completion: @escaping (_ error: AFError?) -> ()) {
+		
+		let request = RegisterUserRequest(username: username, password: password)
+		AF.request(ApiEndpoints.base + ApiEndpoints.registerEndpoint,
+					method: .post,
+					parameters: request,
+					encoder: JSONParameterEncoder.default)
+		
+			// This one is helping with debugging for now
+			.responseJSON { response in
+				print("Response JSON: \(String(describing: response.value))")
+			}
+			
+			.responseDecodable(of: RegisterUserResponse.self) { response in
+				debugPrint("Response: \(response)")
+	
+				completion(response.error)
+			}
+	}
+	
+	func login(username: String, password: String, completion: @escaping (_ error: AFError?) -> ()) {
+		
+		let request = LoginRequest(username: username, password: password)
+		AF.request(ApiEndpoints.base + ApiEndpoints.loginEndpoint,
+						method: .post,
+						parameters: request,
+						encoder: JSONParameterEncoder.default)
+			
+				// This one is helping with debugging for now
+				.responseJSON { response in
+					print("Response JSON: \(String(describing: response.value))")
+				}
+			
+				.responseDecodable(of: LoginResponse.self) { response in
+					debugPrint("Response: \(response)")
+					if let response = response.value {
+						KeychainWrapper.standard.set(response.token, forKey: "token")
+					}
+					
+					completion(response.error)
+				}
 	}
 	
 	func getQuestions(completion: @escaping (_ response: DataResponse<GetQuestionsResponse, AFError>?) -> ()) {
@@ -52,6 +94,33 @@ class NetworkManager {
 					debugPrint("Response: \(response)")
 					completion(response)
 				}
+	}
+	
+	func getMatches(completion: @escaping (_ response: DataResponse<Any, AFError>?) -> ()) {
+		let parameters = GetMatchesRequest()
+		
+		session.request(ApiEndpoints.base + ApiEndpoints.matchesEndpoint,
+						method: .post,
+						parameters: parameters,
+						encoder: JSONParameterEncoder.default)
+				// This one is helping with debugging for now
+				.responseJSON { response in
+					print("Response JSON: \(String(describing: response.value))")
+					completion(nil)
+				}
+	}
+	
+	func getTrialDetails(completion: @escaping (_ response: DataResponse<Any, AFError>?) -> ()) {
+		let parameters = GetTrialDetailsRequest()
+		
+		session.request(ApiEndpoints.base + ApiEndpoints.trialDetailsEndpoint,
+				method: .post,
+				parameters: parameters,
+				encoder: JSONParameterEncoder.default)
+		// This one is helping with debugging for now
+		.responseJSON { response in
+			print("Response JSON: \(String(describing: response.value))")
+		}
 	}
 	
 }

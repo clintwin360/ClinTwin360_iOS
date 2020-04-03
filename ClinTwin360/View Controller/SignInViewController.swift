@@ -26,10 +26,6 @@ class SignInViewController: UIViewController {
 		signInButton.layer.cornerRadius = 10.0
 		signInButton.layer.borderWidth = 0.5
 		signInButton.layer.borderColor = UIColor.black.cgColor
-		
-		NetworkManager.shared.getQuestions { response in
-			// TODO
-		}
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -63,10 +59,27 @@ class SignInViewController: UIViewController {
 		signInButton.clipsToBounds = true
 	}
 	
-	@IBAction func didTapSignIn(_ sender: UIButton) {
-		if sender.tag == 0 { // sign in
-			// TODO: authenticate
-			let navController = UINavigationController()
+	private func signIn() {
+		guard let email = emailField.text, email.count > 0 else { return }
+		guard let password = passwordField.text, password.count > 0 else { return }
+		
+		showLoadingView()
+		NetworkManager.shared.login(username: email, password: password) { (error) in
+			self.hideLoadingView()
+			if error != nil {
+				let alertController = UIAlertController(title: "Login Failed", message: "Please check your email address and password, and try again.", preferredStyle: .alert)
+				let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+				alertController.addAction(okAction)
+				self.present(alertController, animated: true, completion: nil)
+			} else {
+				// TODO: display this only the first time
+				self.presentOnboardingVC()
+			}
+		}
+	}
+	
+	private func presentOnboardingVC() {
+		let navController = UINavigationController()
 			let onboardingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OnboardingViewController")
 			navController.viewControllers = [onboardingVC]
 			navController.modalPresentationStyle = .overFullScreen
@@ -76,6 +89,11 @@ class SignInViewController: UIViewController {
 
 				self.navigationController?.setViewControllers([trialsListVC], animated: false)
 			}
+	}
+	
+	@IBAction func didTapSignIn(_ sender: UIButton) {
+		if sender.tag == 0 { // sign in
+			signIn()
 		} else if sender.tag == 1 { // sign up
 			// TODO: create account
 		}
@@ -95,8 +113,5 @@ class SignInViewController: UIViewController {
 			createAccountButton.tag = 0
 		}
 	}
-	
-	
-
 }
 

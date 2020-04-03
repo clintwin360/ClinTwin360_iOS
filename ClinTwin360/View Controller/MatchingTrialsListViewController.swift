@@ -53,7 +53,15 @@ extension MatchingTrialsListViewController: MatchingTrialCellDelegate {
 	func didTapLearnMore(atIndex index: Int) {
 		// TODO: get selected trial
 		
-		let trialVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "MatchedTrialInfoViewController") as! MatchedTrialInfoViewController
-		navigationController?.pushViewController(trialVC, animated: true)
+		NetworkManager.shared.getTrialDetails { [weak self] (response) in
+			if let error = response?.error {
+				debugPrint(error.localizedDescription)
+				self?.showNetworkError()
+			} else {
+				let trialVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "MatchedTrialInfoViewController") as! MatchedTrialInfoViewController
+				// TODO: inject trial details model
+				self?.navigationController?.pushViewController(trialVC, animated: true)
+			}
+		}
 	}
 }

@@ -11,5 +11,5 @@ import Foundation
 /// Note: We will need to store this somewhere safer later
 
 struct Keys {
-	 static let apiToken = "d80e67926b7f0441adb2131ab3b5658d7d35afb0"
+	 static let apiToken = "c216b57f0dabf16146e2c9cab1c99e6f5ea58202"
 }

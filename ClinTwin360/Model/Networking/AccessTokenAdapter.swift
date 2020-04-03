@@ -10,18 +10,14 @@ import Foundation
 import Alamofire
 
 class AccessTokenAdapter: RequestAdapter {
-	private let accessToken: String
-    private let prefix: String
-
-    public init(accessToken: String, prefix: String) {
-        self.accessToken = accessToken
-        self.prefix = prefix
-    }
+	private var accessToken: String? {
+		return KeychainWrapper.standard.string(forKey: "token")
+	}
 	
 	func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
 		
 		var adaptedRequest = urlRequest
-		adaptedRequest.headers.update(.authorization("Token \(accessToken)"))
+		adaptedRequest.headers.update(.authorization("Token \(accessToken ?? "")"))
 		adaptedRequest.headers.update(.accept("application/json"))
 		completion(.success(adaptedRequest))
 	}
