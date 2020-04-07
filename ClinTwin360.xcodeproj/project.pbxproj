@@ -30,6 +30,7 @@
 		FFBDC97A2421505D0056F552 /* LabeledTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */; };
 		FFBDE188242163D000E81685 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDE187242163D000E81685 /* OnboardingViewController.swift */; };
 		FFBDE18A2421659400E81685 /* CommonColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDE1892421659400E81685 /* CommonColors.swift */; };
+		FFEB3190243C3E7300BB0C72 /* BasicHealthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB318F243C3E7300BB0C72 /* BasicHealthViewModel.swift */; };
 		FFFC6A66243053A60066D11A /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A65243053A60066D11A /* Keys.swift */; };
 		FFFC6A68243054220066D11A /* ApiEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A67243054220066D11A /* ApiEndpoints.swift */; };
 		FFFC6A6A243055BC0066D11A /* AccessTokenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A69243055BC0066D11A /* AccessTokenAdapter.swift */; };
@@ -48,6 +49,7 @@
 		FFFC6A8C2436ED340066D11A /* KeychainOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A8B2436ED340066D11A /* KeychainOptions.swift */; };
 		FFFC6A8E2436F02E0066D11A /* RegisterUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A8D2436F02E0066D11A /* RegisterUserResponse.swift */; };
 		FFFC6A902436F67B0066D11A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A8F2436F67B0066D11A /* LoadingView.swift */; };
+		FFFC6A92243C38C00066D11A /* PostBasicHealthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A91243C38C00066D11A /* PostBasicHealthRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +81,7 @@
 		FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextFieldView.swift; sourceTree = "<group>"; };
 		FFBDE187242163D000E81685 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		FFBDE1892421659400E81685 /* CommonColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonColors.swift; sourceTree = "<group>"; };
+		FFEB318F243C3E7300BB0C72 /* BasicHealthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHealthViewModel.swift; sourceTree = "<group>"; };
 		FFFC6A65243053A60066D11A /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		FFFC6A67243054220066D11A /* ApiEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoints.swift; sourceTree = "<group>"; };
 		FFFC6A69243055BC0066D11A /* AccessTokenAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenAdapter.swift; sourceTree = "<group>"; };
@@ -97,6 +100,7 @@
 		FFFC6A8B2436ED340066D11A /* KeychainOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainOptions.swift; sourceTree = "<group>"; };
 		FFFC6A8D2436F02E0066D11A /* RegisterUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserResponse.swift; sourceTree = "<group>"; };
 		FFFC6A8F2436F67B0066D11A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		FFFC6A91243C38C00066D11A /* PostBasicHealthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBasicHealthRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +245,7 @@
 			children = (
 				FFFC6A822436E9220066D11A /* RegisterUserRequest.swift */,
 				FFFC6A842436EB610066D11A /* LoginRequest.swift */,
+				FFFC6A91243C38C00066D11A /* PostBasicHealthRequest.swift */,
 				FFFC6A752430FFE70066D11A /* PostAnswersRequest.swift */,
 				FFFC6A7C243452CF0066D11A /* GetMatchesRequest.swift */,
 				FFFC6A7E243453EF0066D11A /* GetTrialDetailsRequest.swift */,
@@ -263,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				FFFC6A782431052B0066D11A /* UserSurvey.swift */,
+				FFEB318F243C3E7300BB0C72 /* BasicHealthViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -407,6 +413,7 @@
 				FFFC6A66243053A60066D11A /* Keys.swift in Sources */,
 				FF529F4A240CD4AA000A9C35 /* SignInViewController.swift in Sources */,
 				FF3D847D2426E7C20013E0E4 /* SurveyTask.swift in Sources */,
+				FFFC6A92243C38C00066D11A /* PostBasicHealthRequest.swift in Sources */,
 				FF3D84792426DF820013E0E4 /* MatchedTrialInfoViewController.swift in Sources */,
 				FFFC6A832436E9220066D11A /* RegisterUserRequest.swift in Sources */,
 				FFFC6A8E2436F02E0066D11A /* RegisterUserResponse.swift in Sources */,
@@ -429,6 +436,7 @@
 				FFBDE188242163D000E81685 /* OnboardingViewController.swift in Sources */,
 				FFFC6A7B2431400F0066D11A /* PostAnswersResponse.swift in Sources */,
 				FF3D84702426CEB70013E0E4 /* TrialIntroViewController.swift in Sources */,
+				FFEB3190243C3E7300BB0C72 /* BasicHealthViewModel.swift in Sources */,
 				FF3D8462242167D70013E0E4 /* AHConfirmViewController.swift in Sources */,
 				FF3D84772426DA700013E0E4 /* MatchingTrialCell.swift in Sources */,
 				FFFC6A6A243055BC0066D11A /* AccessTokenAdapter.swift in Sources */,

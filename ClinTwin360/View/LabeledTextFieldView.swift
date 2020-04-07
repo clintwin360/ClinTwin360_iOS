@@ -20,7 +20,24 @@ class LabeledTextFieldView: UIView {
 	@IBOutlet weak var textField: UITextField!
 	
 	var text: String? {
-		return textField.text
+		get {
+			return textField.text
+		}
+		set {
+			textField.text = newValue
+		}
+	}
+	
+	var placeholder: String? {
+		didSet {
+			textField.placeholder = placeholder
+		}
+	}
+	
+	var isSecureField: Bool = false {
+		didSet {
+			textField.isSecureTextEntry = isSecureField
+		}
 	}
 	
 	required init?(coder: NSCoder) {
@@ -39,7 +56,8 @@ class LabeledTextFieldView: UIView {
 		addSubview(view)
 	}
 	
-	func configure(title: String) {
+	func configure(title: String, delegate: UITextFieldDelegate? = nil) {
 		titleLabel.text = title
+		textField.delegate = delegate
 	}
 }

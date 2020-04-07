@@ -10,9 +10,6 @@ import Foundation
 
 
 struct RegisterUserRequest: Encodable {
-//	let firstName: String
-//	let lastName: String
-//	let email: String
-	let username: String
+	let email: String
 	let password: String
 }

@@ -119,10 +119,53 @@
                                     <outlet property="delegate" destination="0eg-ch-D1q" id="gII-4y-5e3"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9de-zd-LgG">
+                                <rect key="frame" x="-200" y="44" width="200" height="852"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ClinTwinLogo" translatesAutoresizingMaskIntoConstraints="NO" id="cLU-5x-h9l">
+                                        <rect key="frame" x="5" y="-80" width="190" height="296"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Y9c-U6-itB">
+                                        <rect key="frame" x="0.0" y="155" width="200" height="32"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGp-OQ-8Vj">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="32"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                <state key="normal" title="Sign Out">
+                                                    <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMo-GT-J39">
+                                        <rect key="frame" x="199.5" y="0.0" width="0.5" height="852"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="0.5" id="PHl-Nd-5aT"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="Y9c-U6-itB" firstAttribute="top" secondItem="cLU-5x-h9l" secondAttribute="bottom" constant="-61" id="8lf-p4-yPM"/>
+                                    <constraint firstItem="cMo-GT-J39" firstAttribute="top" secondItem="9de-zd-LgG" secondAttribute="top" id="BiC-Tx-aBZ"/>
+                                    <constraint firstItem="cLU-5x-h9l" firstAttribute="top" secondItem="9de-zd-LgG" secondAttribute="top" constant="-80" id="H2S-sl-GvN"/>
+                                    <constraint firstAttribute="trailing" secondItem="cLU-5x-h9l" secondAttribute="trailing" constant="5" id="Yd8-SQ-krQ"/>
+                                    <constraint firstAttribute="width" constant="200" id="c8r-NU-uaM"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Y9c-U6-itB" secondAttribute="bottom" id="h95-V6-Usf"/>
+                                    <constraint firstItem="cLU-5x-h9l" firstAttribute="leading" secondItem="9de-zd-LgG" secondAttribute="leading" constant="5" id="hY6-Dj-m3n"/>
+                                    <constraint firstAttribute="trailing" secondItem="Y9c-U6-itB" secondAttribute="trailing" id="jTe-U5-T2y"/>
+                                    <constraint firstItem="Y9c-U6-itB" firstAttribute="leading" secondItem="9de-zd-LgG" secondAttribute="leading" id="k60-EO-kUA"/>
+                                    <constraint firstAttribute="bottom" secondItem="cMo-GT-J39" secondAttribute="bottom" id="sLW-mX-Dvq"/>
+                                    <constraint firstAttribute="trailing" secondItem="cMo-GT-J39" secondAttribute="trailing" id="ydx-CI-8DF"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="9de-zd-LgG" firstAttribute="leading" secondItem="K2R-de-rbV" secondAttribute="leading" constant="-200" id="3Br-Cy-dXG"/>
                             <constraint firstItem="K2R-de-rbV" firstAttribute="trailing" secondItem="YuA-ie-Hvh" secondAttribute="trailing" constant="30" id="3is-Rs-fBc"/>
+                            <constraint firstItem="9de-zd-LgG" firstAttribute="top" secondItem="K2R-de-rbV" secondAttribute="top" id="Apk-jh-Xlc"/>
                             <constraint firstItem="YuA-ie-Hvh" firstAttribute="leading" secondItem="K2R-de-rbV" secondAttribute="leading" constant="30" id="FqE-yX-kDm"/>
                             <constraint firstItem="YuA-ie-Hvh" firstAttribute="centerX" secondItem="Zwh-N2-rga" secondAttribute="centerX" id="FqZ-KK-6c4"/>
                             <constraint firstItem="YuA-ie-Hvh" firstAttribute="centerY" secondItem="Zwh-N2-rga" secondAttribute="centerY" id="H6a-t0-XEy"/>
@@ -131,19 +174,22 @@
                             <constraint firstItem="yP4-m9-bCP" firstAttribute="top" secondItem="K2R-de-rbV" secondAttribute="top" constant="15" id="VAS-ZM-BWu"/>
                             <constraint firstItem="bsK-4S-kdz" firstAttribute="top" secondItem="yP4-m9-bCP" secondAttribute="bottom" constant="20" id="acx-cF-5TK"/>
                             <constraint firstItem="yP4-m9-bCP" firstAttribute="centerX" secondItem="Zwh-N2-rga" secondAttribute="centerX" id="atk-Xi-C3L"/>
+                            <constraint firstAttribute="bottom" secondItem="9de-zd-LgG" secondAttribute="bottom" id="o9a-ti-MRT"/>
                             <constraint firstItem="K2R-de-rbV" firstAttribute="bottom" secondItem="bsK-4S-kdz" secondAttribute="bottom" id="wbF-Fd-AKf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K2R-de-rbV"/>
                     </view>
                     <navigationItem key="navigationItem" id="vrD-Jb-RAM"/>
                     <connections>
+                        <outlet property="menuView" destination="9de-zd-LgG" id="WgM-Pt-U6S"/>
+                        <outlet property="menuViewLeadingConstraint" destination="3Br-Cy-dXG" id="8rw-By-K4y"/>
                         <outlet property="noTrialsLabel" destination="YuA-ie-Hvh" id="QrS-oI-s6Q"/>
                         <outlet property="tableView" destination="bsK-4S-kdz" id="GSn-tb-vHi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GoO-DT-31e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="730" y="123"/>
+            <point key="canvasLocation" x="728.98550724637687" y="122.54464285714285"/>
         </scene>
         <!--Matched Trial Info View Controller-->
         <scene sceneID="Q6B-wD-Bzs">
@@ -347,4 +393,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin vul
             <point key="canvasLocation" x="2217" y="123"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ClinTwinLogo" width="438" height="296"/>
+    </resources>
 </document>

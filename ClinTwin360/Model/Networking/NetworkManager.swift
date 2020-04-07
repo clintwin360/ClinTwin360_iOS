@@ -22,9 +22,9 @@ class NetworkManager {
 		session = Alamofire.Session(interceptor: interceptor)
 	}
 	
-	func registerUser(username: String, password: String, completion: @escaping (_ error: AFError?) -> ()) {
+	func registerUser(email: String, password: String, completion: @escaping (_ error: AFError?) -> ()) {
 		
-		let request = RegisterUserRequest(username: username, password: password)
+		let request = RegisterUserRequest(email: email, password: password)
 		AF.request(ApiEndpoints.base + ApiEndpoints.registerEndpoint,
 					method: .post,
 					parameters: request,
@@ -62,6 +62,20 @@ class NetworkManager {
 					}
 					
 					completion(response.error)
+				}
+	}
+	
+	func postBasicHealthDetails(healthModel: BasicHealthViewModel, completion: @escaping (_ error: AFError?) -> ()) {
+		
+		let request = PostBasicHealthRequest(height: healthModel.height!, weight: healthModel.weight!, birthdate: healthModel.birthdate!)
+		session.request(ApiEndpoints.base + ApiEndpoints.basicHealthEndpoint,
+						method: .post,
+						parameters: request,
+						encoder: JSONParameterEncoder.default)
+			// This one is helping with debugging for now
+				.responseJSON { response in
+					print("Response JSON: \(String(describing: response.value))")
+					completion(nil)
 				}
 	}
 	

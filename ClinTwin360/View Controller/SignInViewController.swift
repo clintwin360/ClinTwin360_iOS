@@ -39,6 +39,7 @@ class SignInViewController: UIViewController {
 	private func setUpFields() {
 		emailField.configure(title: "Email Address")
 		passwordField.configure(title: "Password")
+		passwordField.isSecureField = true
 	}
 	
 	private func createButtonGradient() {
@@ -74,6 +75,27 @@ class SignInViewController: UIViewController {
 			} else {
 				// TODO: display this only the first time
 				self.presentOnboardingVC()
+				
+				self.emailField.text = nil
+				self.passwordField.text = nil
+			}
+		}
+	}
+	
+	private func registerUser() {
+		guard let email = emailField.text, email.count > 0 else { return }
+		guard let password = passwordField.text, password.count > 0 else { return }
+		
+		showLoadingView()
+		NetworkManager.shared.registerUser(email: email, password: password) { (error) in
+			self.hideLoadingView()
+			if error != nil {
+				let alertController = UIAlertController(title: "Login Failed", message: "Please check your email address and password, and try again.", preferredStyle: .alert)
+				let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+				alertController.addAction(okAction)
+				self.present(alertController, animated: true, completion: nil)
+			} else {
+				self.signIn()
 			}
 		}
 	}
@@ -92,10 +114,11 @@ class SignInViewController: UIViewController {
 	}
 	
 	@IBAction func didTapSignIn(_ sender: UIButton) {
+		view.endEditing(true)
 		if sender.tag == 0 { // sign in
 			signIn()
 		} else if sender.tag == 1 { // sign up
-			// TODO: create account
+			registerUser()
 		}
 		
 	}
