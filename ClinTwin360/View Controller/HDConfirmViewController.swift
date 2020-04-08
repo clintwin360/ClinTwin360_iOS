@@ -100,11 +100,12 @@ extension HDConfirmViewController: ORKTaskViewControllerDelegate {
 				} else {
 					let trialIntroVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "TrialIntroViewController") as! TrialIntroViewController
 					
-					if response?.value == nil {
-						trialIntroVC.trialIntroResult = .noneFound
-					} else {
+					// TODO: update when getting a valid response
+//					if response?.value == nil {
+//						trialIntroVC.trialIntroResult = .noneFound
+//					} else {
 						trialIntroVC.trialIntroResult = .trialsFound
-					}
+//					}
 					
 					self?.navigationController?.pushViewController(trialIntroVC, animated: true)
 				}

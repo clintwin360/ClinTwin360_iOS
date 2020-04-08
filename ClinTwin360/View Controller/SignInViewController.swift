@@ -40,6 +40,19 @@ class SignInViewController: UIViewController {
 		emailField.configure(title: "Email Address")
 		passwordField.configure(title: "Password")
 		passwordField.isSecureField = true
+		
+		let keyboardToolbar = UIToolbar()
+		keyboardToolbar.sizeToFit()
+		let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+		let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
+		keyboardToolbar.items = [flexBarButton, doneBarButton]
+		
+		emailField.textField.inputAccessoryView = keyboardToolbar
+		passwordField.textField.inputAccessoryView = keyboardToolbar
+	}
+	
+	@objc func dismissKeyboard() {
+		view.endEditing(true)
 	}
 	
 	private func createButtonGradient() {
@@ -90,10 +103,7 @@ class SignInViewController: UIViewController {
 		NetworkManager.shared.registerUser(email: email, password: password) { (error) in
 			self.hideLoadingView()
 			if error != nil {
-				let alertController = UIAlertController(title: "Login Failed", message: "Please check your email address and password, and try again.", preferredStyle: .alert)
-				let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-				alertController.addAction(okAction)
-				self.present(alertController, animated: true, completion: nil)
+				self.showNetworkError()
 			} else {
 				self.signIn()
 			}

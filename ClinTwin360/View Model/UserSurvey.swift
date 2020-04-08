@@ -15,7 +15,7 @@ struct UserSurvey {
 		return surveyTaskFromQuestions()
 	}
 	
-	var responses: [ResearchQuestionAnswer] = []
+	var responses: [ResearchQuestionAnswer] = [] as! [ResearchQuestionAnswer]
 	
 	init(questions: [ResearchQuestion]) {
 		self.questions = questions
@@ -31,14 +31,25 @@ struct UserSurvey {
 			let options = question.options.components(separatedBy: ", ") // can remove once options is converted to array
 			options.enumerated().forEach { (index, option) in
 				let text = option.replacingOccurrences(of: "[", with: "")
-					.replacingOccurrences(of: "]", with: "")
-					.replacingOccurrences(of: "\"", with: "")
-					.capitalized
+				.replacingOccurrences(of: "]", with: "")
+				.replacingOccurrences(of: "\"", with: "")
+				.capitalized
+				
 				let choice = ORKTextChoice(text: text, value: index as NSNumber)
 				textChoices += [choice]
 			}
+			var format: ORKAnswerFormat
+			switch question.valueType {
+			case .yesNo:
+				format = .booleanAnswerFormat()
+			case .singleChoice:
+				format = .choiceAnswerFormat(with: .singleChoice, textChoices: textChoices)
+			case .multipleChoice:
+				format = .choiceAnswerFormat(with: .multipleChoice, textChoices: textChoices)
+			case .largeSet:
+				format = .valuePickerAnswerFormat(with: textChoices)
+			}
 			
-			let format: ORKTextChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: textChoices)
 			let questionStep = ORKQuestionStep(identifier: "\(question.id)", title: nil, question: title, answer: format)
 			steps += [questionStep]
 		}
@@ -59,15 +70,21 @@ struct UserSurvey {
 							return question.id == Int(questionResult.identifier)
 						}) else { return }
 						
-						if let cqrAnswer = choiceQuestionResult.choiceAnswers?.first as? Int {
-							let optionsComponents = question.options.components(separatedBy: ", ")
-							
-							let matchedOption = optionsComponents[cqrAnswer]
-								.replacingOccurrences(of: "[", with: "")
-								.replacingOccurrences(of: "]", with: "")
-								.replacingOccurrences(of: "\"", with: "")
-							let answer = ResearchQuestionAnswer(question: question.id, value: matchedOption)
-							responses.append(answer)
+						if let choiceAnswers = choiceQuestionResult.choiceAnswers {
+							// TODO: update this to support multiple choice
+							if choiceAnswers.count == 1 {
+								if let cqrAnswer = choiceQuestionResult.choiceAnswers?.first as? Int {
+									let optionsComponents = question.options.components(separatedBy: ", ")
+									
+									let matchedOption = optionsComponents[cqrAnswer]
+										.replacingOccurrences(of: "[", with: "")
+										.replacingOccurrences(of: "]", with: "")
+										.replacingOccurrences(of: "\"", with: "")
+									
+									let answer = ResearchQuestionAnswer(question: question.id, value: matchedOption)
+									responses.append(answer)
+								}
+							}
 						}
 					}
 				}

@@ -31,6 +31,7 @@
 		FFBDE188242163D000E81685 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDE187242163D000E81685 /* OnboardingViewController.swift */; };
 		FFBDE18A2421659400E81685 /* CommonColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDE1892421659400E81685 /* CommonColors.swift */; };
 		FFEB3190243C3E7300BB0C72 /* BasicHealthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB318F243C3E7300BB0C72 /* BasicHealthViewModel.swift */; };
+		FFEB3192243D49D200BB0C72 /* BasicHealthPickerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB3191243D49D200BB0C72 /* BasicHealthPickerObject.swift */; };
 		FFFC6A66243053A60066D11A /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A65243053A60066D11A /* Keys.swift */; };
 		FFFC6A68243054220066D11A /* ApiEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A67243054220066D11A /* ApiEndpoints.swift */; };
 		FFFC6A6A243055BC0066D11A /* AccessTokenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A69243055BC0066D11A /* AccessTokenAdapter.swift */; };
@@ -82,6 +83,7 @@
 		FFBDE187242163D000E81685 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		FFBDE1892421659400E81685 /* CommonColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonColors.swift; sourceTree = "<group>"; };
 		FFEB318F243C3E7300BB0C72 /* BasicHealthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHealthViewModel.swift; sourceTree = "<group>"; };
+		FFEB3191243D49D200BB0C72 /* BasicHealthPickerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHealthPickerObject.swift; sourceTree = "<group>"; };
 		FFFC6A65243053A60066D11A /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		FFFC6A67243054220066D11A /* ApiEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoints.swift; sourceTree = "<group>"; };
 		FFFC6A69243055BC0066D11A /* AccessTokenAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenAdapter.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			children = (
 				FF3D8466242172EF0013E0E4 /* HealthKitSetupAssistant.swift */,
 				FF3D847C2426E7C20013E0E4 /* SurveyTask.swift */,
+				FFEB3191243D49D200BB0C72 /* BasicHealthPickerObject.swift */,
 				FFFC6A72243062280066D11A /* Networking */,
 				FFFC6A8A2436ECEC0066D11A /* Keychain */,
 			);
@@ -420,6 +423,7 @@
 				FFFC6A872436EB910066D11A /* LoginResponse.swift in Sources */,
 				FFFC6A68243054220066D11A /* ApiEndpoints.swift in Sources */,
 				FFFC6A892436EC8D0066D11A /* KeychainWrapper.swift in Sources */,
+				FFEB3192243D49D200BB0C72 /* BasicHealthPickerObject.swift in Sources */,
 				FFFC6A7124305F880066D11A /* GetQuestionsResponse.swift in Sources */,
 				FFFC6A7D243452CF0066D11A /* GetMatchesRequest.swift in Sources */,
 				FFFC6A902436F67B0066D11A /* LoadingView.swift in Sources */,

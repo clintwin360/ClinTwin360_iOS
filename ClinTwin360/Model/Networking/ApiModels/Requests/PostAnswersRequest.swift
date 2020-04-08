@@ -8,12 +8,6 @@
 
 import Foundation
 
-//struct PostAnswersRequest: Encodable {
-//	let question: String
-//	let participant: Int
-//	let value: String
-//}
-
 struct ResearchQuestionAnswer: Encodable {
 	let question: Int
 	let value: String

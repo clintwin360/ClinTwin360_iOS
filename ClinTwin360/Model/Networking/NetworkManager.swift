@@ -114,7 +114,7 @@ class NetworkManager {
 		let parameters = GetMatchesRequest()
 		
 		session.request(ApiEndpoints.base + ApiEndpoints.matchesEndpoint,
-						method: .post,
+						method: .get,
 						parameters: parameters,
 						encoder: JSONParameterEncoder.default)
 				// This one is helping with debugging for now
@@ -128,12 +128,13 @@ class NetworkManager {
 		let parameters = GetTrialDetailsRequest()
 		
 		session.request(ApiEndpoints.base + ApiEndpoints.trialDetailsEndpoint,
-				method: .post,
+				method: .get,
 				parameters: parameters,
 				encoder: JSONParameterEncoder.default)
 		// This one is helping with debugging for now
 		.responseJSON { response in
 			print("Response JSON: \(String(describing: response.value))")
+			completion(nil)
 		}
 	}
 	

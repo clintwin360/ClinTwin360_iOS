@@ -20,10 +20,12 @@ struct ResearchQuestion: Decodable {
 	let id: Int
 	let text: String
 	let valueType: QuestionType
-	let options: String // TODO: update to [String]
+	let options: String
 }
 
 enum QuestionType: String, Decodable {
-	case list = "list"
+	case multipleChoice = "list"
 	case yesNo = "yes_no"
+	case singleChoice = "pick_one"
+	case largeSet = "large_option_set"
 }
