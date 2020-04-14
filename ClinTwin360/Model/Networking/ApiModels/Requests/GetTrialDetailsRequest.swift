@@ -10,5 +10,5 @@ import Foundation
 
 
 struct GetTrialDetailsRequest: Encodable {
-	let id: Int = 12345 // TODO: change this later
+	let id: Int
 }

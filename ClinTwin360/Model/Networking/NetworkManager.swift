@@ -110,27 +110,28 @@ class NetworkManager {
 				}
 	}
 	
-	func getMatches(completion: @escaping (_ response: DataResponse<Any, AFError>?) -> ()) {
+	func getMatches(completion: @escaping (_ response: DataResponse<GetMatchesReponse, AFError>?) -> ()) {
 		let parameters = GetMatchesRequest()
 		
 		session.request(ApiEndpoints.base + ApiEndpoints.matchesEndpoint,
-						method: .get,
-						parameters: parameters,
-						encoder: JSONParameterEncoder.default)
+						parameters: parameters)
 				// This one is helping with debugging for now
 				.responseJSON { response in
 					print("Response JSON: \(String(describing: response.value))")
-					completion(nil)
+				}
+		
+				.responseDecodable(of: GetMatchesReponse.self) { response in
+					debugPrint("Response: \(response)")
+					completion(response)
 				}
 	}
 	
-	func getTrialDetails(completion: @escaping (_ response: DataResponse<Any, AFError>?) -> ()) {
-		let parameters = GetTrialDetailsRequest()
+	func getTrialDetails(trialId: String, completion: @escaping (_ response: DataResponse<Any, AFError>?) -> ()) {
+		guard let id = Int(trialId) else { return }
+		let parameters = GetTrialDetailsRequest(id: id)
 		
 		session.request(ApiEndpoints.base + ApiEndpoints.trialDetailsEndpoint,
-				method: .get,
-				parameters: parameters,
-				encoder: JSONParameterEncoder.default)
+				parameters: parameters)
 		// This one is helping with debugging for now
 		.responseJSON { response in
 			print("Response JSON: \(String(describing: response.value))")

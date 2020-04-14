@@ -10,7 +10,7 @@ import UIKit
 
 enum TrialIntroResult {
 	case noneFound
-	case trialsFound
+	case trialsFound(count: Int)
 }
 
 class TrialIntroViewController: UIViewController {
@@ -28,10 +28,11 @@ class TrialIntroViewController: UIViewController {
 		navigationButton.layer.borderWidth = 0.5
 		navigationButton.layer.borderColor = UIColor.black.cgColor
 		
-		if trialIntroResult == .noneFound {
+		switch trialIntroResult {
+		case .noneFound:
 			configureForNoTrials()
-		} else {
-			configureForFoundTrials()
+		case .trialsFound(let count):
+			configureForFoundTrials(count: count)
 		}
     }
     
@@ -43,9 +44,9 @@ class TrialIntroViewController: UIViewController {
 		navigationButton.tag = 0
 	}
 	
-	private func configureForFoundTrials() {
+	private func configureForFoundTrials(count: Int) {
 		titleLabel.text = "Matching Trials"
-		messageLabel.text = "We have good news! We have found 2 Clinical Trials that match your criteria. We will also continue to compare your criteria against future trials and we will notify you if there is a match."
+		messageLabel.text = "We have good news! We have found \(count) Clinical Trials that match your criteria. We will also continue to compare your criteria against future trials and we will notify you if there is a match."
 		navigationButton.setTitle("See Trials", for: .normal)
 		navigationButton.tag = 1
 	}

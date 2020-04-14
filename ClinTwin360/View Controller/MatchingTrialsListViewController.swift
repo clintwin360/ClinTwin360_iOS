@@ -19,7 +19,7 @@ class MatchingTrialsListViewController: UIViewController, UITableViewDataSource 
 	var dismissMenuTapGesture: UITapGestureRecognizer?
 	var menuIsOpen: Bool = false
 	
-	var trials: [Any] = [1, 2]
+	var trials: [TrialResult] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +27,22 @@ class MatchingTrialsListViewController: UIViewController, UITableViewDataSource 
 		navigationController?.setNavigationBarHidden(false, animated: false)
 		configureMenuButton()
 		
-		tableView.register(UINib(nibName: "MatchingTrialCell", bundle: nil), forCellReuseIdentifier: "MatchingTrialCell")
+		NotificationCenter.default.addObserver(self, selector: #selector(receivedMatchedTrials(notification:)), name: Notification.Name("MatchedTrials"), object: nil)
 		
+		tableView.register(UINib(nibName: "MatchingTrialCell", bundle: nil), forCellReuseIdentifier: "MatchingTrialCell")
+    }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		refreshState()
+	}
+	
+	private func refreshState() {
 		noTrialsLabel.isHidden = trials.count > 0
 		tableView.isHidden = trials.count == 0
-    }
+		tableView.reloadData()
+	}
 	
 	private func configureMenuButton() {
 		let menuButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
@@ -45,6 +56,14 @@ class MatchingTrialsListViewController: UIViewController, UITableViewDataSource 
 		dismissMenuTapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissMenu))
 		view.insertSubview(dismissMenuTappableView!, belowSubview: menuView)
 		dismissMenuTappableView?.addGestureRecognizer(dismissMenuTapGesture!)
+	}
+	
+	@objc func receivedMatchedTrials(notification: Notification) {
+		if let userInfo = notification.userInfo {
+			guard let trials = userInfo["trials"] as? [TrialResult] else { return }
+			self.trials = trials
+			refreshState()
+		}
 	}
 	
 	@objc func toggleMenu() {
@@ -90,9 +109,12 @@ class MatchingTrialsListViewController: UIViewController, UITableViewDataSource 
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let trialResult = trials[indexPath.row]
+		let trial = trialResult.clinicalTrial
+		
 		if let cell = tableView.dequeueReusableCell(withIdentifier: "MatchingTrialCell") as? MatchingTrialCell {
 			
-			cell.configureCell(title: "Novartis Heart Study", details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec est mi, elementum et auctor eget, vulputate sit amet leo. Aenean pretium fringilla dolor, quis rhoncus nulla iaculis eu.")
+			cell.configureCell(title: trial.title, details: trial.description ?? "")
 			cell.tag = indexPath.row
 			cell.delegate = self
 			
@@ -106,9 +128,10 @@ class MatchingTrialsListViewController: UIViewController, UITableViewDataSource 
 
 extension MatchingTrialsListViewController: MatchingTrialCellDelegate {
 	func didTapLearnMore(atIndex index: Int) {
-		// TODO: get selected trial
+		let trialResult = trials[index]
+		let trial = trialResult.clinicalTrial
 		
-		NetworkManager.shared.getTrialDetails { [weak self] (response) in
+		NetworkManager.shared.getTrialDetails(trialId: trial.customId) { [weak self] (response) in
 			if let error = response?.error {
 				debugPrint(error.localizedDescription)
 				self?.showNetworkError()
