@@ -46,7 +46,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="GaC-Fi-eak"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                <state key="normal" title="Learn More and Enroll">
+                                <state key="normal" title="Learn More">
                                     <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>

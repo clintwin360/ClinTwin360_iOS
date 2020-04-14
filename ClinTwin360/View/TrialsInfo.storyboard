@@ -243,7 +243,7 @@ Donec blandit faucibus feugiat. Morbi fermentum vulputate nisi efficitur egestas
                                                             <constraint firstAttribute="height" constant="43" id="7Vb-EE-Mhv"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                                        <state key="normal" title="Apply">
+                                                        <state key="normal" title="Next Steps">
                                                             <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                         </state>
                                                         <connections>
