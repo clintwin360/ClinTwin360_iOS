@@ -9,7 +9,7 @@
 import Foundation
 
 struct GetMatchesReponse: Decodable {
-	let count: Int
+	let count: Int?
 	let next: String?
 	let previous: String?
 	let results: [TrialResult]?
@@ -26,8 +26,8 @@ struct TrialResult: Decodable {
 struct TrialObject: Decodable {
 	let trialId: Int
 	let customId: String
-	let currentRecruitment: Int
-	let enrollmentTarget: Int
+	let currentRecruitment: Int?
+	let enrollmentTarget: Int?
 	let description: String?
 	let objective: String?
 	let recruitmentStartDate: String?

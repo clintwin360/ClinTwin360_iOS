@@ -131,13 +131,13 @@ extension MatchingTrialsListViewController: MatchingTrialCellDelegate {
 		let trialResult = trials[index]
 		let trial = trialResult.clinicalTrial
 		
-		NetworkManager.shared.getTrialDetails(trialId: trial.customId) { [weak self] (response) in
+		NetworkManager.shared.getTrialDetails(trialId: trial.trialId) { [weak self] (response) in
 			if let error = response?.error {
 				debugPrint(error.localizedDescription)
 				self?.showNetworkError()
 			} else {
 				let trialVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "MatchedTrialInfoViewController") as! MatchedTrialInfoViewController
-				// TODO: inject trial details model
+				trialVC.trialDetail = response?.value
 				self?.navigationController?.pushViewController(trialVC, animated: true)
 			}
 		}

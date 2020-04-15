@@ -15,6 +15,8 @@ class MatchedTrialInfoViewController: UIViewController {
 	@IBOutlet weak var noButton: UIButton!
 	@IBOutlet weak var applyButton: UIButton!
 	
+	var trialDetail: TrialObject?
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -126,16 +126,23 @@ class NetworkManager {
 				}
 	}
 	
-	func getTrialDetails(trialId: String, completion: @escaping (_ response: DataResponse<Any, AFError>?) -> ()) {
-		guard let id = Int(trialId) else { return }
-		let parameters = GetTrialDetailsRequest(id: id)
-		
-		session.request(ApiEndpoints.base + ApiEndpoints.trialDetailsEndpoint,
-				parameters: parameters)
+	func getTrialDetails(trialId: Int?, completion: @escaping (_ response: DataResponse<TrialObject, AFError>?) -> ()) {
+		guard let id = trialId else {
+			completion(nil)
+			return
+		}
+//		let parameters = GetTrialDetailsRequest(id: id)
+		print(ApiEndpoints.base + ApiEndpoints.trialDetailsEndpoint + "/\(1)")
+		session.request(ApiEndpoints.base + ApiEndpoints.trialDetailsEndpoint + "/\(1)") // TODO: change this to id
 		// This one is helping with debugging for now
 		.responseJSON { response in
 			print("Response JSON: \(String(describing: response.value))")
 			completion(nil)
+		}
+		
+		.responseDecodable(of: TrialObject.self) { response in
+			debugPrint("Response: \(response)")
+			completion(response)
 		}
 	}
 	

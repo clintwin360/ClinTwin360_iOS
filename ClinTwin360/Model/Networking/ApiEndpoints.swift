@@ -17,5 +17,5 @@ struct ApiEndpoints {
 //	static let questionsEndpoint = "sponsor/question_flow"
 	static let responsesEndpoint = "api/responses/"
 	static let matchesEndpoint = "api/matches/"
-	static let trialDetailsEndpoint = "api/trial"
+	static let trialDetailsEndpoint = "api/trials"
 }

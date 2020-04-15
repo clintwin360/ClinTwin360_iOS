@@ -33,6 +33,7 @@
 		FFEB3190243C3E7300BB0C72 /* BasicHealthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB318F243C3E7300BB0C72 /* BasicHealthViewModel.swift */; };
 		FFEB3192243D49D200BB0C72 /* BasicHealthPickerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB3191243D49D200BB0C72 /* BasicHealthPickerObject.swift */; };
 		FFEB3194243EB2F400BB0C72 /* GetMatchesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB3193243EB2F400BB0C72 /* GetMatchesResponse.swift */; };
+		FFEB31962446AAAD00BB0C72 /* TrialDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB31952446AAAD00BB0C72 /* TrialDetailsResponse.swift */; };
 		FFFC6A66243053A60066D11A /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A65243053A60066D11A /* Keys.swift */; };
 		FFFC6A68243054220066D11A /* ApiEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A67243054220066D11A /* ApiEndpoints.swift */; };
 		FFFC6A6A243055BC0066D11A /* AccessTokenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A69243055BC0066D11A /* AccessTokenAdapter.swift */; };
@@ -86,6 +87,7 @@
 		FFEB318F243C3E7300BB0C72 /* BasicHealthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHealthViewModel.swift; sourceTree = "<group>"; };
 		FFEB3191243D49D200BB0C72 /* BasicHealthPickerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHealthPickerObject.swift; sourceTree = "<group>"; };
 		FFEB3193243EB2F400BB0C72 /* GetMatchesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMatchesResponse.swift; sourceTree = "<group>"; };
+		FFEB31952446AAAD00BB0C72 /* TrialDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDetailsResponse.swift; sourceTree = "<group>"; };
 		FFFC6A65243053A60066D11A /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		FFFC6A67243054220066D11A /* ApiEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoints.swift; sourceTree = "<group>"; };
 		FFFC6A69243055BC0066D11A /* AccessTokenAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenAdapter.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				FFFC6A7A2431400F0066D11A /* PostAnswersResponse.swift */,
 				FFEB3193243EB2F400BB0C72 /* GetMatchesResponse.swift */,
 				FFFC6A8D2436F02E0066D11A /* RegisterUserResponse.swift */,
+				FFEB31952446AAAD00BB0C72 /* TrialDetailsResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				FFFC6A892436EC8D0066D11A /* KeychainWrapper.swift in Sources */,
 				FFEB3192243D49D200BB0C72 /* BasicHealthPickerObject.swift in Sources */,
 				FFFC6A7124305F880066D11A /* GetQuestionsResponse.swift in Sources */,
+				FFEB31962446AAAD00BB0C72 /* TrialDetailsResponse.swift in Sources */,
 				FFFC6A7D243452CF0066D11A /* GetMatchesRequest.swift in Sources */,
 				FFFC6A902436F67B0066D11A /* LoadingView.swift in Sources */,
 				FF3D8467242172EF0013E0E4 /* HealthKitSetupAssistant.swift in Sources */,
