@@ -23,17 +23,19 @@ protocol Loadable {
 extension Loadable where Self: UIViewController {
     
     func showLoadingView() {
-        let loadingView = LoadingView()
-        view.addSubview(loadingView)
-        
-        loadingView.translatesAutoresizingMaskIntoConstraints = false
-        loadingView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        loadingView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        loadingView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        loadingView.animate()
-        
-        loadingView.tag = Constants.loadingViewTag
+		DispatchQueue.main.async {
+			let loadingView = LoadingView()
+			self.view.addSubview(loadingView)
+			
+			loadingView.translatesAutoresizingMaskIntoConstraints = false
+			loadingView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+			loadingView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+			loadingView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+			loadingView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+			loadingView.animate()
+			
+			loadingView.tag = Constants.loadingViewTag
+		}
     }
     
     func hideLoadingView() {

@@ -233,7 +233,7 @@ Would you like us to pull this information from Apple Health?</string>
                                                             <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="didTapYes:" destination="Ayz-n1-TyF" eventType="touchUpInside" id="UvU-JO-nrb"/>
+                                                            <action selector="didTapYes:" destination="Ayz-n1-TyF" eventType="touchUpInside" id="Rnh-1l-25F"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3YK-Xa-JEZ">
@@ -246,7 +246,7 @@ Would you like us to pull this information from Apple Health?</string>
                                                             <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="didTapNo:" destination="Ayz-n1-TyF" eventType="touchUpInside" id="Hbo-KQ-P3y"/>
+                                                            <action selector="didTapNo:" destination="Ayz-n1-TyF" eventType="touchUpInside" id="3hl-IM-KAA"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
