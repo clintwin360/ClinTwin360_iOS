@@ -9,8 +9,7 @@
 import UIKit
 
 @objc protocol LabeledTextFieldViewDelegate: class {
-	@objc optional func labeledTextFieldDidBeginEditing(_ textField: UITextField)
-	@objc optional func labeledTextFieldDidEndEditing(_ textField: UITextField)
+	@objc optional func didTapOptionalButtonInTextFieldView(_ textFieldView: LabeledTextFieldView)
 }
 
 class LabeledTextFieldView: UIView {
@@ -18,6 +17,7 @@ class LabeledTextFieldView: UIView {
 	@IBOutlet var view: UIView!
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var textField: UITextField!
+	@IBOutlet weak var optionalButton: UIButton!
 	
 	var text: String? {
 		get {
@@ -40,6 +40,8 @@ class LabeledTextFieldView: UIView {
 		}
 	}
 	
+	weak var delegate: LabeledTextFieldViewDelegate?
+	
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
 		commonInit()
@@ -60,4 +62,9 @@ class LabeledTextFieldView: UIView {
 		titleLabel.text = title
 		textField.delegate = delegate
 	}
+	
+	@IBAction func didTapOptionButton(_ sender: UIButton) {
+		delegate?.didTapOptionalButtonInTextFieldView?(self)
+	}
+	
 }

@@ -34,6 +34,10 @@ class SignInViewController: UIViewController {
 		if buttonGradient == nil {
 			createButtonGradient()
 		}
+		
+		passwordField.optionalButton.isHidden = false
+		passwordField.optionalButton.setTitle("Forgot Password?", for: .normal)
+		passwordField.delegate = self
 	}
 	
 	private func setUpFields() {
@@ -145,6 +149,13 @@ class SignInViewController: UIViewController {
 			createAccountButton.setTitle("Create Account", for: .normal)
 			createAccountButton.tag = 0
 		}
+	}
+	
+}
+
+extension SignInViewController: LabeledTextFieldViewDelegate {
+	func didTapOptionalButtonInTextFieldView(_ textFieldView: LabeledTextFieldView) {
+		// TODO: forgot password
 	}
 }
 

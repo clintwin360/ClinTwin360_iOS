@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LabeledTextFieldView" customModule="ClinTwin360" customModuleProvider="target">
             <connections>
+                <outlet property="optionalButton" destination="NLw-Jh-4Rg" id="2We-EQ-djN"/>
                 <outlet property="textField" destination="BZA-62-Hjw" id="vUu-St-gUd"/>
                 <outlet property="titleLabel" destination="P5g-aM-nyh" id="v0X-c7-NPP"/>
                 <outlet property="view" destination="iN0-l3-epB" id="zNh-Jp-MOy"/>
@@ -37,13 +38,23 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLw-Jh-4Rg">
+                    <rect key="frame" x="283" y="9" width="131" height="31"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                    <state key="normal" title="Forgot Password?"/>
+                    <connections>
+                        <action selector="didTapOptionButton:" destination="-1" eventType="touchUpInside" id="2Ks-Qd-Vya"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="P5g-aM-nyh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0fU-tc-AlP"/>
+                <constraint firstItem="NLw-Jh-4Rg" firstAttribute="firstBaseline" secondItem="P5g-aM-nyh" secondAttribute="firstBaseline" id="7r6-Yz-RCk"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="BZA-62-Hjw" secondAttribute="bottom" id="eTs-1z-G4y"/>
                 <constraint firstItem="BZA-62-Hjw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="iKc-ql-76p"/>
                 <constraint firstItem="BZA-62-Hjw" firstAttribute="top" secondItem="P5g-aM-nyh" secondAttribute="bottom" constant="2" id="iP6-mk-SZR"/>
+                <constraint firstAttribute="trailing" secondItem="NLw-Jh-4Rg" secondAttribute="trailing" id="khG-HE-b9h"/>
                 <constraint firstItem="P5g-aM-nyh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="vmQ-Zx-zHz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BZA-62-Hjw" secondAttribute="trailing" id="yfb-nX-Y2d"/>
             </constraints>
