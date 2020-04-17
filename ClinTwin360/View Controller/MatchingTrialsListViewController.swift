@@ -99,6 +99,21 @@ class MatchingTrialsListViewController: UIViewController, UITableViewDataSource 
 			self.view.layoutIfNeeded()
 		}
 	}
+	
+	@IBAction func didTapSignOut(_ sender: UIButton) {
+		showLoadingView()
+		NetworkManager.shared.signOut { (response) in
+			print("signed out")
+			self.dismissMenu()
+			KeychainWrapper.standard.removeAllKeys()
+			
+			let signInNavVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
+			signInNavVC.modalPresentationStyle = .overFullScreen
+			self.present(signInNavVC, animated: true, completion: nil)
+			self.hideLoadingView()
+		}
+	}
+	
     
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 1

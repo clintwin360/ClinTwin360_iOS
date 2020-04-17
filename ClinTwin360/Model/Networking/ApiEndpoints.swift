@@ -18,4 +18,5 @@ struct ApiEndpoints {
 	static let responsesEndpoint = "api/responses/"
 	static let matchesEndpoint = "api/matches/"
 	static let trialDetailsEndpoint = "api/trials"
+	static let signOutEndpoint = "api/logout"
 }

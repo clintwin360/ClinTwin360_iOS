@@ -134,6 +134,9 @@
                                                 <state key="normal" title="Sign Out">
                                                     <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="didTapSignOut:" destination="0eg-ch-D1q" eventType="touchUpInside" id="eb7-IW-XlY"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

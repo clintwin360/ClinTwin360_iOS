@@ -131,19 +131,28 @@ class NetworkManager {
 			completion(nil)
 			return
 		}
-//		let parameters = GetTrialDetailsRequest(id: id)
-		print(ApiEndpoints.base + ApiEndpoints.trialDetailsEndpoint + "/\(1)")
-		session.request(ApiEndpoints.base + ApiEndpoints.trialDetailsEndpoint + "/\(1)") // TODO: change this to id
-		// This one is helping with debugging for now
-		.responseJSON { response in
-			print("Response JSON: \(String(describing: response.value))")
-			completion(nil)
-		}
-		
-		.responseDecodable(of: TrialObject.self) { response in
-			debugPrint("Response: \(response)")
-			completion(response)
-		}
+	//		let parameters = GetTrialDetailsRequest(id: id)
+			print(ApiEndpoints.base + ApiEndpoints.trialDetailsEndpoint + "/\(1)")
+			session.request(ApiEndpoints.base + ApiEndpoints.trialDetailsEndpoint + "/\(1)") // TODO: change this to id
+			// This one is helping with debugging for now
+			.responseJSON { response in
+				print("Response JSON: \(String(describing: response.value))")
+				completion(nil)
+			}
+			
+			.responseDecodable(of: TrialObject.self) { response in
+				debugPrint("Response: \(response)")
+				completion(response)
+			}
+	}
+	
+	func signOut(completion: @escaping (_ response: DataResponse<Any, AFError>?) -> ()) {
+		session.request(ApiEndpoints.base + ApiEndpoints.signOutEndpoint,
+						method: .post)
+			.responseJSON { response in
+				print("Response JSON: \(String(describing: response.value))")
+				completion(nil)
+			}
 	}
 	
 }
