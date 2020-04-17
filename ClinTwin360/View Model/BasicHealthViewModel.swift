@@ -14,14 +14,18 @@ class BasicHealthViewModel {
 	var weight: Float?
 	var birthdate: String?
 	var bioSex: String?
-	
+		
 	var isValid: Bool {
 		var valid = true
-		if height == nil { valid = false }
-		if weight == nil { valid = false }
-		if birthdate == nil { valid = false }
-		if bioSex == nil { valid = false }
+//		if height == nil { valid = false }
+//		if weight == nil { valid = false }
+//		if birthdate == nil { valid = false }
+//		if bioSex == nil { valid = false }
 		return valid
+	}
+	
+	func setHeightFromInches(_ inches: Double) {
+		height = Float(inches)
 	}
 	
 	func setHeightFromString(_ heightString: String?) {
