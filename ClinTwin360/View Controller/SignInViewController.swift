@@ -35,9 +35,10 @@ class SignInViewController: UIViewController {
 			createButtonGradient()
 		}
 		
-		passwordField.optionalButton.isHidden = false
-		passwordField.optionalButton.setTitle("Forgot Password?", for: .normal)
-		passwordField.delegate = self
+		// Hide for now
+//		passwordField.optionalButton.isHidden = false
+//		passwordField.optionalButton.setTitle("Forgot Password?", for: .normal)
+//		passwordField.delegate = self
 	}
 	
 	private func setUpFields() {
