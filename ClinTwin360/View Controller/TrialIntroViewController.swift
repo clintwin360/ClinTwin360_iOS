@@ -36,6 +36,19 @@ class TrialIntroViewController: UIViewController {
 		}
     }
     
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		UNUserNotificationCenter.current().getNotificationSettings { settings in
+			print("Notification settings: \(settings)")
+			
+			if settings.authorizationStatus == .notDetermined {
+				DispatchQueue.main.async {
+					self.registerForPushNotifications()
+				}
+			}
+		}
+	}
 
 	private func configureForNoTrials() {
 		titleLabel.text = "No Trials Yet"
@@ -49,6 +62,36 @@ class TrialIntroViewController: UIViewController {
 		messageLabel.text = "We have good news! We have found \(count) Clinical Trials that match your criteria. We will also continue to compare your criteria against future trials and we will notify you if there is a match."
 		navigationButton.setTitle("See Trials", for: .normal)
 		navigationButton.tag = 1
+	}
+	
+	private func currentNotificationSettings() {
+		UNUserNotificationCenter.current().getNotificationSettings { settings in
+			print("Notification settings: \(settings)")
+		}
+	}
+	
+	private func registerForPushNotifications() {
+		let alertController = UIAlertController(title: "Notifications", message: "Would you like to be notified of additional future clinical trial opportunities?", preferredStyle: .alert)
+		let noAction = UIAlertAction(title: "No", style: .default, handler: nil)
+		let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) in
+			UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+				granted, error in
+				print("Permission granted: \(granted)")
+				
+				guard granted else { return }
+				UNUserNotificationCenter.current().getNotificationSettings { settings in
+					print("Notification settings: \(settings)")
+					guard settings.authorizationStatus == .authorized else { return }
+					DispatchQueue.main.async {
+					  UIApplication.shared.registerForRemoteNotifications()
+					}
+				}
+			}
+		}
+		alertController.addAction(noAction)
+		alertController.addAction(yesAction)
+		
+		present(alertController, animated: true, completion: nil)
 	}
 	
 	@IBAction func didTapNavigationButton(_ sender: UIButton) {
