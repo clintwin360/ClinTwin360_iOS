@@ -16,8 +16,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+		
+		let notificationOption = launchOptions?[.remoteNotification]
+		if let notification = notificationOption as? [String: AnyObject],
+			let aps = notification["aps"] as? [String: AnyObject] {
+			
+			// handle notification data
+		}
+		
         return true
     }
+	
+	func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+		let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+		let token = tokenParts.joined()
+		print("Device Token: \(token)")
+	}
+
+	func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+		print("Failed to register: \(error)")
+	}
+	
+	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+		guard let aps = userInfo["aps"] as? [String: AnyObject] else {
+			completionHandler(.failed)
+			return
+		}
+		// handle notification data
+	}
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
