@@ -59,6 +59,7 @@ class NetworkManager {
 					debugPrint("Response: \(response)")
 					if let response = response.value {
 						KeychainWrapper.standard.set(response.token, forKey: "token")
+						KeychainWrapper.standard.set(username, forKey: "username")
 					}
 					
 					completion(response.error)
@@ -144,6 +145,20 @@ class NetworkManager {
 				debugPrint("Response: \(response)")
 				completion(response)
 			}
+	}
+	
+	// Do not need completion block as this can be done in the background
+	func registerForPushNotifications(deviceToken: String) {
+		guard let name = KeychainWrapper.standard.string(forKey: "username") else { return }
+		let request = PushNotificationsRegistrationRequest(name: name, registrationId: deviceToken)
+		session.request(ApiEndpoints.base + ApiEndpoints.responsesEndpoint,
+						method: .post,
+						parameters: request,
+						encoder: JSONParameterEncoder.default)
+				// This one is helping with debugging for now
+				.responseJSON { response in
+					print("Response JSON: \(String(describing: response.value))")
+				}
 	}
 	
 	func signOut(completion: @escaping (_ response: DataResponse<Any, AFError>?) -> ()) {

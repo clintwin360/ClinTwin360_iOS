@@ -21,6 +21,7 @@
 		FF3D84792426DF820013E0E4 /* MatchedTrialInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D84782426DF820013E0E4 /* MatchedTrialInfoViewController.swift */; };
 		FF3D847B2426E0EC0013E0E4 /* TrialNextStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D847A2426E0EC0013E0E4 /* TrialNextStepsViewController.swift */; };
 		FF3D847D2426E7C20013E0E4 /* SurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D847C2426E7C20013E0E4 /* SurveyTask.swift */; };
+		FF4C2BC4245147E50081F522 /* PushNotificationsRegistrationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C2BC3245147E50081F522 /* PushNotificationsRegistrationRequest.swift */; };
 		FF529F48240CD4AA000A9C35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529F47240CD4AA000A9C35 /* AppDelegate.swift */; };
 		FF529F4A240CD4AA000A9C35 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529F49240CD4AA000A9C35 /* SignInViewController.swift */; };
 		FF529F4D240CD4AA000A9C35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF529F4B240CD4AA000A9C35 /* Main.storyboard */; };
@@ -74,6 +75,7 @@
 		FF3D84782426DF820013E0E4 /* MatchedTrialInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedTrialInfoViewController.swift; sourceTree = "<group>"; };
 		FF3D847A2426E0EC0013E0E4 /* TrialNextStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialNextStepsViewController.swift; sourceTree = "<group>"; };
 		FF3D847C2426E7C20013E0E4 /* SurveyTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyTask.swift; sourceTree = "<group>"; };
+		FF4C2BC3245147E50081F522 /* PushNotificationsRegistrationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsRegistrationRequest.swift; sourceTree = "<group>"; };
 		FF529F44240CD4AA000A9C35 /* ClinTwin360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClinTwin360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF529F47240CD4AA000A9C35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF529F49240CD4AA000A9C35 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				FFFC6A752430FFE70066D11A /* PostAnswersRequest.swift */,
 				FFFC6A7C243452CF0066D11A /* GetMatchesRequest.swift */,
 				FFFC6A7E243453EF0066D11A /* GetTrialDetailsRequest.swift */,
+				FF4C2BC3245147E50081F522 /* PushNotificationsRegistrationRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				FFFC6A6E243056210066D11A /* NetworkManager.swift in Sources */,
 				FF3D847B2426E0EC0013E0E4 /* TrialNextStepsViewController.swift in Sources */,
 				FFFC6A8C2436ED340066D11A /* KeychainOptions.swift in Sources */,
+				FF4C2BC4245147E50081F522 /* PushNotificationsRegistrationRequest.swift in Sources */,
 				FFFC6A66243053A60066D11A /* Keys.swift in Sources */,
 				FF529F4A240CD4AA000A9C35 /* SignInViewController.swift in Sources */,
 				FF3D847D2426E7C20013E0E4 /* SurveyTask.swift in Sources */,
