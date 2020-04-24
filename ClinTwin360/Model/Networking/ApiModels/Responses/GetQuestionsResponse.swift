@@ -28,4 +28,6 @@ enum QuestionType: String, Decodable {
 	case yesNo = "yes_no"
 	case singleChoice = "pick_one"
 	case largeSet = "large_option_set"
+	case freeText = "enter_val"
+	case numberValue = "calc_val"
 }

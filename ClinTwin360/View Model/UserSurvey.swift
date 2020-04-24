@@ -24,7 +24,9 @@ struct UserSurvey {
 	private func surveyTaskFromQuestions() -> ORKOrderedTask {
 		var steps = [ORKStep]()
 		
-		questions.enumerated().forEach { (index, question) in
+		let truncated = [questions[0], questions[1]]
+		
+		truncated.enumerated().forEach { (index, question) in
 			let title = question.text
 			
 			var textChoices: [ORKTextChoice] = []
@@ -48,6 +50,7 @@ struct UserSurvey {
 				format = .choiceAnswerFormat(with: .multipleChoice, textChoices: textChoices)
 			case .largeSet:
 				format = .valuePickerAnswerFormat(with: textChoices)
+			default: format = .choiceAnswerFormat(with: .singleChoice, textChoices: textChoices)
 			}
 			
 			let questionStep = ORKQuestionStep(identifier: "\(question.id)", title: nil, question: title, answer: format)
