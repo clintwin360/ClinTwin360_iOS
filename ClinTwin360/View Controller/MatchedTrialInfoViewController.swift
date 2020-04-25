@@ -125,6 +125,7 @@ class MatchedTrialInfoViewController: UIViewController {
 	@IBAction func didTapApply(_ sender: UIButton) {
 		
 		let nextStepsVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "TrialNextStepsViewController") as! TrialNextStepsViewController
+		nextStepsVC.trialDetail = trialDetail
 		navigationController?.pushViewController(nextStepsVC, animated: true)
 	}
 	

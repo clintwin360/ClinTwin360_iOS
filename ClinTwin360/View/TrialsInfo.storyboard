@@ -332,7 +332,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="InC-dV-VPK" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="562"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Novartis Heart Study" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuF-dk-XSn">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Novartis Heart Study" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuF-dk-XSn">
                                                 <rect key="frame" x="58.5" y="40" width="297" height="36"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
                                                 <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -372,6 +372,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin vul
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xuF-dk-XSn" secondAttribute="trailing" constant="20" id="72U-R5-F8Y"/>
                                             <constraint firstAttribute="trailing" secondItem="t4F-Ml-qNw" secondAttribute="trailing" constant="20" id="7RB-PA-F3q"/>
                                             <constraint firstItem="19u-7g-c1w" firstAttribute="leading" secondItem="InC-dV-VPK" secondAttribute="leading" constant="20" id="9kb-LW-bjY"/>
                                             <constraint firstItem="t4F-Ml-qNw" firstAttribute="top" secondItem="19u-7g-c1w" secondAttribute="bottom" constant="16" id="FPg-o9-ao4"/>
@@ -406,6 +407,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin vul
                     </view>
                     <connections>
                         <outlet property="okButton" destination="Do1-Lp-hO1" id="sfx-1U-eiE"/>
+                        <outlet property="titleLabel" destination="xuF-dk-XSn" id="kHg-Pr-eGj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXq-zP-zzW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

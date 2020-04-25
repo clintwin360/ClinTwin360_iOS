@@ -11,6 +11,9 @@ import UIKit
 class TrialNextStepsViewController: UIViewController {
 
 	@IBOutlet weak var okButton: UIButton!
+	@IBOutlet weak var titleLabel: UILabel!
+	
+	var trialDetail: TrialObject?
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,11 @@ class TrialNextStepsViewController: UIViewController {
 	   okButton.layer.borderColor = UIColor.black.cgColor
     }
     
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		titleLabel.text = trialDetail?.title
+	}
 
    
 
