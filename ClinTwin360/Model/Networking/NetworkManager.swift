@@ -170,5 +170,17 @@ class NetworkManager {
 			}
 	}
 	
+	func forgotPassword(forUser user: String, completion: @escaping (_ response: DataResponse<Any, AFError>?) -> ()) {
+		let request = ForgotPasswordRequest(email: user)
+		
+		session.request(ApiEndpoints.base + ApiEndpoints.forgotPasswordEndpoint,
+				method: .post,
+				parameters: request,
+				encoder: JSONParameterEncoder.default)
+				.responseJSON { response in
+					print("Response JSON: \(String(describing: response.value))")
+					completion(response)
+		}
+	}
 }
 

@@ -36,9 +36,9 @@ class SignInViewController: UIViewController {
 		}
 		
 		// Hide for now
-//		passwordField.optionalButton.isHidden = false
-//		passwordField.optionalButton.setTitle("Forgot Password?", for: .normal)
-//		passwordField.delegate = self
+		passwordField.optionalButton.isHidden = false
+		passwordField.optionalButton.setTitle("Forgot Password?", for: .normal)
+		passwordField.delegate = self
 		
 		NotificationCenter.default.addObserver(self,
         selector: #selector(self.keyboardNotification(notification:)),
@@ -195,7 +195,35 @@ class SignInViewController: UIViewController {
 
 extension SignInViewController: LabeledTextFieldViewDelegate {
 	func didTapOptionalButtonInTextFieldView(_ textFieldView: LabeledTextFieldView) {
-		// TODO: forgot password
+		let ac = UIAlertController(title: "Forgot Password", message: "Please enter your email address to reset your password:", preferredStyle: .alert)
+		ac.addTextField()
+
+		let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned ac] _ in
+			let answer = ac.textFields![0].text
+			self.submitForgotPassword(withEmail: answer ?? "")
+		}
+
+		ac.addAction(submitAction)
+
+		present(ac, animated: true)
+	}
+	
+	private func submitForgotPassword(withEmail email: String) {
+		showLoadingView()
+		NetworkManager.shared.forgotPassword(forUser: email) { (response) in
+			self.hideLoadingView()
+			if response?.response?.statusCode == 200 {
+				let alert = UIAlertController(title: "Thank you!", message: "If a user with the provided email address exists, you will receive an email to reset your password.", preferredStyle: .alert)
+				let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+				alert.addAction(okAction)
+				self.present(alert, animated: true, completion: nil)
+			} else {
+				let alert = UIAlertController(title: "User Not Found", message: "We could not find a user with the provided email address. Please try again.", preferredStyle: .alert)
+				let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+				alert.addAction(okAction)
+				self.present(alert, animated: true, completion: nil)
+			}
+		}
 	}
 }
 
