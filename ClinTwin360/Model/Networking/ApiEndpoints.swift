@@ -9,14 +9,15 @@
 import Foundation
 
 struct ApiEndpoints {
-	static let base = "https://clintwin.com/"
-	static let registerEndpoint = "api/register/"
-	static let loginEndpoint = "api/auth-token/"
-	static let basicHealthEndpoint = "api/health"
-	static let questionsEndpoint = "api/questions/"
+	static let base = 						"https://clintwin.com/"
+	static let registerEndpoint = 			"api/register/"
+	static let pushNotificationsEndpoint = 	"api/device/apns/"
+	static let loginEndpoint = 				"api/auth-token/"
+	static let basicHealthEndpoint = 		"api/health"
+	static let questionsEndpoint = 			"api/questions/"
 //	static let questionsEndpoint = "sponsor/question_flow"
-	static let responsesEndpoint = "api/responses/"
-	static let matchesEndpoint = "api/matches/"
-	static let trialDetailsEndpoint = "api/trials"
-	static let signOutEndpoint = "api/logout"
+	static let responsesEndpoint = 			"api/responses/"
+	static let matchesEndpoint = 			"api/matches/"
+	static let trialDetailsEndpoint = 		"api/trials"
+	static let signOutEndpoint = 			"api/logout"
 }

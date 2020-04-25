@@ -206,25 +206,39 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Xr-mS-7IR" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="803.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="362"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Novartis Heart Study" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hne-Wz-Wcx">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Novartis Heart Study" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hne-Wz-Wcx">
                                                 <rect key="frame" x="58.5" y="40" width="297" height="36"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
                                                 <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30W-dv-nRL">
-                                                <rect key="frame" x="20" y="116" width="374" height="524.5"/>
-                                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin vulputate dolor, et venenatis dui posuere vel. Vivamus diam ipsum, bibendum in orci nec, tempus aliquam dolor. Fusce consectetur porta massa, vitae blandit nunc convallis et. Donec et lacinia tellus. Nam rhoncus eros orci, nec placerat magna pretium ac. Morbi elementum enim ipsum. Etiam a mauris pretium, varius justo in, congue odio. Fusce et tincidunt justo, eget aliquet nisi. Cras mollis pellentesque velit sit amet molestie. Fusce nec nulla at neque gravida sagittis.
-
-Donec blandit faucibus feugiat. Morbi fermentum vulputate nisi efficitur egestas. Praesent blandit imperdiet diam nec vestibulum. Curabitur semper dui sit amet ultricies venenatis. Vivamus at diam ante. Nullam ornare ante nisi, et dictum lacus aliquet ut. Suspendisse ac aliquet urna. Sed tempus felis vel urna luctus molestie. Vivamus malesuada id orci nec tincidunt. Etiam in scelerisque erat. Nunc sagittis in lacus in imperdiet.</string>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                                <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rvz-ho-8mN">
+                                                <rect key="frame" x="20" y="116" width="374" height="83"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sponsor" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30W-dv-nRL">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="21"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                        <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Objective" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DdP-JS-3Bz">
+                                                        <rect key="frame" x="0.0" y="31" width="374" height="21"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                        <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDY-GF-Tc0">
+                                                        <rect key="frame" x="0.0" y="62" width="374" height="21"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                        <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="l6d-Si-RUN">
-                                                <rect key="frame" x="30" y="700.5" width="354" height="43"/>
+                                                <rect key="frame" x="30" y="259" width="354" height="43"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xT6-BS-svM">
                                                         <rect key="frame" x="0.0" y="0.0" width="167" height="43"/>
@@ -259,16 +273,17 @@ Donec blandit faucibus feugiat. Morbi fermentum vulputate nisi efficitur egestas
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="l6d-Si-RUN" firstAttribute="top" secondItem="30W-dv-nRL" secondAttribute="bottom" constant="60" id="0dZ-81-3gE"/>
                                             <constraint firstItem="Hne-Wz-Wcx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9Xr-mS-7IR" secondAttribute="leading" constant="20" id="1wG-O8-Gog"/>
-                                            <constraint firstAttribute="trailing" secondItem="30W-dv-nRL" secondAttribute="trailing" constant="20" id="HR1-IQ-gRU"/>
+                                            <constraint firstItem="Rvz-ho-8mN" firstAttribute="leading" secondItem="9Xr-mS-7IR" secondAttribute="leading" constant="20" id="Cyv-mL-sUw"/>
+                                            <constraint firstItem="l6d-Si-RUN" firstAttribute="top" secondItem="Rvz-ho-8mN" secondAttribute="bottom" constant="60" id="HXU-Eh-Iji"/>
                                             <constraint firstAttribute="bottom" secondItem="l6d-Si-RUN" secondAttribute="bottom" constant="60" id="ImK-1t-Xjl"/>
                                             <constraint firstItem="Hne-Wz-Wcx" firstAttribute="centerX" secondItem="9Xr-mS-7IR" secondAttribute="centerX" id="Svn-Ks-8OD"/>
+                                            <constraint firstAttribute="trailing" secondItem="Rvz-ho-8mN" secondAttribute="trailing" constant="20" id="U0r-XJ-INH"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Hne-Wz-Wcx" secondAttribute="trailing" constant="20" id="bJb-fo-4Dx"/>
                                             <constraint firstItem="Hne-Wz-Wcx" firstAttribute="top" secondItem="9Xr-mS-7IR" secondAttribute="top" constant="40" id="eek-sQ-rKF"/>
-                                            <constraint firstItem="30W-dv-nRL" firstAttribute="top" secondItem="Hne-Wz-Wcx" secondAttribute="bottom" constant="40" id="iHY-vw-x3B"/>
                                             <constraint firstAttribute="trailing" secondItem="l6d-Si-RUN" secondAttribute="trailing" constant="30" id="ieB-MD-IAM"/>
                                             <constraint firstItem="l6d-Si-RUN" firstAttribute="leading" secondItem="9Xr-mS-7IR" secondAttribute="leading" constant="30" id="kO6-hk-Wbq"/>
-                                            <constraint firstItem="30W-dv-nRL" firstAttribute="leading" secondItem="9Xr-mS-7IR" secondAttribute="leading" constant="20" id="yVD-Tq-aaQ"/>
+                                            <constraint firstItem="Rvz-ho-8mN" firstAttribute="top" secondItem="Hne-Wz-Wcx" secondAttribute="bottom" constant="40" id="yR1-Ix-o7F"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -292,8 +307,10 @@ Donec blandit faucibus feugiat. Morbi fermentum vulputate nisi efficitur egestas
                     </view>
                     <connections>
                         <outlet property="applyButton" destination="FKq-ah-7dG" id="Pwg-1s-GFh"/>
-                        <outlet property="detailsLabel" destination="30W-dv-nRL" id="rRz-6O-Wqi"/>
+                        <outlet property="descriptionLabel" destination="pDY-GF-Tc0" id="a4V-gK-Ddm"/>
                         <outlet property="noButton" destination="xT6-BS-svM" id="qqq-rb-NgN"/>
+                        <outlet property="objectiveLabel" destination="DdP-JS-3Bz" id="KyW-c5-UiC"/>
+                        <outlet property="sponsorLabel" destination="30W-dv-nRL" id="Q9f-9h-udB"/>
                         <outlet property="titleLabel" destination="Hne-Wz-Wcx" id="REz-xP-7o4"/>
                     </connections>
                 </viewController>

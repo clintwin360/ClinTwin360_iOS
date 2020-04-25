@@ -151,7 +151,7 @@ class NetworkManager {
 	func registerForPushNotifications(deviceToken: String) {
 		guard let name = KeychainWrapper.standard.string(forKey: "username") else { return }
 		let request = PushNotificationsRegistrationRequest(name: name, registrationId: deviceToken)
-		session.request(ApiEndpoints.base + ApiEndpoints.responsesEndpoint,
+		session.request(ApiEndpoints.base + ApiEndpoints.pushNotificationsEndpoint,
 						method: .post,
 						parameters: request,
 						encoder: JSONParameterEncoder.default)

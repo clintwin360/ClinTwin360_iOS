@@ -129,7 +129,7 @@ class MatchingTrialsListViewController: UIViewController, UITableViewDataSource 
 		
 		if let cell = tableView.dequeueReusableCell(withIdentifier: "MatchingTrialCell") as? MatchingTrialCell {
 			
-			cell.configureCell(title: trial.title, details: trial.description ?? "")
+			cell.configureCell(title: trial.title, details: trial.objective ?? "")
 			cell.tag = indexPath.row
 			cell.delegate = self
 			
@@ -146,15 +146,8 @@ extension MatchingTrialsListViewController: MatchingTrialCellDelegate {
 		let trialResult = trials[index]
 		let trial = trialResult.clinicalTrial
 		
-		NetworkManager.shared.getTrialDetails(trialId: trial.trialId) { [weak self] (response) in
-			if let error = response?.error {
-				debugPrint(error.localizedDescription)
-				self?.showNetworkError()
-			} else {
-				let trialVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "MatchedTrialInfoViewController") as! MatchedTrialInfoViewController
-				trialVC.trialDetail = response?.value
-				self?.navigationController?.pushViewController(trialVC, animated: true)
-			}
-		}
+		let trialVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "MatchedTrialInfoViewController") as! MatchedTrialInfoViewController
+		trialVC.trialDetail = trial
+		navigationController?.pushViewController(trialVC, animated: true)
 	}
 }
