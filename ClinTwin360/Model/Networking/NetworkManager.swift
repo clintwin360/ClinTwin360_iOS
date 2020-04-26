@@ -68,7 +68,7 @@ class NetworkManager {
 	
 	func postBasicHealthDetails(healthModel: BasicHealthViewModel, completion: @escaping (_ error: AFError?) -> ()) {
 		
-		let request = PostBasicHealthRequest(height: healthModel.height!, weight: healthModel.weight!, birthdate: healthModel.birthdate!)
+		let request = PostBasicHealthRequest(height: healthModel.height, weight: healthModel.weight, birthdate: healthModel.birthdate)
 		session.request(ApiEndpoints.base + ApiEndpoints.basicHealthEndpoint,
 						method: .post,
 						parameters: request,

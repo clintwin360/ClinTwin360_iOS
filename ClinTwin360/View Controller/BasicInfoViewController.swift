@@ -69,9 +69,6 @@ class BasicInfoViewController: UIViewController {
 	}
 	
 	private func postResponses() {
-		view.endEditing(true)
-		guard viewModel.isValid else { return }
- 
 		showLoadingView()
 		NetworkManager.shared.postBasicHealthDetails(healthModel: viewModel) { (error) in
 			self.hideLoadingView()
@@ -108,7 +105,15 @@ class BasicInfoViewController: UIViewController {
 	}
 	
 	@IBAction func didTapNext(_ sender: UIButton) {
-		postResponses()
+		view.endEditing(true)
+		if viewModel.isValid {
+			postResponses()
+		} else {
+			let alert = UIAlertController(title: "Error", message: "Please verify your responses are valid.", preferredStyle: .alert)
+			let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+			alert.addAction(okAction)
+			present(alert, animated: true, completion: nil)
+		}
 	}
 }
 
@@ -174,6 +179,10 @@ extension BasicInfoViewController: UITextFieldDelegate {
 			if (textField.text ?? "").count == 3 && string.count > 0 {
 				return false
 			}
+		} else if textField == zipcodeField.textField {
+			if (textField.text ?? "").count == 5 && string.count > 0 {
+				return false
+			}
 		}
 		
 		return true
@@ -185,13 +194,18 @@ extension BasicInfoViewController: UITextFieldDelegate {
 	
 	func textFieldDidEndEditing(_ textField: UITextField) {
 		if textField == heightField.textField {
-			viewModel.setHeightFromString(textField.text)
+			let valid = viewModel.setHeightFromString(textField.text)
+			heightField.isValid = valid
 		} else if textField == weightField.textField {
-			viewModel.setWeightFromString(textField.text)
+			let valid = viewModel.setWeightFromString(textField.text)
+			weightField.isValid = valid
 		} else if textField == birthdateField.textField {
-			viewModel.formatBirthdateFromString(textField.text)
+			let valid = viewModel.formatBirthdateFromString(textField.text)
+			birthdateField.isValid = valid
 		} else if textField == bioSexField.textField {
 			viewModel.bioSex = textField.text
+			let valid = viewModel.isBioSexValid()
+			bioSexField.isValid = valid
 		}
 	}
 }

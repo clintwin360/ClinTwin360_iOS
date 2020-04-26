@@ -18,6 +18,7 @@ class LabeledTextFieldView: UIView {
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var textField: UITextField!
 	@IBOutlet weak var optionalButton: UIButton!
+	@IBOutlet weak var invalidIcon: UIImageView!
 	
 	var text: String? {
 		get {
@@ -40,6 +41,13 @@ class LabeledTextFieldView: UIView {
 		}
 	}
 	
+	var isValid: Bool = true {
+		didSet {
+			textField.layer.borderColor = isValid ? UIColor.black.cgColor : UIColor.red.cgColor
+			invalidIcon.isHidden = isValid
+		}
+	}
+	
 	weak var delegate: LabeledTextFieldViewDelegate?
 	
 	required init?(coder: NSCoder) {
@@ -56,6 +64,13 @@ class LabeledTextFieldView: UIView {
 		Bundle.main.loadNibNamed("LabeledTextFieldView", owner: self, options: nil)
 		view.frame = self.bounds
 		addSubview(view)
+		
+		textField.layer.cornerRadius = 8
+		textField.layer.borderWidth = 0.5
+		textField.layer.borderColor = UIColor.black.cgColor
+		
+		textField.setLeftPaddingPoints(8)
+		textField.setRightPaddingPoints(8)
 	}
 	
 	func configure(title: String, delegate: UITextFieldDelegate? = nil) {
@@ -67,4 +82,17 @@ class LabeledTextFieldView: UIView {
 		delegate?.didTapOptionalButtonInTextFieldView?(self)
 	}
 	
+}
+
+extension UITextField {
+    func setLeftPaddingPoints(_ amount:CGFloat){
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.leftView = paddingView
+        self.leftViewMode = .always
+    }
+    func setRightPaddingPoints(_ amount:CGFloat) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.rightView = paddingView
+        self.rightViewMode = .always
+    }
 }

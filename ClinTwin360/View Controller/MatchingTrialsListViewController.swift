@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MatchingTrialsListViewController: UIViewController, UITableViewDataSource {
+class MatchingTrialsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var noTrialsLabel: UILabel!
@@ -111,6 +111,9 @@ class MatchingTrialsListViewController: UIViewController, UITableViewDataSource 
 			signInNavVC.modalPresentationStyle = .overFullScreen
 			self.present(signInNavVC, animated: true, completion: nil)
 			self.hideLoadingView()
+			
+			self.trials.removeAll()
+			self.refreshState()
 		}
 	}
 	
@@ -132,11 +135,16 @@ class MatchingTrialsListViewController: UIViewController, UITableViewDataSource 
 			cell.configureCell(title: trial.title, details: trial.objective ?? "")
 			cell.tag = indexPath.row
 			cell.delegate = self
+			cell.selectionStyle = .none
 			
 			return cell
 		}
 		
 		return UITableViewCell()
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		didTapLearnMore(atIndex: indexPath.row)
 	}
 
 }

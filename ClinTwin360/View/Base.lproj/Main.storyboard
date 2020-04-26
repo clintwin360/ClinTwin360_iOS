@@ -324,23 +324,23 @@ Would you like us to pull this information from Apple Health?</string>
                                                 <rect key="frame" x="20" y="238" width="374" height="200"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ieg-3Y-T6n" customClass="LabeledTextFieldView" customModule="ClinTwin360" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQU-Pp-ZqK" customClass="LabeledTextFieldView" customModule="ClinTwin360" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="40" width="374" height="40"/>
+                                                        <rect key="frame" x="0.0" y="50" width="374" height="50"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JTd-cm-hox" customClass="LabeledTextFieldView" customModule="ClinTwin360" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="80" width="374" height="40"/>
+                                                        <rect key="frame" x="0.0" y="100" width="374" height="50"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LOo-ze-0q8" customClass="LabeledTextFieldView" customModule="ClinTwin360" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="120" width="374" height="40"/>
+                                                        <rect key="frame" x="0.0" y="150" width="374" height="50"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EsX-vp-9bb" customClass="LabeledTextFieldView" customModule="ClinTwin360" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="160" width="374" height="40"/>
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EsX-vp-9bb" customClass="LabeledTextFieldView" customModule="ClinTwin360" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="200" width="374" height="0.0"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     </view>
                                                 </subviews>
