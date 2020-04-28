@@ -92,10 +92,9 @@ extension HDConfirmViewController: ORKTaskViewControllerDelegate {
 			self?.navigationController?.setNavigationBarHidden(false, animated: false)
 			self?.removeBlurView()
 			
-			NetworkManager.shared.getMatches { (response) in
+			NetworkManager.shared.getMatches { (success, response) in
 				self?.hideLoadingView()
-				if let error = response?.error {
-					debugPrint(error.localizedDescription)
+				if response?.error != nil || success == false {
 					self?.showNetworkError()
 				} else {
 					let trialIntroVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "TrialIntroViewController") as! TrialIntroViewController

@@ -107,11 +107,23 @@ class SignInViewController: UIViewController {
 				alertController.addAction(okAction)
 				self.present(alertController, animated: true, completion: nil)
 			} else {
+				self.getUserData()
+			}
+		}
+	}
+	
+	private func getUserData() {
+		showLoadingView()
+		NetworkManager.shared.getParticipantData { (success) in
+			self.hideLoadingView()
+			if success {
 				// TODO: display this only the first time
 				self.presentOnboardingVC()
 				
 				self.emailField.text = nil
 				self.passwordField.text = nil
+			} else {
+				self.showNetworkError()
 			}
 		}
 	}

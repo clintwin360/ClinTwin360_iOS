@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 struct GetTrialDetailsRequest: Encodable {
 	let id: Int
 }

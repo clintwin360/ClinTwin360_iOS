@@ -38,9 +38,9 @@ class AHConfirmViewController: UIViewController {
 			guard viewModel.isValid else { return }
 		
 			showLoadingView()
-			NetworkManager.shared.postBasicHealthDetails(healthModel: viewModel) { (error) in
+			NetworkManager.shared.postBasicHealthDetails(healthModel: viewModel) { (success, error) in
 				self.hideLoadingView()
-				if error != nil {
+				if error != nil || success == false {
 					self.showNetworkError()
 				} else {
 					self.pushHealthDataConfirmation()

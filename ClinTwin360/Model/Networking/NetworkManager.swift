@@ -29,12 +29,6 @@ class NetworkManager {
 					method: .post,
 					parameters: request,
 					encoder: JSONParameterEncoder.default)
-		
-			// This one is helping with debugging for now
-			.responseJSON { response in
-				print("Response JSON: \(String(describing: response.value))")
-			}
-			
 			.responseDecodable(of: RegisterUserResponse.self) { response in
 				debugPrint("Response: \(response)")
 	
@@ -49,12 +43,6 @@ class NetworkManager {
 						method: .post,
 						parameters: request,
 						encoder: JSONParameterEncoder.default)
-			
-				// This one is helping with debugging for now
-				.responseJSON { response in
-					print("Response JSON: \(String(describing: response.value))")
-				}
-			
 				.responseDecodable(of: LoginResponse.self) { response in
 					debugPrint("Response: \(response)")
 					if let response = response.value {
@@ -66,17 +54,45 @@ class NetworkManager {
 				}
 	}
 	
-	func postBasicHealthDetails(healthModel: BasicHealthViewModel, completion: @escaping (_ error: AFError?) -> ()) {
+	func getParticipantData(completion: @escaping (_ success: Bool) -> ()) {
+		session.request(ApiEndpoints.base + ApiEndpoints.participantEndpoint)
+				// This one is helping with debugging for now
+				.responseJSON { response in
+					print("Response JSON: \(String(describing: response.value))")
+				}
 		
-		let request = PostBasicHealthRequest(height: healthModel.height, weight: healthModel.weight, birthdate: healthModel.birthdate)
+				.responseDecodable(of: ParticipantDataResponse.self) { response in
+					debugPrint("Response: \(response)")
+					
+					if let data = response.value {
+						KeychainWrapper.standard.set(data.id, forKey: "userId")
+						completion(true)
+					} else {
+						completion(false)
+					}
+				}
+	}
+	
+	func postBasicHealthDetails(healthModel: BasicHealthViewModel, completion: @escaping (_ success: Bool, _ error: AFError?) -> ()) {
+		
+		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
+			completion(false, nil)
+			return
+		}
+		
+		let request = PostBasicHealthRequest(participant: id, height: healthModel.height, weight: healthModel.weight, birthdate: healthModel.birthdate)
 		session.request(ApiEndpoints.base + ApiEndpoints.basicHealthEndpoint,
 						method: .post,
 						parameters: request,
 						encoder: JSONParameterEncoder.default)
-			// This one is helping with debugging for now
 				.responseJSON { response in
 					print("Response JSON: \(String(describing: response.value))")
-					completion(nil)
+					
+					if response.response?.statusCode == 200 {
+						completion(true, nil)
+					} else {
+						completion(false, nil)
+					}
 				}
 	}
 	
@@ -111,19 +127,20 @@ class NetworkManager {
 				}
 	}
 	
-	func getMatches(completion: @escaping (_ response: DataResponse<GetMatchesReponse, AFError>?) -> ()) {
-		let parameters = GetMatchesRequest()
+	func getMatches(completion: @escaping (_ success: Bool, _ response: DataResponse<GetMatchesReponse, AFError>?) -> ()) {
+		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
+			completion(false, nil)
+			return
+		}
+		
+		let parameters = GetMatchesRequest(participant: id)
 		
 		session.request(ApiEndpoints.base + ApiEndpoints.matchesEndpoint,
 						parameters: parameters)
-				// This one is helping with debugging for now
-				.responseJSON { response in
-					print("Response JSON: \(String(describing: response.value))")
-				}
-		
 				.responseDecodable(of: GetMatchesReponse.self) { response in
 					debugPrint("Response: \(response)")
-					completion(response)
+
+					completion(true,  response)
 				}
 	}
 	
@@ -155,7 +172,7 @@ class NetworkManager {
 						method: .post,
 						parameters: request,
 						encoder: JSONParameterEncoder.default)
-				// This one is helping with debugging for now
+			
 				.responseJSON { response in
 					print("Response JSON: \(String(describing: response.value))")
 				}

@@ -70,9 +70,9 @@ class BasicInfoViewController: UIViewController {
 	
 	private func postResponses() {
 		showLoadingView()
-		NetworkManager.shared.postBasicHealthDetails(healthModel: viewModel) { (error) in
+		NetworkManager.shared.postBasicHealthDetails(healthModel: viewModel) { (success, error) in
 			self.hideLoadingView()
-			if error != nil {
+			if error != nil || success == false {
 				self.showNetworkError()
 			} else {
 				let healthDetailsConfirmVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HDConfirmViewController")

@@ -28,6 +28,7 @@
 		FF529F4D240CD4AA000A9C35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF529F4B240CD4AA000A9C35 /* Main.storyboard */; };
 		FF529F4F240CD4AC000A9C35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF529F4E240CD4AC000A9C35 /* Assets.xcassets */; };
 		FF529F52240CD4AC000A9C35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF529F50240CD4AC000A9C35 /* LaunchScreen.storyboard */; };
+		FF5911DC2457DD21003C0CFD /* ParticipantDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911DB2457DD21003C0CFD /* ParticipantDataResponse.swift */; };
 		FFBDC97824214F9D0056F552 /* LabeledTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFBDC97724214F9D0056F552 /* LabeledTextFieldView.xib */; };
 		FFBDC97A2421505D0056F552 /* LabeledTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */; };
 		FFBDE188242163D000E81685 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDE187242163D000E81685 /* OnboardingViewController.swift */; };
@@ -85,6 +86,7 @@
 		FF529F4E240CD4AC000A9C35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF529F51240CD4AC000A9C35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF529F53240CD4AC000A9C35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF5911DB2457DD21003C0CFD /* ParticipantDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantDataResponse.swift; sourceTree = "<group>"; };
 		FFBDC97724214F9D0056F552 /* LabeledTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabeledTextFieldView.xib; sourceTree = "<group>"; };
 		FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextFieldView.swift; sourceTree = "<group>"; };
 		FFBDE187242163D000E81685 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				FFFC6A862436EB910066D11A /* LoginResponse.swift */,
+				FF5911DB2457DD21003C0CFD /* ParticipantDataResponse.swift */,
 				FFFC6A7024305F880066D11A /* GetQuestionsResponse.swift */,
 				FFFC6A7A2431400F0066D11A /* PostAnswersResponse.swift */,
 				FFEB3193243EB2F400BB0C72 /* GetMatchesResponse.swift */,
@@ -445,6 +448,7 @@
 				FFFC6A7124305F880066D11A /* GetQuestionsResponse.swift in Sources */,
 				FFEB31962446AAAD00BB0C72 /* TrialDetailsResponse.swift in Sources */,
 				FFFC6A7D243452CF0066D11A /* GetMatchesRequest.swift in Sources */,
+				FF5911DC2457DD21003C0CFD /* ParticipantDataResponse.swift in Sources */,
 				FFFC6A902436F67B0066D11A /* LoadingView.swift in Sources */,
 				FF3D8467242172EF0013E0E4 /* HealthKitSetupAssistant.swift in Sources */,
 				FFFC6A7F243453EF0066D11A /* GetTrialDetailsRequest.swift in Sources */,

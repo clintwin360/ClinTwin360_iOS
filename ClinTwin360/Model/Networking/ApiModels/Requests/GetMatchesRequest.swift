@@ -9,5 +9,5 @@
 import Foundation
 
 struct GetMatchesRequest: Encodable {
-	let participant: Int = 1 // TODO: change later
+	let participant: Int
 }

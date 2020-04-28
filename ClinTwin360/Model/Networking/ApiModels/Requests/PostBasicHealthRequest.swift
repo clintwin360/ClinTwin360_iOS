@@ -9,7 +9,7 @@
 import Foundation
 
 struct PostBasicHealthRequest: Encodable {
-	let participant: Int = 1 // TODO: change this later
+	let participant: Int
 	let height: Float?
 	let weight: Float?
 	let birthdate: String?

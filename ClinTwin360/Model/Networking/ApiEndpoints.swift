@@ -11,6 +11,7 @@ import Foundation
 struct ApiEndpoints {
 	static let base = 						"https://clintwin.com/"
 	static let registerEndpoint = 			"api/register/"
+	static let participantEndpoint = 		"api/participant/"
 	static let pushNotificationsEndpoint = 	"api/device/apns/"
 	static let loginEndpoint = 				"api/auth-token/"
 	static let basicHealthEndpoint = 		"api/health/"
