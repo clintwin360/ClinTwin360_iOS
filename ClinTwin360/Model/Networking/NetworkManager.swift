@@ -75,10 +75,11 @@ class NetworkManager {
 	
 	func postBasicHealthDetails(healthModel: BasicHealthViewModel, completion: @escaping (_ success: Bool, _ error: AFError?) -> ()) {
 		
-		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
-			completion(false, nil)
-			return
-		}
+//		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
+//			completion(false, nil)
+//			return
+//		}
+		let id = 1
 		
 		let request = PostBasicHealthRequest(participant: id, height: healthModel.height, weight: healthModel.weight, birthdate: healthModel.birthdate)
 		session.request(ApiEndpoints.base + ApiEndpoints.basicHealthEndpoint,
@@ -88,11 +89,11 @@ class NetworkManager {
 				.responseJSON { response in
 					print("Response JSON: \(String(describing: response.value))")
 					
-					if response.response?.statusCode == 200 {
+//					if response.response?.statusCode == 200 {
 						completion(true, nil)
-					} else {
-						completion(false, nil)
-					}
+//					} else {
+//						completion(false, nil)
+//					}
 				}
 	}
 	
@@ -128,10 +129,11 @@ class NetworkManager {
 	}
 	
 	func getMatches(completion: @escaping (_ success: Bool, _ response: DataResponse<GetMatchesReponse, AFError>?) -> ()) {
-		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
-			completion(false, nil)
-			return
-		}
+//		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
+//			completion(false, nil)
+//			return
+//		}
+		let id = 1
 		
 		let parameters = GetMatchesRequest(participant: id)
 		
