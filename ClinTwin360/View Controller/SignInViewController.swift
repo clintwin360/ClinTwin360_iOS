@@ -153,9 +153,9 @@ class SignInViewController: UIViewController {
 			navController.modalPresentationStyle = .overFullScreen
 		
 			present(navController, animated: true) {
-				let trialsListVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "MatchingTrialsListViewController")
+				let trialsParentVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "TrialsParentViewController")
 
-				self.navigationController?.setViewControllers([trialsListVC], animated: false)
+				self.navigationController?.setViewControllers([trialsParentVC], animated: false)
 			}
 	}
 	

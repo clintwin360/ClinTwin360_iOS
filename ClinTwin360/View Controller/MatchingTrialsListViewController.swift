@@ -12,22 +12,15 @@ class MatchingTrialsListViewController: UIViewController, UITableViewDataSource,
 	
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var noTrialsLabel: UILabel!
-	@IBOutlet weak var menuView: UIView!
-	@IBOutlet weak var menuViewLeadingConstraint: NSLayoutConstraint!
 	
-	var dismissMenuTappableView: UIView?
-	var dismissMenuTapGesture: UITapGestureRecognizer?
-	var menuIsOpen: Bool = false
-	
-	var trials: [TrialResult] = []
+	var trials: [TrialResult] = [] {
+		didSet {
+			refreshState()
+		}
+	}
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		navigationController?.setNavigationBarHidden(false, animated: false)
-		configureMenuButton()
-		
-		NotificationCenter.default.addObserver(self, selector: #selector(receivedMatchedTrials(notification:)), name: Notification.Name("MatchedTrials"), object: nil)
 		
 		tableView.register(UINib(nibName: "MatchingTrialCell", bundle: nil), forCellReuseIdentifier: "MatchingTrialCell")
     }
@@ -43,80 +36,6 @@ class MatchingTrialsListViewController: UIViewController, UITableViewDataSource,
 		tableView.isHidden = trials.count == 0
 		tableView.reloadData()
 	}
-	
-	private func configureMenuButton() {
-		let menuButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-		menuButton.setImage(UIImage(named: "menu"), for: .normal)
-		menuButton.addTarget(self, action: #selector(toggleMenu), for: .touchUpInside)
-		navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
-	}
-	
-	private func addTappableView() {
-		dismissMenuTappableView = UIView(frame: view.bounds)
-		dismissMenuTapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissMenu))
-		view.insertSubview(dismissMenuTappableView!, belowSubview: menuView)
-		dismissMenuTappableView?.addGestureRecognizer(dismissMenuTapGesture!)
-	}
-	
-	@objc func receivedMatchedTrials(notification: Notification) {
-		if let userInfo = notification.userInfo {
-			guard let trials = userInfo["trials"] as? [TrialResult] else { return }
-			self.trials = trials
-			refreshState()
-		}
-	}
-	
-	@objc func toggleMenu() {
-		if menuIsOpen {
-			dismissMenu()
-		} else {
-			showMenu()
-		}
-	}
-	
-	@objc func showMenu() {
-		menuIsOpen = true
-		menuView.layoutIfNeeded()
-		menuViewLeadingConstraint.constant = 0
-		
-		UIView.animate(withDuration: 0.3, animations: {
-			self.view.layoutIfNeeded()
-		}) { (finished) in
-			self.addTappableView()
-		}
-	}
-	
-	@objc func dismissMenu() {
-		menuIsOpen = false
-		dismissMenuTappableView?.removeFromSuperview()
-		dismissMenuTappableView = nil
-		dismissMenuTapGesture = nil
-		
-		menuView.layoutIfNeeded()
-		menuViewLeadingConstraint.constant = -(menuView.frame.size.width)
-		
-		UIView.animate(withDuration: 0.3) {
-			self.view.layoutIfNeeded()
-		}
-	}
-	
-	@IBAction func didTapSignOut(_ sender: UIButton) {
-		showLoadingView()
-		NetworkManager.shared.signOut { (response) in
-			print("signed out")
-			self.dismissMenu()
-			KeychainWrapper.standard.removeAllKeys()
-			
-			let signInNavVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
-			signInNavVC.modalPresentationStyle = .overFullScreen
-			self.present(signInNavVC, animated: true, completion: nil)
-			self.hideLoadingView()
-			
-			self.trials.removeAll()
-			self.refreshState()
-		}
-	}
-	
     
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 1

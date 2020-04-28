@@ -95,7 +95,9 @@ class TrialIntroViewController: UIViewController {
 	}
 	
 	@IBAction func didTapNavigationButton(_ sender: UIButton) {
-		dismiss(animated: true, completion: nil)
+		dismiss(animated: true) {
+			NotificationCenter.default.post(name: Notification.Name("ShowBanner"), object: nil)
+		}
 		
 	}
 	

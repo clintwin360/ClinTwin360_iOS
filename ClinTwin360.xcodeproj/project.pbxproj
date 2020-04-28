@@ -29,6 +29,10 @@
 		FF529F4F240CD4AC000A9C35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF529F4E240CD4AC000A9C35 /* Assets.xcassets */; };
 		FF529F52240CD4AC000A9C35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF529F50240CD4AC000A9C35 /* LaunchScreen.storyboard */; };
 		FF5911DC2457DD21003C0CFD /* ParticipantDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911DB2457DD21003C0CFD /* ParticipantDataResponse.swift */; };
+		FF5911DE2457E5B0003C0CFD /* AdditionalQuestionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5911DD2457E5B0003C0CFD /* AdditionalQuestionsView.xib */; };
+		FF5911E02457E5C9003C0CFD /* AdditionalQuestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911DF2457E5C9003C0CFD /* AdditionalQuestionsView.swift */; };
+		FF5911E22457E9AD003C0CFD /* TrialsParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911E12457E9AD003C0CFD /* TrialsParentViewController.swift */; };
+		FF5911E42457F6B4003C0CFD /* EnrolledTrialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911E32457F6B4003C0CFD /* EnrolledTrialsViewController.swift */; };
 		FFBDC97824214F9D0056F552 /* LabeledTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFBDC97724214F9D0056F552 /* LabeledTextFieldView.xib */; };
 		FFBDC97A2421505D0056F552 /* LabeledTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */; };
 		FFBDE188242163D000E81685 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDE187242163D000E81685 /* OnboardingViewController.swift */; };
@@ -87,6 +91,10 @@
 		FF529F51240CD4AC000A9C35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF529F53240CD4AC000A9C35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF5911DB2457DD21003C0CFD /* ParticipantDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantDataResponse.swift; sourceTree = "<group>"; };
+		FF5911DD2457E5B0003C0CFD /* AdditionalQuestionsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdditionalQuestionsView.xib; sourceTree = "<group>"; };
+		FF5911DF2457E5C9003C0CFD /* AdditionalQuestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalQuestionsView.swift; sourceTree = "<group>"; };
+		FF5911E12457E9AD003C0CFD /* TrialsParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialsParentViewController.swift; sourceTree = "<group>"; };
+		FF5911E32457F6B4003C0CFD /* EnrolledTrialsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrolledTrialsViewController.swift; sourceTree = "<group>"; };
 		FFBDC97724214F9D0056F552 /* LabeledTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabeledTextFieldView.xib; sourceTree = "<group>"; };
 		FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextFieldView.swift; sourceTree = "<group>"; };
 		FFBDE187242163D000E81685 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +222,8 @@
 				FFBDC97724214F9D0056F552 /* LabeledTextFieldView.xib */,
 				FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */,
 				FFFC6A8F2436F67B0066D11A /* LoadingView.swift */,
+				FF5911DD2457E5B0003C0CFD /* AdditionalQuestionsView.xib */,
+				FF5911DF2457E5C9003C0CFD /* AdditionalQuestionsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -227,9 +237,11 @@
 				FF3D84632421699B0013E0E4 /* BasicInfoViewController.swift */,
 				FF3D846B242454B20013E0E4 /* HDConfirmViewController.swift */,
 				FF3D846F2426CEB70013E0E4 /* TrialIntroViewController.swift */,
+				FF5911E12457E9AD003C0CFD /* TrialsParentViewController.swift */,
 				FF3D84722426D99F0013E0E4 /* MatchingTrialsListViewController.swift */,
 				FF3D84782426DF820013E0E4 /* MatchedTrialInfoViewController.swift */,
 				FF3D847A2426E0EC0013E0E4 /* TrialNextStepsViewController.swift */,
+				FF5911E32457F6B4003C0CFD /* EnrolledTrialsViewController.swift */,
 				FFFC6A80243455020066D11A /* UIViewController+Extension.swift */,
 			);
 			path = "View Controller";
@@ -369,6 +381,7 @@
 				FF3D846E2426CE950013E0E4 /* TrialsInfo.storyboard in Resources */,
 				FF529F4D240CD4AA000A9C35 /* Main.storyboard in Resources */,
 				FF3D84752426DA0C0013E0E4 /* MatchingTrialCell.xib in Resources */,
+				FF5911DE2457E5B0003C0CFD /* AdditionalQuestionsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,11 +449,13 @@
 				FF529F4A240CD4AA000A9C35 /* SignInViewController.swift in Sources */,
 				FF3D847D2426E7C20013E0E4 /* SurveyTask.swift in Sources */,
 				FFFC6A92243C38C00066D11A /* PostBasicHealthRequest.swift in Sources */,
+				FF5911E02457E5C9003C0CFD /* AdditionalQuestionsView.swift in Sources */,
 				FFEB3194243EB2F400BB0C72 /* GetMatchesResponse.swift in Sources */,
 				FF3D84792426DF820013E0E4 /* MatchedTrialInfoViewController.swift in Sources */,
 				FFEB31A22449567F00BB0C72 /* HealthKitDataFetcher.swift in Sources */,
 				FFFC6A832436E9220066D11A /* RegisterUserRequest.swift in Sources */,
 				FFFC6A8E2436F02E0066D11A /* RegisterUserResponse.swift in Sources */,
+				FF5911E22457E9AD003C0CFD /* TrialsParentViewController.swift in Sources */,
 				FFFC6A872436EB910066D11A /* LoginResponse.swift in Sources */,
 				FFFC6A68243054220066D11A /* ApiEndpoints.swift in Sources */,
 				FFFC6A892436EC8D0066D11A /* KeychainWrapper.swift in Sources */,
@@ -451,6 +466,7 @@
 				FF5911DC2457DD21003C0CFD /* ParticipantDataResponse.swift in Sources */,
 				FFFC6A902436F67B0066D11A /* LoadingView.swift in Sources */,
 				FF3D8467242172EF0013E0E4 /* HealthKitSetupAssistant.swift in Sources */,
+				FF5911E42457F6B4003C0CFD /* EnrolledTrialsViewController.swift in Sources */,
 				FFFC6A7F243453EF0066D11A /* GetTrialDetailsRequest.swift in Sources */,
 				FF3D846C242454B20013E0E4 /* HDConfirmViewController.swift in Sources */,
 				FFFC6A792431052B0066D11A /* UserSurvey.swift in Sources */,
