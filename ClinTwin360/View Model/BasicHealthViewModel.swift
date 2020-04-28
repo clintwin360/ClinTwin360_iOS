@@ -34,11 +34,16 @@ class BasicHealthViewModel {
 			return true
 		}
 		let components = heightString?.components(separatedBy: "'")
-		guard let feet = Int(components?.first ?? "") else { return false }
-		guard let inches = Int(components?.last?.replacingOccurrences(of: "\"", with: "") ?? "") else { return false }
+		guard let feet = Int(components?.first ?? "") else {
+			height = -1
+			return false
+		}
+		guard let inches = Int(components?.last?.replacingOccurrences(of: "\"", with: "") ?? "") else {
+			height = -1
+			return false
+		}
 		
 		let totalInches = (feet * 12) + inches
-		
 		height = Float(totalInches)
 		
 		return isHeightValid()
@@ -57,7 +62,13 @@ class BasicHealthViewModel {
 			self.weight = nil
 			return true
 		}
-		self.weight = Float(weight)
+		guard let floatValue = Float(weight) else {
+			self.weight = -1
+			return false
+		}
+		
+		self.weight = floatValue
+		
 		return isWeightValid()
 	}
 	
@@ -70,14 +81,14 @@ class BasicHealthViewModel {
 	}
 	
 	func formatBirthdateFromString(_ birthdateString: String?) -> Bool {
-		guard let bday = birthdateString else {
+		guard let bday = birthdateString, bday.count > 0 else {
 			birthdate = nil
 			return true
 		}
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = "MM/dd/yyyy"
 		guard let shortDate = dateFormatter.date(from: bday) else {
-			birthdate = nil
+			birthdate = "-1"
 			return false
 		}
 		
