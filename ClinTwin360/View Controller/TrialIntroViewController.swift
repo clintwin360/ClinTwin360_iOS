@@ -19,6 +19,8 @@ class TrialIntroViewController: UIViewController {
 	@IBOutlet weak var messageLabel: UILabel!
 	@IBOutlet weak var navigationButton: UIButton!
 	
+	var pushNotificationsManager = PushNotificationsManager()
+	
 	var trialIntroResult: TrialIntroResult = .noneFound
 	
 	override func viewDidLoad() {
@@ -39,10 +41,8 @@ class TrialIntroViewController: UIViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
-		UNUserNotificationCenter.current().getNotificationSettings { settings in
-			print("Notification settings: \(settings)")
-			
-			if settings.authorizationStatus == .notDetermined {
+		pushNotificationsManager.shouldRequestToRegister { (shouldRequest) in
+			if shouldRequest {
 				DispatchQueue.main.async {
 					self.registerForPushNotifications()
 				}
@@ -64,28 +64,12 @@ class TrialIntroViewController: UIViewController {
 		navigationButton.tag = 1
 	}
 	
-	private func currentNotificationSettings() {
-		UNUserNotificationCenter.current().getNotificationSettings { settings in
-			print("Notification settings: \(settings)")
-		}
-	}
-	
 	private func registerForPushNotifications() {
 		let alertController = UIAlertController(title: "Notifications", message: "Would you like to be notified of additional future clinical trial opportunities?", preferredStyle: .alert)
 		let noAction = UIAlertAction(title: "No", style: .default, handler: nil)
 		let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) in
-			UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
-				granted, error in
-				print("Permission granted: \(granted)")
-				
-				guard granted else { return }
-				UNUserNotificationCenter.current().getNotificationSettings { settings in
-					print("Notification settings: \(settings)")
-					guard settings.authorizationStatus == .authorized else { return }
-					DispatchQueue.main.async {
-					  UIApplication.shared.registerForRemoteNotifications()
-					}
-				}
+			self.pushNotificationsManager.requestNotificationsAuthorization { (success) in
+				print("Register for push notifications success: \(success)")
 			}
 		}
 		alertController.addAction(noAction)

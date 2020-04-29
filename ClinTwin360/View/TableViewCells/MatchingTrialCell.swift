@@ -17,7 +17,6 @@ class MatchingTrialCell: UITableViewCell {
 	@IBOutlet weak var cardView: UIView!
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var detailsLabel: UILabel!
-	@IBOutlet weak var trialImageView: UIImageView!
 	@IBOutlet weak var learnMoreButton: UIButton!
 	
 	weak var delegate: MatchingTrialCellDelegate?
@@ -33,12 +32,6 @@ class MatchingTrialCell: UITableViewCell {
 		learnMoreButton.layer.cornerRadius = 10.0
 		learnMoreButton.layer.borderWidth = 1.0
 		learnMoreButton.layer.borderColor = UIColor.black.cgColor
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 	
 	@IBAction func didTapLearnMore(_ sender: UIButton) {

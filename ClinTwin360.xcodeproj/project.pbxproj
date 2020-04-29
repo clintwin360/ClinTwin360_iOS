@@ -35,6 +35,9 @@
 		FF5911E42457F6B4003C0CFD /* EnrolledTrialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911E32457F6B4003C0CFD /* EnrolledTrialsViewController.swift */; };
 		FF5911E624594BC1003C0CFD /* ResearchQuestionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911E524594BC1003C0CFD /* ResearchQuestionsManager.swift */; };
 		FF5911E824594BD0003C0CFD /* QuestionFlowResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911E724594BCF003C0CFD /* QuestionFlowResponse.swift */; };
+		FF5911EA245A20C5003C0CFD /* EnrolledTrialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5911E9245A20C5003C0CFD /* EnrolledTrialCell.xib */; };
+		FF5911EC245A2110003C0CFD /* EnrolledTrialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911EB245A2110003C0CFD /* EnrolledTrialCell.swift */; };
+		FF5911EE245A2A33003C0CFD /* PushNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911ED245A2A33003C0CFD /* PushNotificationsManager.swift */; };
 		FFBDC97824214F9D0056F552 /* LabeledTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFBDC97724214F9D0056F552 /* LabeledTextFieldView.xib */; };
 		FFBDC97A2421505D0056F552 /* LabeledTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */; };
 		FFBDE188242163D000E81685 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDE187242163D000E81685 /* OnboardingViewController.swift */; };
@@ -99,6 +102,9 @@
 		FF5911E32457F6B4003C0CFD /* EnrolledTrialsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrolledTrialsViewController.swift; sourceTree = "<group>"; };
 		FF5911E524594BC1003C0CFD /* ResearchQuestionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResearchQuestionsManager.swift; sourceTree = "<group>"; };
 		FF5911E724594BCF003C0CFD /* QuestionFlowResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionFlowResponse.swift; sourceTree = "<group>"; };
+		FF5911E9245A20C5003C0CFD /* EnrolledTrialCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnrolledTrialCell.xib; sourceTree = "<group>"; };
+		FF5911EB245A2110003C0CFD /* EnrolledTrialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrolledTrialCell.swift; sourceTree = "<group>"; };
+		FF5911ED245A2A33003C0CFD /* PushNotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsManager.swift; sourceTree = "<group>"; };
 		FFBDC97724214F9D0056F552 /* LabeledTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabeledTextFieldView.xib; sourceTree = "<group>"; };
 		FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextFieldView.swift; sourceTree = "<group>"; };
 		FFBDE187242163D000E81685 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				FF5911E524594BC1003C0CFD /* ResearchQuestionsManager.swift */,
+				FF5911ED245A2A33003C0CFD /* PushNotificationsManager.swift */,
 				FFEB31A12449567F00BB0C72 /* HealthKitDataFetcher.swift */,
 				FF3D8466242172EF0013E0E4 /* HealthKitSetupAssistant.swift */,
 				FF3D847C2426E7C20013E0E4 /* SurveyTask.swift */,
@@ -179,6 +186,8 @@
 			children = (
 				FF3D84742426DA0C0013E0E4 /* MatchingTrialCell.xib */,
 				FF3D84762426DA700013E0E4 /* MatchingTrialCell.swift */,
+				FF5911E9245A20C5003C0CFD /* EnrolledTrialCell.xib */,
+				FF5911EB245A2110003C0CFD /* EnrolledTrialCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -388,6 +397,7 @@
 				FF529F4D240CD4AA000A9C35 /* Main.storyboard in Resources */,
 				FF3D84752426DA0C0013E0E4 /* MatchingTrialCell.xib in Resources */,
 				FF5911DE2457E5B0003C0CFD /* AdditionalQuestionsView.xib in Resources */,
+				FF5911EA245A20C5003C0CFD /* EnrolledTrialCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +460,7 @@
 				FFFC6A6E243056210066D11A /* NetworkManager.swift in Sources */,
 				FF3D847B2426E0EC0013E0E4 /* TrialNextStepsViewController.swift in Sources */,
 				FFFC6A8C2436ED340066D11A /* KeychainOptions.swift in Sources */,
+				FF5911EC245A2110003C0CFD /* EnrolledTrialCell.swift in Sources */,
 				FF4C2BC4245147E50081F522 /* PushNotificationsRegistrationRequest.swift in Sources */,
 				FFFC6A66243053A60066D11A /* Keys.swift in Sources */,
 				FF529F4A240CD4AA000A9C35 /* SignInViewController.swift in Sources */,
@@ -464,6 +475,7 @@
 				FF5911E22457E9AD003C0CFD /* TrialsParentViewController.swift in Sources */,
 				FFFC6A872436EB910066D11A /* LoginResponse.swift in Sources */,
 				FFFC6A68243054220066D11A /* ApiEndpoints.swift in Sources */,
+				FF5911EE245A2A33003C0CFD /* PushNotificationsManager.swift in Sources */,
 				FFFC6A892436EC8D0066D11A /* KeychainWrapper.swift in Sources */,
 				FFEB3192243D49D200BB0C72 /* BasicHealthPickerObject.swift in Sources */,
 				FFFC6A7124305F880066D11A /* GetQuestionsResponse.swift in Sources */,

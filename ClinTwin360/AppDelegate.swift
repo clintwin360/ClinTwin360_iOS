@@ -17,6 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 		
+		UNUserNotificationCenter.current().getNotificationSettings { settings in
+			print("Notification settings: \(settings)")
+			if settings.authorizationStatus == .authorized {
+				DispatchQueue.main.async {
+					UIApplication.shared.registerForRemoteNotifications()
+				}
+			}
+		}
+		
 		let notificationOption = launchOptions?[.remoteNotification]
 		if let notification = notificationOption as? [String: AnyObject],
 			let aps = notification["aps"] as? [String: AnyObject] {

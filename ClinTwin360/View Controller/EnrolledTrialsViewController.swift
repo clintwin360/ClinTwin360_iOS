@@ -13,7 +13,7 @@ class EnrolledTrialsViewController: UIViewController {
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var noTrialsLabel: UILabel!
 	
-	var trials: [Any] = [Any]() {
+	var trials: [Any] = [1, 2, 3] {
 		didSet {
 			refreshState()
 		}
@@ -22,7 +22,7 @@ class EnrolledTrialsViewController: UIViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tableView.register(UINib(nibName: "EnrolledTrialCell", bundle: nil), forCellReuseIdentifier: "EnrolledTrialCell")
     }
     
 
@@ -49,7 +49,28 @@ extension EnrolledTrialsViewController: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		return UITableViewCell()
+		let cell = tableView.dequeueReusableCell(withIdentifier: "EnrolledTrialCell") as! EnrolledTrialCell
+		cell.tag = indexPath.row
+		cell.delegate = self
+		
+		// Testing:
+		if indexPath.row == 2 {
+			cell.hasNewTasks = false
+		}
+		
+		cell.selectionStyle = .none
+		
+		return cell
+	}
+}
+
+extension EnrolledTrialsViewController: EnrolledTrialCellDelegate {
+	func didTapViewTrial(atIndex index: Int) {
+		// TODO
+	}
+	
+	func didTapCompleteTasks(atIndex index: Int) {
+		// TODO
 	}
 	
 	
