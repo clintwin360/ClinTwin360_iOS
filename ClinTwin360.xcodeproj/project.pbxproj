@@ -33,6 +33,8 @@
 		FF5911E02457E5C9003C0CFD /* AdditionalQuestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911DF2457E5C9003C0CFD /* AdditionalQuestionsView.swift */; };
 		FF5911E22457E9AD003C0CFD /* TrialsParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911E12457E9AD003C0CFD /* TrialsParentViewController.swift */; };
 		FF5911E42457F6B4003C0CFD /* EnrolledTrialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911E32457F6B4003C0CFD /* EnrolledTrialsViewController.swift */; };
+		FF5911E624594BC1003C0CFD /* ResearchQuestionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911E524594BC1003C0CFD /* ResearchQuestionsManager.swift */; };
+		FF5911E824594BD0003C0CFD /* QuestionFlowResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911E724594BCF003C0CFD /* QuestionFlowResponse.swift */; };
 		FFBDC97824214F9D0056F552 /* LabeledTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFBDC97724214F9D0056F552 /* LabeledTextFieldView.xib */; };
 		FFBDC97A2421505D0056F552 /* LabeledTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */; };
 		FFBDE188242163D000E81685 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDE187242163D000E81685 /* OnboardingViewController.swift */; };
@@ -95,6 +97,8 @@
 		FF5911DF2457E5C9003C0CFD /* AdditionalQuestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalQuestionsView.swift; sourceTree = "<group>"; };
 		FF5911E12457E9AD003C0CFD /* TrialsParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialsParentViewController.swift; sourceTree = "<group>"; };
 		FF5911E32457F6B4003C0CFD /* EnrolledTrialsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrolledTrialsViewController.swift; sourceTree = "<group>"; };
+		FF5911E524594BC1003C0CFD /* ResearchQuestionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResearchQuestionsManager.swift; sourceTree = "<group>"; };
+		FF5911E724594BCF003C0CFD /* QuestionFlowResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionFlowResponse.swift; sourceTree = "<group>"; };
 		FFBDC97724214F9D0056F552 /* LabeledTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabeledTextFieldView.xib; sourceTree = "<group>"; };
 		FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextFieldView.swift; sourceTree = "<group>"; };
 		FFBDE187242163D000E81685 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 		FF3D8465242172CB0013E0E4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FF5911E524594BC1003C0CFD /* ResearchQuestionsManager.swift */,
 				FFEB31A12449567F00BB0C72 /* HealthKitDataFetcher.swift */,
 				FF3D8466242172EF0013E0E4 /* HealthKitSetupAssistant.swift */,
 				FF3D847C2426E7C20013E0E4 /* SurveyTask.swift */,
@@ -289,6 +294,7 @@
 				FFFC6A862436EB910066D11A /* LoginResponse.swift */,
 				FF5911DB2457DD21003C0CFD /* ParticipantDataResponse.swift */,
 				FFFC6A7024305F880066D11A /* GetQuestionsResponse.swift */,
+				FF5911E724594BCF003C0CFD /* QuestionFlowResponse.swift */,
 				FFFC6A7A2431400F0066D11A /* PostAnswersResponse.swift */,
 				FFEB3193243EB2F400BB0C72 /* GetMatchesResponse.swift */,
 				FFFC6A8D2436F02E0066D11A /* RegisterUserResponse.swift */,
@@ -472,6 +478,7 @@
 				FFFC6A792431052B0066D11A /* UserSurvey.swift in Sources */,
 				FFFC6A762430FFE70066D11A /* PostAnswersRequest.swift in Sources */,
 				FFFC6A81243455020066D11A /* UIViewController+Extension.swift in Sources */,
+				FF5911E824594BD0003C0CFD /* QuestionFlowResponse.swift in Sources */,
 				FFBDC97A2421505D0056F552 /* LabeledTextFieldView.swift in Sources */,
 				FF529F48240CD4AA000A9C35 /* AppDelegate.swift in Sources */,
 				FF3D84732426D99F0013E0E4 /* MatchingTrialsListViewController.swift in Sources */,
@@ -485,6 +492,7 @@
 				FF3D84772426DA700013E0E4 /* MatchingTrialCell.swift in Sources */,
 				FFFC6A6A243055BC0066D11A /* AccessTokenAdapter.swift in Sources */,
 				FF3D84642421699B0013E0E4 /* BasicInfoViewController.swift in Sources */,
+				FF5911E624594BC1003C0CFD /* ResearchQuestionsManager.swift in Sources */,
 				FFBDE18A2421659400E81685 /* CommonColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

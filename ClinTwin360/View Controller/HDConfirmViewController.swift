@@ -15,7 +15,7 @@ class HDConfirmViewController: UIViewController {
 	
 	var blurView: UIVisualEffectView?
 	
-	var currentUserSurvey: UserSurvey?
+	var researchQuestionsManager = ResearchQuestionsManager()
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +40,21 @@ class HDConfirmViewController: UIViewController {
 		blurView = nil
 	}
 	
-	private func beginResearchTask(withQuestions response: GetQuestionsResponse) {
-		guard let questions = response.results else { return }
-		currentUserSurvey = UserSurvey(questions: questions)
-		
-		let taskViewController = ORKTaskViewController(task: currentUserSurvey!.surveyTask, taskRun: nil)
+//	private func beginResearchTask(withQuestions response: GetQuestionsResponse) {
+//		guard let questions = response.results else { return }
+//		currentUserSurvey = UserSurvey(questions: questions)
+//
+//		let taskViewController = ORKTaskViewController(task: currentUserSurvey!.surveyTask, taskRun: nil)
+//		taskViewController.delegate = self
+//		taskViewController.modalPresentationStyle = .overFullScreen
+//
+//		addBlurView()
+//		navigationController?.setNavigationBarHidden(true, animated: false)
+//		present(taskViewController, animated: true, completion: nil)
+//	}
+	
+	private func beginResearchTask(withSurvey survey: UserSurvey) {
+		let taskViewController = ORKTaskViewController(task: survey.surveyTask, taskRun: nil)
 		taskViewController.delegate = self
 		taskViewController.modalPresentationStyle = .overFullScreen
 		
@@ -69,13 +79,14 @@ class HDConfirmViewController: UIViewController {
     
 	@IBAction func didTapStart(_ sender: UIButton) {
 		showLoadingView()
-		NetworkManager.shared.getQuestions { (response) in
+		
+		researchQuestionsManager.startInitialSurvey { (survey, error) in
 			self.hideLoadingView()
-			if let error = response?.error {
+			if let error = error {
 				debugPrint(error.localizedDescription)
 				self.showNetworkError()
-			} else if let value = response?.value {
-				self.beginResearchTask(withQuestions: value)
+			} else if let survey = survey {
+				self.beginResearchTask(withSurvey: survey)
 			}
 		}
 	}
@@ -84,10 +95,10 @@ class HDConfirmViewController: UIViewController {
 extension HDConfirmViewController: ORKTaskViewControllerDelegate {
 	func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
 		// Handle results with taskViewController.result
-		currentUserSurvey?.parseAnswers(fromTaskResult: taskViewController.result)
+		let responses = researchQuestionsManager.parseAnswers(fromTaskResult: taskViewController.result)
 		
 		showLoadingView()
-		postResponses(currentUserSurvey?.responses) { [weak self] (success) in
+		postResponses(responses) { [weak self] (success) in
 			taskViewController.dismiss(animated: true, completion: nil)
 			self?.navigationController?.setNavigationBarHidden(false, animated: false)
 			self?.removeBlurView()

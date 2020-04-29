@@ -110,6 +110,19 @@ class NetworkManager {
 			}
 	}
 	
+	func getQuestionFlow(completion: @escaping (_ response: DataResponse<QuestionFlowResponse, AFError>?) -> ()) {
+		session.request(ApiEndpoints.base + ApiEndpoints.questionsEndpoint)
+			// This one is helping with debugging for now
+			.responseJSON { response in
+				print("Response JSON: \(String(describing: response.value))")
+			}
+	
+			.responseDecodable(of: QuestionFlowResponse.self) { response in
+				debugPrint("Response: \(response)")
+				completion(response)
+			}
+	}
+	
 	func postSurveyResponse(_ answer: ResearchQuestionAnswer, completion: @escaping (_ response: DataResponse<PostAnswersResponse, AFError>?) -> ()) {
 		
 		session.request(ApiEndpoints.base + ApiEndpoints.responsesEndpoint,
