@@ -110,10 +110,24 @@ class SignInViewController: UIViewController {
 				alertController.addAction(okAction)
 				self.present(alertController, animated: true, completion: nil)
 			} else {
+                // Register for push notifications if previously agreed
+                self.reRegisterForPushNotifications()
+                
 				self.getUserData()
 			}
 		}
 	}
+    
+    private func reRegisterForPushNotifications() {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            print("Notification settings: \(settings)")
+            if settings.authorizationStatus == .authorized {
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+            }
+        }
+    }
 	
 	private func getUserData() {
 //		showLoadingView()
