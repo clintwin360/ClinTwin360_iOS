@@ -451,9 +451,9 @@
                                                 <rect key="frame" x="20" y="168" width="374" height="231"/>
                                                 <string key="text">Congratulations. You are ready for the next steps of the application process. 
 
-First you will need to schedule an appointment with your primary care provider.
+First you will need to schedule an appointment with a participating medical provider.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin vulputate dolor, et venenatis dui posuere vel. Vivamus diam ipsum, bibendum in orci nec, tempus aliquam dolor. </string>
+By tapping "I'm interested" below, we will receive acknowledgement of your interest in the trial, and further details will be sent to the email address associated with your account. </string>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                 <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -465,11 +465,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin vul
                                                     <constraint firstAttribute="height" constant="43" id="xHF-pB-3fj"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                                <state key="normal" title="OK">
+                                                <state key="normal" title="I'm interested">
                                                     <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="didTapNavigationButton:" destination="hmU-uY-oZx" eventType="touchUpInside" id="bi8-Wt-Gxg"/>
+                                                    <action selector="didTapInterestButton:" destination="36W-VR-HEh" eventType="touchUpInside" id="ck3-2S-3Dr"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19u-7g-c1w">
@@ -515,7 +515,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin vul
                         <viewLayoutGuide key="safeArea" id="KqQ-OV-mkM"/>
                     </view>
                     <connections>
-                        <outlet property="okButton" destination="Do1-Lp-hO1" id="sfx-1U-eiE"/>
+                        <outlet property="interestButton" destination="Do1-Lp-hO1" id="wRy-Eh-gUJ"/>
                         <outlet property="titleLabel" destination="xuF-dk-XSn" id="kHg-Pr-eGj"/>
                     </connections>
                 </viewController>
@@ -529,6 +529,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin vul
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Ugo-2q-G1d" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Ec-ZY-9Qs">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

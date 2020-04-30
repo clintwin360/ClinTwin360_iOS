@@ -10,7 +10,8 @@ import UIKit
 
 class TrialNextStepsViewController: UIViewController {
 
-	@IBOutlet weak var okButton: UIButton!
+
+	@IBOutlet weak var interestButton: UIButton!
 	@IBOutlet weak var titleLabel: UILabel!
 	
 	var trialDetail: TrialObject?
@@ -18,9 +19,9 @@ class TrialNextStepsViewController: UIViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
 
-	   okButton.layer.cornerRadius = 10.0
-	   okButton.layer.borderWidth = 0.5
-	   okButton.layer.borderColor = UIColor.black.cgColor
+	   interestButton.layer.cornerRadius = 10.0
+	   interestButton.layer.borderWidth = 0.5
+	   interestButton.layer.borderColor = UIColor.black.cgColor
     }
     
 	override func viewWillAppear(_ animated: Bool) {
@@ -29,6 +30,8 @@ class TrialNextStepsViewController: UIViewController {
 		titleLabel.text = trialDetail?.title
 	}
 
-   
+	@IBAction func didTapInterestButton(_ sender: UIButton) {
+	}
+	
 
 }

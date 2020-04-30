@@ -38,6 +38,9 @@
 		FF5911EA245A20C5003C0CFD /* EnrolledTrialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5911E9245A20C5003C0CFD /* EnrolledTrialCell.xib */; };
 		FF5911EC245A2110003C0CFD /* EnrolledTrialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911EB245A2110003C0CFD /* EnrolledTrialCell.swift */; };
 		FF5911EE245A2A33003C0CFD /* PushNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911ED245A2A33003C0CFD /* PushNotificationsManager.swift */; };
+		FF5911F0245A6B8D003C0CFD /* EnrollInTrialRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911EF245A6B8D003C0CFD /* EnrollInTrialRequest.swift */; };
+		FF5911F2245A6D6F003C0CFD /* EnrolledTrialsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911F1245A6D6F003C0CFD /* EnrolledTrialsRequest.swift */; };
+		FF5911F4245A7C3B003C0CFD /* EnrolledTrialsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911F3245A7C3B003C0CFD /* EnrolledTrialsResponse.swift */; };
 		FFBDC97824214F9D0056F552 /* LabeledTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFBDC97724214F9D0056F552 /* LabeledTextFieldView.xib */; };
 		FFBDC97A2421505D0056F552 /* LabeledTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */; };
 		FFBDE188242163D000E81685 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDE187242163D000E81685 /* OnboardingViewController.swift */; };
@@ -105,6 +108,9 @@
 		FF5911E9245A20C5003C0CFD /* EnrolledTrialCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnrolledTrialCell.xib; sourceTree = "<group>"; };
 		FF5911EB245A2110003C0CFD /* EnrolledTrialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrolledTrialCell.swift; sourceTree = "<group>"; };
 		FF5911ED245A2A33003C0CFD /* PushNotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsManager.swift; sourceTree = "<group>"; };
+		FF5911EF245A6B8D003C0CFD /* EnrollInTrialRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollInTrialRequest.swift; sourceTree = "<group>"; };
+		FF5911F1245A6D6F003C0CFD /* EnrolledTrialsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrolledTrialsRequest.swift; sourceTree = "<group>"; };
+		FF5911F3245A7C3B003C0CFD /* EnrolledTrialsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrolledTrialsResponse.swift; sourceTree = "<group>"; };
 		FFBDC97724214F9D0056F552 /* LabeledTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabeledTextFieldView.xib; sourceTree = "<group>"; };
 		FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextFieldView.swift; sourceTree = "<group>"; };
 		FFBDE187242163D000E81685 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -293,6 +299,8 @@
 				FFFC6A7E243453EF0066D11A /* GetTrialDetailsRequest.swift */,
 				FF4C2BC3245147E50081F522 /* PushNotificationsRegistrationRequest.swift */,
 				FF4C2BC52454F7B70081F522 /* ForgotPasswordRequest.swift */,
+				FF5911EF245A6B8D003C0CFD /* EnrollInTrialRequest.swift */,
+				FF5911F1245A6D6F003C0CFD /* EnrolledTrialsRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -308,6 +316,7 @@
 				FFEB3193243EB2F400BB0C72 /* GetMatchesResponse.swift */,
 				FFFC6A8D2436F02E0066D11A /* RegisterUserResponse.swift */,
 				FFEB31952446AAAD00BB0C72 /* TrialDetailsResponse.swift */,
+				FF5911F3245A7C3B003C0CFD /* EnrolledTrialsResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -475,8 +484,10 @@
 				FF5911E22457E9AD003C0CFD /* TrialsParentViewController.swift in Sources */,
 				FFFC6A872436EB910066D11A /* LoginResponse.swift in Sources */,
 				FFFC6A68243054220066D11A /* ApiEndpoints.swift in Sources */,
+				FF5911F4245A7C3B003C0CFD /* EnrolledTrialsResponse.swift in Sources */,
 				FF5911EE245A2A33003C0CFD /* PushNotificationsManager.swift in Sources */,
 				FFFC6A892436EC8D0066D11A /* KeychainWrapper.swift in Sources */,
+				FF5911F2245A6D6F003C0CFD /* EnrolledTrialsRequest.swift in Sources */,
 				FFEB3192243D49D200BB0C72 /* BasicHealthPickerObject.swift in Sources */,
 				FFFC6A7124305F880066D11A /* GetQuestionsResponse.swift in Sources */,
 				FFEB31962446AAAD00BB0C72 /* TrialDetailsResponse.swift in Sources */,
@@ -498,6 +509,7 @@
 				FFBDE188242163D000E81685 /* OnboardingViewController.swift in Sources */,
 				FFFC6A7B2431400F0066D11A /* PostAnswersResponse.swift in Sources */,
 				FF3D84702426CEB70013E0E4 /* TrialIntroViewController.swift in Sources */,
+				FF5911F0245A6B8D003C0CFD /* EnrollInTrialRequest.swift in Sources */,
 				FF4C2BC62454F7B70081F522 /* ForgotPasswordRequest.swift in Sources */,
 				FFEB3190243C3E7300BB0C72 /* BasicHealthViewModel.swift in Sources */,
 				FF3D8462242167D70013E0E4 /* AHConfirmViewController.swift in Sources */,

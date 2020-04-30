@@ -36,6 +36,7 @@ struct TrialObject: Decodable {
 	let status: String?
 	let title: String
 	let url: String?
+	let isVirtualTrial: Bool? = true
 	
 	enum CodingKeys: String, CodingKey {
 	    case trialId = "id"
@@ -50,6 +51,7 @@ struct TrialObject: Decodable {
 		case status
 		case title
 		case url
+		case isVirtualTrial
 	}
 }
 

@@ -26,7 +26,7 @@ class EnrolledTrialCell: UITableViewCell {
 	
 	var hasNewTasks: Bool = true {
 		didSet {
-			newTasksLabel.isHidden = !hasNewTasks
+			newTasksLabel.text = hasNewTasks ? "New Tasks!" : "Up to date"
 			completeTasksButton.isEnabled = hasNewTasks
 			completeTasksButton.alpha = hasNewTasks ? 1.0 : 0.5
 		}

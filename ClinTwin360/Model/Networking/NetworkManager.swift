@@ -97,18 +97,18 @@ class NetworkManager {
 				}
 	}
 	
-	func getQuestions(completion: @escaping (_ response: DataResponse<GetQuestionsResponse, AFError>?) -> ()) {
-		session.request(ApiEndpoints.base + ApiEndpoints.questionsEndpoint)
-			// This one is helping with debugging for now
-			.responseJSON { response in
-				print("Response JSON: \(String(describing: response.value))")
-			}
-	
-			.responseDecodable(of: GetQuestionsResponse.self) { response in
-				debugPrint("Response: \(response)")
-				completion(response)
-			}
-	}
+//	func getQuestions(completion: @escaping (_ response: DataResponse<GetQuestionsResponse, AFError>?) -> ()) {
+//		session.request(ApiEndpoints.base + ApiEndpoints.questionsEndpoint)
+//			// This one is helping with debugging for now
+//			.responseJSON { response in
+//				print("Response JSON: \(String(describing: response.value))")
+//			}
+//
+//			.responseDecodable(of: GetQuestionsResponse.self) { response in
+//				debugPrint("Response: \(response)")
+//				completion(response)
+//			}
+//	}
 	
 	func getQuestionFlow(completion: @escaping (_ response: DataResponse<QuestionFlowResponse, AFError>?) -> ()) {
 		session.request(ApiEndpoints.base + ApiEndpoints.questionsEndpoint)
@@ -159,26 +159,6 @@ class NetworkManager {
 				}
 	}
 	
-//	func getTrialDetails(trialId: Int?, completion: @escaping (_ response: DataResponse<TrialObject, AFError>?) -> ()) {
-//		guard let id = trialId else {
-//			completion(nil)
-//			return
-//		}
-//	//		let parameters = GetTrialDetailsRequest(id: id)
-//			print(ApiEndpoints.base + ApiEndpoints.trialDetailsEndpoint + "/\(1)")
-//			session.request(ApiEndpoints.base + ApiEndpoints.trialDetailsEndpoint + "/\(1)") // TODO: change this to id
-//			// This one is helping with debugging for now
-//			.responseJSON { response in
-//				print("Response JSON: \(String(describing: response.value))")
-//				completion(nil)
-//			}
-//			
-//			.responseDecodable(of: TrialObject.self) { response in
-//				debugPrint("Response: \(response)")
-//				completion(response)
-//			}
-//	}
-	
 	// Do not need completion block as this can be done in the background
 	func registerForPushNotifications(deviceToken: String) {
 		guard let name = KeychainWrapper.standard.string(forKey: "username") else { return }
@@ -213,6 +193,46 @@ class NetworkManager {
 					print("Response JSON: \(String(describing: response.value))")
 					completion(response)
 		}
+	}
+	
+	func enrollInTrial(trialId: Int, completion: @escaping (_ response: DataResponse<Any, AFError>?) -> ()) {
+		//		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
+		//			completion(false, nil)
+		//			return
+		//		}
+		let id = 1
+		
+		let request = EnrollInTrialRequest(participant: id, trialId: trialId)
+		
+		session.request(ApiEndpoints.base + ApiEndpoints.enrollEndpoint,
+				method: .post,
+				parameters: request,
+				encoder: JSONParameterEncoder.default)
+				.responseJSON { response in
+					print("Response JSON: \(String(describing: response.value))")
+					completion(response)
+		}
+	}
+	
+	func getEnrolledTrials(completion: @escaping (_ response: DataResponse<EnrolledTrialsResponse, AFError>?) -> ()) {
+		//		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
+		//			completion(false, nil)
+		//			return
+		//		}
+		let id = 1
+		
+		let request = EnrolledTrialsRequest(participant: id)
+		
+		session.request(ApiEndpoints.base + ApiEndpoints.enrollEndpoint,
+				parameters: request)
+				.responseJSON { response in
+					print("Response JSON: \(String(describing: response.value))")
+				}
+			
+				.responseDecodable(of: EnrolledTrialsResponse.self) { response in
+					debugPrint("Response: \(response)")
+					completion(response)
+				}
 	}
 }
 

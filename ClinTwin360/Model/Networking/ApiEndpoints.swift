@@ -16,10 +16,11 @@ struct ApiEndpoints {
 	static let loginEndpoint = 				"api/auth-token/"
 	static let basicHealthEndpoint = 		"api/health/"
 //	static let questionsEndpoint = 			"api/questions/"
-	static let questionsEndpoint = 			"api/question_flow"
+	static let questionsEndpoint = 			"api/question_flow/"
 	static let responsesEndpoint = 			"api/responses/"
 	static let matchesEndpoint = 			"api/matches/"
 	static let trialDetailsEndpoint = 		"api/trials/"
 	static let signOutEndpoint = 			"api/logout/"
 	static let forgotPasswordEndpoint =		"api/password_reset/"
+	static let enrollEndpoint =				"api/enroll/"
 }

@@ -36,6 +36,14 @@ class MatchedTrialInfoViewController: UIViewController {
 		
 		titleLabel.text = trialDetail?.title
 		configureInfoFromData()
+		
+		if let virtualTrial = trialDetail?.isVirtualTrial, virtualTrial == true {
+			applyButton.setTitle("Enroll", for: .normal)
+			applyButton.tag = 1
+		} else {
+			applyButton.setTitle("Next Steps", for: .normal)
+			applyButton.tag = 0
+		}
 	}
 	
 	private func configureInfoFromData() {
@@ -117,16 +125,40 @@ class MatchedTrialInfoViewController: UIViewController {
 		guard let url = URL(string: urlString) else { return }
 		UIApplication.shared.open(url)
 	}
+	
+	private func viewNextSteps() {
+		let nextStepsVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "TrialNextStepsViewController") as! TrialNextStepsViewController
+		nextStepsVC.trialDetail = trialDetail
+		navigationController?.pushViewController(nextStepsVC, animated: true)
+	}
+	
+	private func enrollInTrial() {
+		guard let trialId = trialDetail?.trialId else { return }
+		NetworkManager.shared.enrollInTrial(trialId: trialId) { (response) in
+			if response?.response?.statusCode == 200 {
+				let title = self.trialDetail!.title
+				let alert = UIAlertController(title: "Success!", message: "You have been enrolled in \(title)", preferredStyle: .alert)
+				let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+					self.navigationController?.popViewController(animated: true)
+				}
+				alert.addAction(okAction)
+				self.present(alert, animated: true, completion: nil)
+			} else {
+				self.showNetworkError()
+			}
+		}
+	}
     
 	@IBAction func didTapNo(_ sender: UIButton) {
 		navigationController?.popViewController(animated: true)
 	}
 	
 	@IBAction func didTapApply(_ sender: UIButton) {
-		
-		let nextStepsVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "TrialNextStepsViewController") as! TrialNextStepsViewController
-		nextStepsVC.trialDetail = trialDetail
-		navigationController?.pushViewController(nextStepsVC, animated: true)
+		if sender.tag == 0 {
+			viewNextSteps()
+		} else {
+			enrollInTrial()
+		}
 	}
 	
 }

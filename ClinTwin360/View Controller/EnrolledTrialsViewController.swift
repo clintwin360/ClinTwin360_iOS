@@ -13,7 +13,7 @@ class EnrolledTrialsViewController: UIViewController {
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var noTrialsLabel: UILabel!
 	
-	var trials: [Any] = [1, 2, 3] {
+	var trials: [EnrolledTrial] = [EnrolledTrial]() {
 		didSet {
 			refreshState()
 		}
@@ -29,7 +29,16 @@ class EnrolledTrialsViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		refreshState()
+		getEnrolledTrials()
+	}
+	
+	private func getEnrolledTrials() {
+		NetworkManager.shared.getEnrolledTrials { (response) in
+			if let trials = response?.value?.results {
+				self.trials = trials
+			}
+			self.refreshState()
+		}
 	}
 	
 	private func refreshState() {
