@@ -18,6 +18,7 @@ class MatchedTrialInfoViewController: UIViewController {
 	@IBOutlet weak var applyButton: UIButton!
 	
 	var trialDetail: TrialObject?
+	var isEnrolled: Bool = false
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,9 @@ class MatchedTrialInfoViewController: UIViewController {
 			applyButton.setTitle("Next Steps", for: .normal)
 			applyButton.tag = 0
 		}
+		
+		noButton.isHidden = isEnrolled
+		applyButton.isHidden = isEnrolled
 	}
 	
 	private func configureInfoFromData() {
@@ -134,8 +138,8 @@ class MatchedTrialInfoViewController: UIViewController {
 	
 	private func enrollInTrial() {
 		guard let trialId = trialDetail?.trialId else { return }
-		NetworkManager.shared.enrollInTrial(trialId: trialId) { (response) in
-			if response?.response?.statusCode == 200 {
+		NetworkManager.shared.enrollInTrial(trialId: trialId) { (success) in
+			if success {
 				let title = self.trialDetail!.title
 				let alert = UIAlertController(title: "Success!", message: "You have been enrolled in \(title)", preferredStyle: .alert)
 				let okAction = UIAlertAction(title: "OK", style: .default) { (action) in

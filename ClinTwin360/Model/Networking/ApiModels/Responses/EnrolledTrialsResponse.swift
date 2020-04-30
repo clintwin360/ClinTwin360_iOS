@@ -12,9 +12,5 @@ struct EnrolledTrialsResponse: Decodable {
 	let count: Int
 	let next: String?
 	let previous: String?
-	let results: [EnrolledTrial]
-}
-
-struct EnrolledTrial: Decodable {
-	
+	let results: [TrialResult]
 }

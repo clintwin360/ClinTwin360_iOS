@@ -195,7 +195,7 @@ class NetworkManager {
 		}
 	}
 	
-	func enrollInTrial(trialId: Int, completion: @escaping (_ response: DataResponse<Any, AFError>?) -> ()) {
+	func enrollInTrial(trialId: Int, completion: @escaping (_ success: Bool) -> ()) {
 		//		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
 		//			completion(false, nil)
 		//			return
@@ -210,7 +210,12 @@ class NetworkManager {
 				encoder: JSONParameterEncoder.default)
 				.responseJSON { response in
 					print("Response JSON: \(String(describing: response.value))")
-					completion(response)
+					if response.response?.statusCode ?? 0 >= 200 &&
+						response.response?.statusCode ?? 0 < 300 {
+						completion(true)
+					} else {
+						completion(false)
+					}
 		}
 	}
 	

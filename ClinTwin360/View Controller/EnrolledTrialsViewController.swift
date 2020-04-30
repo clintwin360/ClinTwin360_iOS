@@ -13,7 +13,7 @@ class EnrolledTrialsViewController: UIViewController {
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var noTrialsLabel: UILabel!
 	
-	var trials: [EnrolledTrial] = [EnrolledTrial]() {
+	var trials: [TrialResult] = [TrialResult]() {
 		didSet {
 			refreshState()
 		}
@@ -58,14 +58,13 @@ extension EnrolledTrialsViewController: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		
+		let trial = trials[indexPath.row].clinicalTrial
+		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "EnrolledTrialCell") as! EnrolledTrialCell
 		cell.tag = indexPath.row
 		cell.delegate = self
-		
-		// Testing:
-		if indexPath.row == 2 {
-			cell.hasNewTasks = false
-		}
+		cell.configureCell(withTrial: trial)
 		
 		cell.selectionStyle = .none
 		
@@ -75,10 +74,16 @@ extension EnrolledTrialsViewController: UITableViewDataSource {
 
 extension EnrolledTrialsViewController: EnrolledTrialCellDelegate {
 	func didTapViewTrial(atIndex index: Int) {
-		// TODO
+		let trial = trials[index].clinicalTrial
+		
+		let trialVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "MatchedTrialInfoViewController") as! MatchedTrialInfoViewController
+		trialVC.trialDetail = trial
+		trialVC.isEnrolled = true
+		navigationController?.pushViewController(trialVC, animated: true)
 	}
 	
 	func didTapCompleteTasks(atIndex index: Int) {
+		let trial = trials[index].clinicalTrial
 		// TODO
 	}
 	

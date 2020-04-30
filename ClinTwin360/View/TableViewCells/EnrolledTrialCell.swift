@@ -47,7 +47,11 @@ class EnrolledTrialCell: UITableViewCell {
 		completeTasksButton.layer.borderWidth = 1.0
 		completeTasksButton.layer.borderColor = UIColor.black.cgColor
     }
-
+	
+	func configureCell(withTrial trial: TrialObject) {
+		titleLabel.text = trial.title
+		detailsLabel.text = trial.objective
+	}
 	
 	@IBAction func viewTrialButtonTapped(_ sender: Any) {
 		delegate?.didTapViewTrial(atIndex: tag)
