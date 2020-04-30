@@ -205,7 +205,7 @@ class NetworkManager {
 	func forgotPassword(forUser user: String, completion: @escaping (_ response: DataResponse<Any, AFError>?) -> ()) {
 		let request = ForgotPasswordRequest(email: user)
 		
-		session.request(ApiEndpoints.base + ApiEndpoints.forgotPasswordEndpoint,
+		AF.request(ApiEndpoints.base + ApiEndpoints.forgotPasswordEndpoint,
 				method: .post,
 				parameters: request,
 				encoder: JSONParameterEncoder.default)
