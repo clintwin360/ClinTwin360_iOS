@@ -17,7 +17,10 @@ class MatchedTrialInfoViewController: UIViewController {
 	@IBOutlet weak var noButton: UIButton!
 	@IBOutlet weak var applyButton: UIButton!
 	
-	var trialDetail: TrialObject?
+	var trial: TrialResult?
+	var trialDetail: TrialObject? {
+		return trial?.clinicalTrial
+	}
 	var isEnrolled: Bool = false
 	
 	override func viewDidLoad() {
@@ -132,7 +135,7 @@ class MatchedTrialInfoViewController: UIViewController {
 	
 	private func viewNextSteps() {
 		let nextStepsVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "TrialNextStepsViewController") as! TrialNextStepsViewController
-		nextStepsVC.trialDetail = trialDetail
+		nextStepsVC.trial = trial
 		navigationController?.pushViewController(nextStepsVC, animated: true)
 	}
 	

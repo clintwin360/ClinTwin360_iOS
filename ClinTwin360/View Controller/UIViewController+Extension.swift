@@ -12,10 +12,12 @@ import UIKit
 extension UIViewController: Loadable {
 	
 	func showNetworkError() {
-		let alertController = UIAlertController(title: nil, message: "An error occurred. Please try again later.", preferredStyle: .alert)
-		let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-		alertController.addAction(okAction)
-		
-		present(alertController, animated: true, completion: nil)
+		DispatchQueue.main.async {
+			let alertController = UIAlertController(title: nil, message: "An error occurred. Please try again later.", preferredStyle: .alert)
+			let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+			alertController.addAction(okAction)
+			
+			self.present(alertController, animated: true, completion: nil)
+		}
 	}
 }

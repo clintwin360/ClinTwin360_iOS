@@ -42,6 +42,7 @@
 		FF5911F2245A6D6F003C0CFD /* EnrolledTrialsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911F1245A6D6F003C0CFD /* EnrolledTrialsRequest.swift */; };
 		FF5911F4245A7C3B003C0CFD /* EnrolledTrialsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911F3245A7C3B003C0CFD /* EnrolledTrialsResponse.swift */; };
 		FF5911F6245CD6A5003C0CFD /* QuestionFlowRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911F5245CD6A5003C0CFD /* QuestionFlowRequest.swift */; };
+		FF5911F8245D24A9003C0CFD /* ExpressInterestRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911F7245D24A9003C0CFD /* ExpressInterestRequest.swift */; };
 		FFBDC97824214F9D0056F552 /* LabeledTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFBDC97724214F9D0056F552 /* LabeledTextFieldView.xib */; };
 		FFBDC97A2421505D0056F552 /* LabeledTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */; };
 		FFBDE188242163D000E81685 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDE187242163D000E81685 /* OnboardingViewController.swift */; };
@@ -113,6 +114,7 @@
 		FF5911F1245A6D6F003C0CFD /* EnrolledTrialsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrolledTrialsRequest.swift; sourceTree = "<group>"; };
 		FF5911F3245A7C3B003C0CFD /* EnrolledTrialsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrolledTrialsResponse.swift; sourceTree = "<group>"; };
 		FF5911F5245CD6A5003C0CFD /* QuestionFlowRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionFlowRequest.swift; sourceTree = "<group>"; };
+		FF5911F7245D24A9003C0CFD /* ExpressInterestRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressInterestRequest.swift; sourceTree = "<group>"; };
 		FFBDC97724214F9D0056F552 /* LabeledTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabeledTextFieldView.xib; sourceTree = "<group>"; };
 		FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextFieldView.swift; sourceTree = "<group>"; };
 		FFBDE187242163D000E81685 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				FF5911EF245A6B8D003C0CFD /* EnrollInTrialRequest.swift */,
 				FF5911F1245A6D6F003C0CFD /* EnrolledTrialsRequest.swift */,
 				FF5911F5245CD6A5003C0CFD /* QuestionFlowRequest.swift */,
+				FF5911F7245D24A9003C0CFD /* ExpressInterestRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				FFFC6A66243053A60066D11A /* Keys.swift in Sources */,
 				FF529F4A240CD4AA000A9C35 /* SignInViewController.swift in Sources */,
 				FF3D847D2426E7C20013E0E4 /* SurveyTask.swift in Sources */,
+				FF5911F8245D24A9003C0CFD /* ExpressInterestRequest.swift in Sources */,
 				FFFC6A92243C38C00066D11A /* PostBasicHealthRequest.swift in Sources */,
 				FF5911E02457E5C9003C0CFD /* AdditionalQuestionsView.swift in Sources */,
 				FFEB3194243EB2F400BB0C72 /* GetMatchesResponse.swift in Sources */,

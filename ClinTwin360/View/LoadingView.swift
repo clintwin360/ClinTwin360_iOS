@@ -39,11 +39,13 @@ extension Loadable where Self: UIViewController {
     }
     
     func hideLoadingView() {
-        view.subviews.forEach { subview in
-            if subview.tag == Constants.loadingViewTag {
-                subview.removeFromSuperview()
-            }
-        }
+		DispatchQueue.main.async {
+			self.view.subviews.forEach { subview in
+				if subview.tag == Constants.loadingViewTag {
+					subview.removeFromSuperview()
+				}
+			}
+		}
     }
 }
 

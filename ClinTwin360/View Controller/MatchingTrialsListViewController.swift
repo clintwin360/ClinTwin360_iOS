@@ -71,10 +71,9 @@ class MatchingTrialsListViewController: UIViewController, UITableViewDataSource,
 extension MatchingTrialsListViewController: MatchingTrialCellDelegate {
 	func didTapLearnMore(atIndex index: Int) {
 		let trialResult = trials[index]
-		let trial = trialResult.clinicalTrial
 		
 		let trialVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "MatchedTrialInfoViewController") as! MatchedTrialInfoViewController
-		trialVC.trialDetail = trial
+		trialVC.trial = trialResult
 		navigationController?.pushViewController(trialVC, animated: true)
 	}
 }

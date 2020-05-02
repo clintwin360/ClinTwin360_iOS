@@ -162,11 +162,39 @@ class NetworkManager {
 		
 		session.request(ApiEndpoints.base + ApiEndpoints.matchesEndpoint,
 						parameters: parameters)
+			
 				.responseDecodable(of: GetMatchesReponse.self) { response in
 					debugPrint("Response: \(response)")
 
 					completion(true, response)
 				}
+	}
+	
+	func expressInterest(inTrial trial: TrialResult, completion: @escaping (_ success: Bool) -> ()) {
+		guard let id = trial.id else {
+			completion(false)
+			return
+		}
+		let request = ExpressInterestRequest(id: id)
+		
+		session.request(ApiEndpoints.base + ApiEndpoints.matchesEndpoint,
+						method: .put,
+						parameters: request)
+		
+			// This one is helping with debugging for now
+			.responseJSON { response in
+				print("Response JSON: \(String(describing: response.value))")
+				if self.isStatusCodeValid(forResponse: response.response) {
+					completion(true)
+				} else {
+					completion(false)
+				}
+				
+			}
+			.responseDecodable(of: GetMatchesReponse.self) { response in
+				debugPrint("Response: \(response)")
+				
+			}
 	}
 	
 	// Do not need completion block as this can be done in the background

@@ -14,7 +14,10 @@ class TrialNextStepsViewController: UIViewController {
 	@IBOutlet weak var interestButton: UIButton!
 	@IBOutlet weak var titleLabel: UILabel!
 	
-	var trialDetail: TrialObject?
+	var trial: TrialResult?
+	var trialDetail: TrialObject? {
+		return trial?.clinicalTrial
+	}
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +34,27 @@ class TrialNextStepsViewController: UIViewController {
 	}
 
 	@IBAction func didTapInterestButton(_ sender: UIButton) {
+		guard let trial = self.trial else { return }
+		showLoadingView()
+		NetworkManager.shared.expressInterest(inTrial: trial) { (success) in
+			self.hideLoadingView()
+			if success {
+				DispatchQueue.main.async {
+					let alert = UIAlertController(title: "Success!", message: "You will receive an email with further details.", preferredStyle: .alert)
+					let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+						self.dismiss(animated: true) {
+							if let vcs = self.navigationController?.viewControllers.filter({!($0 is MatchedTrialInfoViewController) && !($0 is TrialNextStepsViewController)}) {
+								self.navigationController?.setViewControllers(vcs, animated: true)
+							}
+						}
+					}
+					alert.addAction(okAction)
+					
+					self.present(alert, animated: true, completion: nil)
+				}
+			} else {
+				self.showNetworkError()
+			}
+		}
 	}
-	
-
 }

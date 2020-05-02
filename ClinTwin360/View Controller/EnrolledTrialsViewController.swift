@@ -74,10 +74,10 @@ extension EnrolledTrialsViewController: UITableViewDataSource {
 
 extension EnrolledTrialsViewController: EnrolledTrialCellDelegate {
 	func didTapViewTrial(atIndex index: Int) {
-		let trial = trials[index].clinicalTrial
+		let trial = trials[index]
 		
 		let trialVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "MatchedTrialInfoViewController") as! MatchedTrialInfoViewController
-		trialVC.trialDetail = trial
+		trialVC.trial = trial
 		trialVC.isEnrolled = true
 		navigationController?.pushViewController(trialVC, animated: true)
 	}
