@@ -36,14 +36,18 @@ class AHConfirmViewController: UIViewController {
 		
 		private func postHealthData(_ viewModel: BasicHealthViewModel) {
 			guard viewModel.isValid else { return }
-		
-			showLoadingView()
+			DispatchQueue.main.async {
+				self.showLoadingView()
+			}
+			
 			NetworkManager.shared.postBasicHealthDetails(healthModel: viewModel) { (success, error) in
-				self.hideLoadingView()
-				if error != nil || success == false {
-					self.showNetworkError()
-				} else {
-					self.pushHealthDataConfirmation()
+				DispatchQueue.main.async {
+					self.hideLoadingView()
+					if error != nil || success == false {
+						self.showNetworkError()
+					} else {
+						self.pushHealthDataConfirmation()
+					}
 				}
 			}
 		}

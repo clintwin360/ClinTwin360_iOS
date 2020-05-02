@@ -75,11 +75,11 @@ class NetworkManager {
 	
 	func postBasicHealthDetails(healthModel: BasicHealthViewModel, completion: @escaping (_ success: Bool, _ error: AFError?) -> ()) {
 		
-//		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
-//			completion(false, nil)
-//			return
-//		}
-		let id = 1
+		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
+			completion(false, nil)
+			return
+		}
+//		let id = 1
 		
 		let request = PostBasicHealthRequest(participant: id, height: healthModel.height, weight: healthModel.weight, birthdate: healthModel.birthdate)
 		session.request(ApiEndpoints.base + ApiEndpoints.basicHealthEndpoint,
@@ -89,13 +89,15 @@ class NetworkManager {
 				.responseJSON { response in
 					print("Response JSON: \(String(describing: response.value))")
 					
-//					if response.response?.statusCode == 200 {
+					if self.isStatusCodeValid(forResponse: response.response) {
 						completion(true, nil)
-//					} else {
-//						completion(false, nil)
-//					}
+					} else {
+						completion(false, nil)
+					}
 				}
 	}
+	
+	
 	
 //	func getQuestions(completion: @escaping (_ response: DataResponse<GetQuestionsResponse, AFError>?) -> ()) {
 //		session.request(ApiEndpoints.base + ApiEndpoints.questionsEndpoint)
@@ -111,7 +113,15 @@ class NetworkManager {
 //	}
 	
 	func getQuestionFlow(completion: @escaping (_ response: DataResponse<QuestionFlowResponse, AFError>?) -> ()) {
-		session.request(ApiEndpoints.base + ApiEndpoints.questionsEndpoint)
+		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
+					completion(nil)
+					return
+				}
+		//		let id = 1
+				
+		let parameters = QuestionFlowRequest(id: id)
+		
+		session.request(ApiEndpoints.base + ApiEndpoints.questionsEndpoint, parameters: parameters)
 			// This one is helping with debugging for now
 			.responseJSON { response in
 				print("Response JSON: \(String(describing: response.value))")
@@ -142,11 +152,11 @@ class NetworkManager {
 	}
 	
 	func getMatches(completion: @escaping (_ success: Bool, _ response: DataResponse<GetMatchesReponse, AFError>?) -> ()) {
-//		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
-//			completion(false, nil)
-//			return
-//		}
-		let id = 1
+		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
+			completion(false, nil)
+			return
+		}
+//		let id = 1
 		
 		let parameters = GetMatchesRequest(participant: id)
 		
@@ -155,7 +165,7 @@ class NetworkManager {
 				.responseDecodable(of: GetMatchesReponse.self) { response in
 					debugPrint("Response: \(response)")
 
-					completion(true,  response)
+					completion(true, response)
 				}
 	}
 	
@@ -196,11 +206,11 @@ class NetworkManager {
 	}
 	
 	func enrollInTrial(trialId: Int, completion: @escaping (_ success: Bool) -> ()) {
-		//		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
-		//			completion(false, nil)
-		//			return
-		//		}
-		let id = 1
+		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
+			completion(false)
+			return
+		}
+//		let id = 1
 		
 		let request = EnrollInTrialRequest(participant: id, trialId: trialId)
 		
@@ -210,8 +220,7 @@ class NetworkManager {
 				encoder: JSONParameterEncoder.default)
 				.responseJSON { response in
 					print("Response JSON: \(String(describing: response.value))")
-					if response.response?.statusCode ?? 0 >= 200 &&
-						response.response?.statusCode ?? 0 < 300 {
+					if self.isStatusCodeValid(forResponse: response.response) {
 						completion(true)
 					} else {
 						completion(false)
@@ -220,11 +229,11 @@ class NetworkManager {
 	}
 	
 	func getEnrolledTrials(completion: @escaping (_ response: DataResponse<EnrolledTrialsResponse, AFError>?) -> ()) {
-		//		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
-		//			completion(false, nil)
-		//			return
-		//		}
-		let id = 1
+		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
+			completion(nil)
+			return
+		}
+//		let id = 1
 		
 		let request = EnrolledTrialsRequest(participant: id)
 		
@@ -238,6 +247,14 @@ class NetworkManager {
 					debugPrint("Response: \(response)")
 					completion(response)
 				}
+	}
+	
+	private func isStatusCodeValid(forResponse response: HTTPURLResponse?) -> Bool {
+		if response?.statusCode ?? 0 >= 200 &&
+			response?.statusCode ?? 0 < 300 {
+			return true
+		}
+		return false
 	}
 }
 

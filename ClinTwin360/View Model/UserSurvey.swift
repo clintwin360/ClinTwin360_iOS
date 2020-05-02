@@ -41,7 +41,7 @@ class UserSurvey {
 				// No more follow-ups but this question is a follow-up,
 				if let parent = question.parent, parent.type == .multipleChoice {
 					// Evaluate responses to parent question to see if other follow-ups need to be navigated to
-					if let rule = generatePredicateRuleForFollowUp(question, forMultipleChoiceParent: parent) {
+					if let rule = generatePredicateRuleForFollowUp(question, forMultipleChoiceParent: parent, inQuestions:  questions) {
 						predicateRules.append(("\(question.id)", rule))
 					} else {
 						// Navigate to next non-followup question
@@ -135,6 +135,16 @@ class UserSurvey {
 		var navigationRule: ORKPredicateStepNavigationRule?
 		var directRule: ORKDirectStepNavigationRule?
 		
+		let nextQuestionIds = Set(followUps.map{$0.nextQuestion})
+		if let options = question.options as? [String] {
+			if followUps.count == options.count && nextQuestionIds.count == 1 {
+				// Only one next question to go to, just create a direct step rule
+				directRule = ORKDirectStepNavigationRule(destinationStepIdentifier: "\(followUps.first!.nextQuestion)")
+				return (nil, directRule)
+			}
+		}
+		
+		// Create predicate rules
 		followUps.enumerated().forEach { (index, followUp) in
 			let resultSelector = ORKResultSelector(resultIdentifier: "\(question.id)")
 			var predicate: NSPredicate?
@@ -169,24 +179,44 @@ class UserSurvey {
 		return (navigationRule, directRule)
 	}
 	
-	private func generatePredicateRuleForFollowUp(_ followUp: Question, forMultipleChoiceParent parent: Question) -> ORKPredicateStepNavigationRule? {
+	private func generatePredicateRuleForFollowUp(_ followUp: Question, forMultipleChoiceParent parent: Question, inQuestions questions: [Question]) -> ORKPredicateStepNavigationRule? {
+		
+		// TODO: Needs fix
 		var predicates = [(NSPredicate, String)]()
 		let resultSelector = ORKResultSelector(resultIdentifier: "\(parent.id)")
 		var predicate: NSPredicate
 		
-		guard let followUpResponseIndex = parent.followups?.firstIndex(where: {$0.nextQuestion == followUp.id}) else {
-			return nil
-		}
-		guard followUpResponseIndex < parent.followups!.count - 1 else {
-			return nil
-		}
+		guard let parentIndex = questions.firstIndex(where: {$0.id == parent.id}) else { return nil }
+		let followUpQuestions = Array(questions[(parentIndex + 1)..<(parentIndex + parent.followups!.count + 1)])
+		
+		guard let followUpResponseIndex = followUpQuestions.firstIndex(where: {$0.id == followUp.id}) else { return nil }
+		guard followUpResponseIndex < followUpQuestions.count - 1 else { return nil }
+		
 		var remainingFollowUpIndex = followUpResponseIndex + 1
-		while remainingFollowUpIndex < parent.followups!.count {
-			let followUpToEval = parent.followups![remainingFollowUpIndex]
-			predicate = ORKResultPredicate.predicateForChoiceQuestionResult(with: resultSelector, expectedAnswerValue: remainingFollowUpIndex as NSCoding & NSCopying & NSObjectProtocol)
-			predicates.append((predicate, "\(followUpToEval.nextQuestion)"))
+		while remainingFollowUpIndex < followUpQuestions.count {
+			let followUpToEval = followUpQuestions[remainingFollowUpIndex]
+			guard let followUpIndexInParent = parent.followups!.firstIndex(where: {$0.nextQuestion == followUpToEval.id}) else {
+				remainingFollowUpIndex += 1
+				continue
+			}
+			predicate = ORKResultPredicate.predicateForChoiceQuestionResult(with: resultSelector, expectedAnswerValue: followUpIndexInParent as NSCoding & NSCopying & NSObjectProtocol)
+			predicates.append((predicate, "\(followUpToEval.id)"))
 			remainingFollowUpIndex += 1
 		}
+		
+//		guard let followUpResponseIndex = parent.followups?.firstIndex(where: {$0.nextQuestion == followUp.id}) else {
+//			return nil
+//		}
+//		guard followUpResponseIndex < parent.followups!.count - 1 else {
+//			return nil
+//		}
+//		var remainingFollowUpIndex = followUpResponseIndex + 1
+//		while remainingFollowUpIndex < parent.followups!.count {
+//			let followUpToEval = parent.followups![remainingFollowUpIndex]
+//			predicate = ORKResultPredicate.predicateForChoiceQuestionResult(with: resultSelector, expectedAnswerValue: remainingFollowUpIndex as NSCoding & NSCopying & NSObjectProtocol)
+//			predicates.append((predicate, "\(followUpToEval.nextQuestion)"))
+//			remainingFollowUpIndex += 1
+//		}
 		predicates = predicates.filter({Int($0.1) != followUp.id})
 		
 		if predicates.count > 0 {
@@ -257,18 +287,7 @@ class UserSurvey {
 //		}
 //	}
 	
-	private func getMatchedOptionFromResponse(_ response: Int, forQuestion question: ResearchQuestion) -> String? {
-		let optionsComponents = question.options.components(separatedBy: ", ")
-		
-		guard optionsComponents.count > response else { return nil }
-
-		let matchedOption = optionsComponents[response]
-			.replacingOccurrences(of: "[", with: "")
-			.replacingOccurrences(of: "]", with: "")
-			.replacingOccurrences(of: "\"", with: "")
-		
-		return matchedOption
-	}
+	
 	
 	func setResponses(_ responses: [ResearchQuestionAnswer]) {
 		self.responses = responses

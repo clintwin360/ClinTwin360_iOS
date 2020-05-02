@@ -130,24 +130,21 @@ class SignInViewController: UIViewController {
     }
 	
 	private func getUserData() {
-//		showLoadingView()
-//		NetworkManager.shared.getParticipantData { (success) in
-//			self.hideLoadingView()
-//			if success {
-				// TODO: display this only the first time
+		showLoadingView()
+		NetworkManager.shared.getParticipantData { (success) in
+			self.hideLoadingView()
+			if success {
+				 //TODO: display this only the first time
 				self.presentOnboardingVC()
-//			} else {
-//				self.showNetworkError()
-//			}
-//		}
+			} else {
+				self.showNetworkError()
+			}
+		}
 	}
 	
 	private func registerUser() {
 		guard let email = emailField.text, email.count > 0 else { return }
 		guard let password = passwordField.text, password.count > 0 else { return }
-		
-		self.emailField.text = nil
-		self.passwordField.text = nil
 		
 		showLoadingView()
 		NetworkManager.shared.registerUser(email: email, password: password) { (error) in

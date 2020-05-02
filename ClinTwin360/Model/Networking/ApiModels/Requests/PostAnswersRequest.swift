@@ -11,5 +11,5 @@ import Foundation
 struct ResearchQuestionAnswer: Encodable {
 	let question: Int
 	let value: String
-	let participant: Int = 1 // TODO: change later
+	let participant: Int
 }

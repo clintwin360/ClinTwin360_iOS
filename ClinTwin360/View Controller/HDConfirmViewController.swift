@@ -40,19 +40,6 @@ class HDConfirmViewController: UIViewController {
 		blurView = nil
 	}
 	
-//	private func beginResearchTask(withQuestions response: GetQuestionsResponse) {
-//		guard let questions = response.results else { return }
-//		currentUserSurvey = UserSurvey(questions: questions)
-//
-//		let taskViewController = ORKTaskViewController(task: currentUserSurvey!.surveyTask, taskRun: nil)
-//		taskViewController.delegate = self
-//		taskViewController.modalPresentationStyle = .overFullScreen
-//
-//		addBlurView()
-//		navigationController?.setNavigationBarHidden(true, animated: false)
-//		present(taskViewController, animated: true, completion: nil)
-//	}
-	
 	private func beginResearchTask(withSurvey survey: UserSurvey) {
 		let taskViewController = ORKTaskViewController(task: survey.surveyTask, taskRun: nil)
 		taskViewController.delegate = self
@@ -76,6 +63,27 @@ class HDConfirmViewController: UIViewController {
 			}
 		}
 	}
+	
+	private func getMatches() {
+		NetworkManager.shared.getMatches { [weak self] (success, response) in
+			self?.hideLoadingView()
+			if response?.error != nil || success == false {
+				self?.showNetworkError()
+			} else {
+				let trialIntroVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "TrialIntroViewController") as! TrialIntroViewController
+				
+				if let matches = response?.value, let results = matches.results, results.count > 0 {
+					trialIntroVC.trialIntroResult = .trialsFound(count: results.count)
+					
+					let userInfo = ["trials":results]
+					NotificationCenter.default.post(name: NSNotification.Name("MatchedTrials"), object: nil, userInfo: userInfo)
+				} else {
+					trialIntroVC.trialIntroResult = .noneFound
+				}
+				self?.navigationController?.pushViewController(trialIntroVC, animated: true)
+			}
+		}
+	}
     
 	@IBAction func didTapStart(_ sender: UIButton) {
 		showLoadingView()
@@ -94,33 +102,25 @@ class HDConfirmViewController: UIViewController {
 
 extension HDConfirmViewController: ORKTaskViewControllerDelegate {
 	func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
-		// Handle results with taskViewController.result
-		let responses = researchQuestionsManager.parseAnswers(fromTaskResult: taskViewController.result)
 		
-		showLoadingView()
-		postResponses(responses) { [weak self] (success) in
+		if reason == .completed {
+			// Handle results with taskViewController.result
+			let responses = researchQuestionsManager.parseAnswers(fromTaskResult: taskViewController.result)
 			taskViewController.dismiss(animated: true, completion: nil)
-			self?.navigationController?.setNavigationBarHidden(false, animated: false)
-			self?.removeBlurView()
 			
-			NetworkManager.shared.getMatches { (success, response) in
-				self?.hideLoadingView()
-				if response?.error != nil || success == false {
-					self?.showNetworkError()
-				} else {
-					let trialIntroVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "TrialIntroViewController") as! TrialIntroViewController
-					
-					if let matches = response?.value, let results = matches.results, results.count > 0 {
-						trialIntroVC.trialIntroResult = .trialsFound(count: results.count)
-						
-						let userInfo = ["trials":results]
-						NotificationCenter.default.post(name: NSNotification.Name("MatchedTrials"), object: nil, userInfo: userInfo)
-					} else {
-						trialIntroVC.trialIntroResult = .noneFound
-					}
-					self?.navigationController?.pushViewController(trialIntroVC, animated: true)
-				}
+			showLoadingView()
+			postResponses(responses) { [weak self] (success) in
+				self?.navigationController?.setNavigationBarHidden(false, animated: false)
+				self?.removeBlurView()
+				self?.getMatches()
 			}
+		} else {
+			// Survey was not completed, no need to submit responses
+			taskViewController.dismiss(animated: true, completion: nil)
+			navigationController?.setNavigationBarHidden(false, animated: false)
+			removeBlurView()
+			showLoadingView()
+			getMatches()
 		}
 	}
 }
