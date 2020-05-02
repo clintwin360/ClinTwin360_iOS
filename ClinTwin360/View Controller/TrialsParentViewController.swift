@@ -25,14 +25,18 @@ class TrialsParentViewController: UIViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.setNavigationBarHidden(false, animated: false)
-		configureMenuButton()
-		
 		additionalQuestionsView.delegate = self
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(receivedMatchedTrials(notification:)), name: Notification.Name("MatchedTrials"), object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(showAdditionalQuestionsView), name: Notification.Name("ShowBanner"), object: nil)
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		navigationController?.setNavigationBarHidden(false, animated: false)
+		configureMenuButton()
+	}
     
 	private func configureMenuButton() {
 		let menuButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))

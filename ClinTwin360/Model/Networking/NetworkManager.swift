@@ -54,7 +54,7 @@ class NetworkManager {
 				}
 	}
 	
-	func getParticipantData(completion: @escaping (_ success: Bool) -> ()) {
+	func getParticipantData(completion: @escaping (_ success: Bool, _ response: DataResponse<ParticipantDataResponse, AFError>?) -> ()) {
 		session.request(ApiEndpoints.base + ApiEndpoints.participantEndpoint)
 				// This one is helping with debugging for now
 				.responseJSON { response in
@@ -66,9 +66,9 @@ class NetworkManager {
 					
 					if let data = response.value {
 						KeychainWrapper.standard.set(data.id, forKey: "userId")
-						completion(true)
+						completion(true, response)
 					} else {
-						completion(false)
+						completion(false, nil)
 					}
 				}
 	}

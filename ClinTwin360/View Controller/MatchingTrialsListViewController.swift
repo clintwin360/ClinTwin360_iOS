@@ -32,9 +32,9 @@ class MatchingTrialsListViewController: UIViewController, UITableViewDataSource,
 	}
 	
 	private func refreshState() {
-		noTrialsLabel.isHidden = trials.count > 0
-		tableView.isHidden = trials.count == 0
-		tableView.reloadData()
+		noTrialsLabel?.isHidden = trials.count > 0
+		tableView?.isHidden = trials.count == 0
+		tableView?.reloadData()
 	}
     
 	func numberOfSections(in tableView: UITableView) -> Int {

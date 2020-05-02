@@ -131,11 +131,14 @@ class SignInViewController: UIViewController {
 	
 	private func getUserData() {
 		showLoadingView()
-		NetworkManager.shared.getParticipantData { (success) in
+		NetworkManager.shared.getParticipantData { (success, response) in
 			self.hideLoadingView()
 			if success {
-				 //TODO: display this only the first time
-				self.presentOnboardingVC()
+				if response?.value?.completedBasicHealth == true {
+					self.getMatches()
+				} else {
+					self.presentOnboardingVC()
+				}
 			} else {
 				self.showNetworkError()
 			}
@@ -168,6 +171,30 @@ class SignInViewController: UIViewController {
 
 				self.navigationController?.setViewControllers([trialsParentVC], animated: false)
 			}
+	}
+	
+	private func getMatches() {
+		showLoadingView()
+		NetworkManager.shared.getMatches { [weak self] (success, response) in
+			self?.hideLoadingView()
+			if response?.error != nil || success == false {
+				self?.showNetworkError()
+			} else {
+				let trialsParentVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "TrialsParentViewController")
+				let _ = trialsParentVC.view // trigger viewDidLoad
+
+				self?.navigationController?.setViewControllers([trialsParentVC], animated: true)
+				
+				if let matches = response?.value, let results = matches.results, results.count > 0 {
+					let userInfo = ["trials":results]
+					NotificationCenter.default.post(name: NSNotification.Name("MatchedTrials"), object: nil, userInfo: userInfo)
+					
+					DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+						NotificationCenter.default.post(name: Notification.Name("ShowBanner"), object: nil)
+					}
+				}
+			}
+		}
 	}
 	
 	@objc func keyboardNotification(notification: NSNotification) {
