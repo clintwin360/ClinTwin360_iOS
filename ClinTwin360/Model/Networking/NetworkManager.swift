@@ -277,6 +277,17 @@ class NetworkManager {
 				}
 	}
 	
+	func getQuestionsForVirtualTrial(_ trial: TrialObject) {
+		let request = VirtualTrialQuestionsRequest(trialId: trial.trialId)
+		
+		session.request(ApiEndpoints.base + ApiEndpoints.trialQuestionsEndpoint,
+			parameters: request)
+			.responseJSON { response in
+				print("Response JSON: \(String(describing: response.value))")
+				print("\n")
+			}
+	}
+	
 	private func isStatusCodeValid(forResponse response: HTTPURLResponse?) -> Bool {
 		if response?.statusCode ?? 0 >= 200 &&
 			response?.statusCode ?? 0 < 300 {

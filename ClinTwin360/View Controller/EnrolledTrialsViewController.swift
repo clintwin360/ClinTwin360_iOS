@@ -84,7 +84,7 @@ extension EnrolledTrialsViewController: EnrolledTrialCellDelegate {
 	
 	func didTapCompleteTasks(atIndex index: Int) {
 		let trial = trials[index].clinicalTrial
-		// TODO
+		NetworkManager.shared.getQuestionsForVirtualTrial(trial)
 	}
 	
 	
