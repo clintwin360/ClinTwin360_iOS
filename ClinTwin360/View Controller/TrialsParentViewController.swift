@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ResearchKit
 
 class TrialsParentViewController: UIViewController {
 
@@ -21,6 +22,9 @@ class TrialsParentViewController: UIViewController {
 	var dismissMenuTappableView: UIView?
 	var dismissMenuTapGesture: UITapGestureRecognizer?
 	var menuIsOpen: Bool = false
+	var blurView: UIVisualEffectView?
+	
+	var researchQuestionsManager = ResearchQuestionsManager.shared
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,9 +90,62 @@ class TrialsParentViewController: UIViewController {
 		}
 	}
 	
+	private func fetchQuestions() {
+		showLoadingView()
+		
+		researchQuestionsManager.startInitialSurvey { (survey, error) in
+			self.hideLoadingView()
+			if let error = error {
+				debugPrint(error.localizedDescription)
+				self.showNetworkError()
+			} else if let survey = survey {
+				self.beginResearchTask(withSurvey: survey)
+			}
+		}
+	}
+	
+	private func beginResearchTask(withSurvey survey: UserSurvey) {
+		let taskViewController = ORKTaskViewController(task: survey.surveyTask, taskRun: nil)
+		taskViewController.delegate = self
+		taskViewController.modalPresentationStyle = .overFullScreen
+		
+		addBlurView()
+		navigationController?.setNavigationBarHidden(true, animated: false)
+		present(taskViewController, animated: true, completion: nil)
+	}
+	
+	private func addBlurView() {
+		let blurEffect = UIBlurEffect(style: .light)
+		blurView = UIVisualEffectView(effect: blurEffect)
+		//always fill the view
+		blurView!.frame = self.view.bounds
+		blurView!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+		view.addSubview(blurView!)
+	}
+	
+	private func removeBlurView() {
+		blurView?.removeFromSuperview()
+		blurView = nil
+	}
+	
+	private func getMatches() {
+		NetworkManager.shared.getMatches { [weak self] (success, response) in
+			self?.hideLoadingView()
+			if response?.error != nil || success == false {
+				self?.showNetworkError()
+			} else {
+				if let matches = response?.value, let results = matches.results, results.count > 0 {
+					let userInfo = ["trials":results]
+					NotificationCenter.default.post(name: NSNotification.Name("MatchedTrials"), object: nil, userInfo: userInfo)
+				}
+			}
+		}
+	}
+	
 	@IBAction func didTapSurveysButton(_ sender: Any) {
 		dismissMenu()
-		// TODO: check for more questions
+		fetchQuestions()
 	}
 	
 	
@@ -155,6 +212,32 @@ extension TrialsParentViewController {
 extension TrialsParentViewController: AdditionalQuestionsViewDelegate {
 	func didTapAnswerMoreQuestions() {
 		dismissAdditionalQuestionsView()
-		// TODO: fetch more questions
+		fetchQuestions()
 	}
 }
+
+extension TrialsParentViewController: ORKTaskViewControllerDelegate {
+	func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
+		
+		if reason == .completed {
+			// Handle results with taskViewController.result
+			let responses = researchQuestionsManager.parseAnswers(fromTaskResult: taskViewController.result)
+			taskViewController.dismiss(animated: true, completion: nil)
+			
+			showLoadingView()
+			researchQuestionsManager.postResponses(responses) { [weak self] (success) in
+				self?.navigationController?.setNavigationBarHidden(false, animated: false)
+				self?.removeBlurView()
+				self?.getMatches()
+			}
+		} else {
+			// Survey was not completed, no need to submit responses
+			taskViewController.dismiss(animated: true, completion: nil)
+			navigationController?.setNavigationBarHidden(false, animated: false)
+			removeBlurView()
+			showLoadingView()
+			getMatches()
+		}
+	}
+}
+

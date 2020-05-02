@@ -12,6 +12,11 @@ import ResearchKit
 
 class ResearchQuestionsManager {
 	
+	static let shared = ResearchQuestionsManager()
+	static let primaryQuestionLimit = 15
+	
+	private init() {}
+	
 	var currentUserSurvey: UserSurvey?
 	var participantId: Int? {
 		return KeychainWrapper.standard.integer(forKey: "userId")
@@ -27,12 +32,13 @@ class ResearchQuestionsManager {
 		}
 	}
 	
-	func getQuestions(completion: @escaping (_ success: Bool, _ error: AFError?) -> ()) {
+	private func getQuestions(completion: @escaping (_ success: Bool, _ error: AFError?) -> ()) {
 		NetworkManager.shared.getQuestionFlow { (response) in
 			if let error = response?.error {
 				completion(false, error)
 			} else if let value = response?.value, let responseQuestions = value.questions {
-				let questions = self.sortQuestionsByPriority(responseQuestions)
+				var questions = self.sortQuestionsByPriority(responseQuestions)
+				questions = self.limitAmountOfPrimaryQuestions(questions)
 				self.currentUserSurvey = UserSurvey(questions: questions)
 				completion(true, nil)
 			} else {
@@ -41,7 +47,7 @@ class ResearchQuestionsManager {
 		}
 	}
 	
-	func sortQuestionsByPriority(_ questions: [Question]) -> [Question] {
+	private func sortQuestionsByPriority(_ questions: [Question]) -> [Question] {
 		var sortedQuestions = [Question]()
 		
 		var hashTable = [Int:Question]()
@@ -60,7 +66,7 @@ class ResearchQuestionsManager {
 		return sortedQuestions
 	}
 	
-	func depthFirstSortFollowups(_ followups: [QuestionFollowUp], forQuestion parent: Question, withTable table: [Int:Question]) -> [Question] {
+	private func depthFirstSortFollowups(_ followups: [QuestionFollowUp], forQuestion parent: Question, withTable table: [Int:Question]) -> [Question] {
 		var sorted = [Question]()
 		
 		let removedDuplicates = Array(Set(followups))
@@ -75,6 +81,23 @@ class ResearchQuestionsManager {
 			}
 		}
 		return sorted
+	}
+	
+	private func limitAmountOfPrimaryQuestions(_ questions: [Question]) -> [Question] {
+		var limitedQuestions = [Question]()
+		var counter = 0
+		for question in questions {
+			limitedQuestions.append(question)
+			if question.isFollowup == 0 {
+				counter += 1
+				
+				if counter == ResearchQuestionsManager.primaryQuestionLimit {
+					break
+				}
+			}
+		}
+		
+		return limitedQuestions
 	}
 	
 	func parseAnswers(fromTaskResult result: ORKTaskResult) -> [ResearchQuestionAnswer] {
@@ -184,5 +207,19 @@ class ResearchQuestionsManager {
 
 		let matchedOption = options[response]
 		return matchedOption
+	}
+	
+	func postResponses(_ responses: [ResearchQuestionAnswer]?, completion: @escaping (_ success: Bool) -> ()) {
+		guard responses?.count ?? 0 > 0 else {
+			completion(true)
+			return
+		}
+		
+		NetworkManager.shared.postSurveyResponse(responses!.first!) { (result) in
+			// Ignoring result for now
+			self.postResponses(Array(responses!.dropFirst())) { (success) in
+				completion(success)
+			}
+		}
 	}
 }

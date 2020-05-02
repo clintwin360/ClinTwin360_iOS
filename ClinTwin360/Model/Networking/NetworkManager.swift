@@ -96,22 +96,7 @@ class NetworkManager {
 					}
 				}
 	}
-	
-	
-	
-//	func getQuestions(completion: @escaping (_ response: DataResponse<GetQuestionsResponse, AFError>?) -> ()) {
-//		session.request(ApiEndpoints.base + ApiEndpoints.questionsEndpoint)
-//			// This one is helping with debugging for now
-//			.responseJSON { response in
-//				print("Response JSON: \(String(describing: response.value))")
-//			}
-//
-//			.responseDecodable(of: GetQuestionsResponse.self) { response in
-//				debugPrint("Response: \(response)")
-//				completion(response)
-//			}
-//	}
-	
+
 	func getQuestionFlow(completion: @escaping (_ response: DataResponse<QuestionFlowResponse, AFError>?) -> ()) {
 		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
 					completion(nil)
@@ -278,7 +263,8 @@ class NetworkManager {
 	}
 	
 	func getQuestionsForVirtualTrial(_ trial: TrialObject) {
-		let request = VirtualTrialQuestionsRequest(trialId: trial.trialId)
+//		let request = VirtualTrialQuestionsRequest(trialId: trial.trialId)
+		let request = VirtualTrialQuestionsRequest(trialId: 4)
 		
 		session.request(ApiEndpoints.base + ApiEndpoints.trialQuestionsEndpoint,
 			parameters: request)

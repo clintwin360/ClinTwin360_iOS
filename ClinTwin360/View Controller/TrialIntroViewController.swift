@@ -25,7 +25,7 @@ class TrialIntroViewController: UIViewController {
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
-
+		
 		navigationButton.layer.cornerRadius = 10.0
 		navigationButton.layer.borderWidth = 0.5
 		navigationButton.layer.borderColor = UIColor.black.cgColor
@@ -37,6 +37,12 @@ class TrialIntroViewController: UIViewController {
 			configureForFoundTrials(count: count)
 		}
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		navigationController?.setNavigationBarHidden(true, animated: false)
+	}
     
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)

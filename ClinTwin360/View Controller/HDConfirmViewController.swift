@@ -15,7 +15,7 @@ class HDConfirmViewController: UIViewController {
 	
 	var blurView: UIVisualEffectView?
 	
-	var researchQuestionsManager = ResearchQuestionsManager()
+	var researchQuestionsManager = ResearchQuestionsManager.shared
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,20 +48,6 @@ class HDConfirmViewController: UIViewController {
 		addBlurView()
 		navigationController?.setNavigationBarHidden(true, animated: false)
 		present(taskViewController, animated: true, completion: nil)
-	}
-	
-	private func postResponses(_ responses: [ResearchQuestionAnswer]?, completion: @escaping (_ success: Bool) -> ()) {
-		guard responses?.count ?? 0 > 0 else {
-			completion(true)
-			return
-		}
-		
-		NetworkManager.shared.postSurveyResponse(responses!.first!) { (result) in
-			// Ignoring result for now
-			self.postResponses(Array(responses!.dropFirst())) { (success) in
-				completion(success)
-			}
-		}
 	}
 	
 	private func getMatches() {
@@ -109,7 +95,7 @@ extension HDConfirmViewController: ORKTaskViewControllerDelegate {
 			taskViewController.dismiss(animated: true, completion: nil)
 			
 			showLoadingView()
-			postResponses(responses) { [weak self] (success) in
+			researchQuestionsManager.postResponses(responses) { [weak self] (success) in
 				self?.navigationController?.setNavigationBarHidden(false, animated: false)
 				self?.removeBlurView()
 				self?.getMatches()
