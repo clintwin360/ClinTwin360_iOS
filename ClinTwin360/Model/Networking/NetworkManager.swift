@@ -160,9 +160,9 @@ class NetworkManager {
 			completion(false)
 			return
 		}
-		let request = ExpressInterestRequest(id: id)
+		let request = ExpressInterestRequest()
 		
-		session.request(ApiEndpoints.base + ApiEndpoints.matchesEndpoint,
+		session.request(ApiEndpoints.base + ApiEndpoints.matchesEndpoint + "\(id)/",
 						method: .put,
 						parameters: request)
 		
@@ -174,10 +174,6 @@ class NetworkManager {
 				} else {
 					completion(false)
 				}
-				
-			}
-			.responseDecodable(of: GetMatchesReponse.self) { response in
-				debugPrint("Response: \(response)")
 				
 			}
 	}

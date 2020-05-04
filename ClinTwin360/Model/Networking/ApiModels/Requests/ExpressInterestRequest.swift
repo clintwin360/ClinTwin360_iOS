@@ -9,11 +9,9 @@
 import Foundation
 
 struct ExpressInterestRequest: Encodable {
-	let id: Int
 	let expressedInterest: Bool = true
 	
 	enum CodingKeys: String, CodingKey {
-		case id
 		case expressedInterest = "expressed_interest"
 	}
 }
