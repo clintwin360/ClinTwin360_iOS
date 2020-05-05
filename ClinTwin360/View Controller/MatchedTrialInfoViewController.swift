@@ -18,6 +18,7 @@ class MatchedTrialInfoViewController: UIViewController {
 	@IBOutlet weak var applyButton: UIButton!
 	
 	var trial: TrialResult?
+	var tabController: UITabBarController?
 	var trialDetail: TrialObject? {
 		return trial?.clinicalTrial
 	}
@@ -144,8 +145,9 @@ class MatchedTrialInfoViewController: UIViewController {
 		NetworkManager.shared.enrollInTrial(trialId: trialId) { (success) in
 			if success {
 				let title = self.trialDetail!.title
-				let alert = UIAlertController(title: "Success!", message: "You have been enrolled in \(title)", preferredStyle: .alert)
+				let alert = UIAlertController(title: "Success!", message: "You have been enrolled in \(title). If the trial has tasks for you to complete, you will be notified in the 'Enrolled Trials' tab.", preferredStyle: .alert)
 				let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+					self.tabController?.selectedIndex = 1
 					self.navigationController?.popViewController(animated: true)
 				}
 				alert.addAction(okAction)

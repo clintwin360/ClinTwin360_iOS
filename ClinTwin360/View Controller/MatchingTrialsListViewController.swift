@@ -74,6 +74,7 @@ extension MatchingTrialsListViewController: MatchingTrialCellDelegate {
 		
 		let trialVC = UIStoryboard(name: "TrialsInfo", bundle: nil).instantiateViewController(withIdentifier: "MatchedTrialInfoViewController") as! MatchedTrialInfoViewController
 		trialVC.trial = trialResult
+		trialVC.tabController = self.tabBarController
 		navigationController?.pushViewController(trialVC, animated: true)
 	}
 }
