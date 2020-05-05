@@ -87,7 +87,7 @@ class HealthKitDataFetcher {
 			healthVM.setHeightFromInches(height)
 		}
 		if let weight = data.weight {
-			healthVM.setWeightFromString("\(weight)")
+			let _ = healthVM.setWeightFromString("\(weight)")
 		}
 		if let bioSex = data.biologicalSex {
 			switch bioSex {
@@ -97,7 +97,7 @@ class HealthKitDataFetcher {
 			}
 		}
 		if let birthdate = data.birthdate {
-			healthVM.formatBirthdateFromString(birthdate)
+			let _ = healthVM.formatBirthdateFromString(birthdate)
 		}
 		
 		return healthVM
