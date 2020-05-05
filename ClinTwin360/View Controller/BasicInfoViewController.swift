@@ -17,7 +17,7 @@ class BasicInfoViewController: UIViewController {
 	@IBOutlet weak var zipcodeField: LabeledTextFieldView!
 	@IBOutlet weak var nextButton: UIButton!
 	
-	let viewModel = BasicHealthViewModel()
+	var viewModel: BasicHealthViewModel!
 	
 	var pickerViewObject: BasicHealthPickerObject?
 	var dummyView: UITextField?
@@ -43,6 +43,12 @@ class BasicInfoViewController: UIViewController {
         selector: #selector(self.keyboardNotification(notification:)),
         name: UIResponder.keyboardWillHideNotification,
         object: nil)
+		
+		if viewModel == nil {
+			viewModel = BasicHealthViewModel()
+		} else {
+			populateFieldsWithViewModel()
+		}
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
@@ -66,6 +72,16 @@ class BasicInfoViewController: UIViewController {
 		
 		zipcodeField.configure(title: "Zipcode", delegate: self)
 		zipcodeField.textField.keyboardType = .numberPad
+	}
+	
+	private func populateFieldsWithViewModel() {
+		birthdateField.text = viewModel.birthdateToDisplayString()
+		bioSexField.text = viewModel.bioSex
+		heightField.text = viewModel.heightToString()
+		
+		if let weight = viewModel.weight {
+			weightField.text = "\(Int(weight))"
+		}
 	}
 	
 	private func postResponses() {
@@ -109,6 +125,19 @@ class BasicInfoViewController: UIViewController {
 		if viewModel.isValid {
 			postResponses()
 		} else {
+			// Highlight individual invalid fields
+			var isValid = viewModel.isBirthdateValid()
+			birthdateField.isValid = isValid
+			
+			isValid = viewModel.isHeightValid()
+			heightField.isValid = isValid
+			
+			isValid = viewModel.isWeightValid()
+			weightField.isValid = isValid
+			
+			isValid = viewModel.isBioSexValid()
+			bioSexField.isValid = isValid
+			
 			let alert = UIAlertController(title: "Error", message: "Please verify your responses are valid.", preferredStyle: .alert)
 			let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
 			alert.addAction(okAction)

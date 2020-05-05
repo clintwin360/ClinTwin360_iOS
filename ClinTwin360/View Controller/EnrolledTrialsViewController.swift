@@ -7,17 +7,22 @@
 //
 
 import UIKit
+import ResearchKit
 
 class EnrolledTrialsViewController: UIViewController {
 
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var noTrialsLabel: UILabel!
 	
+	let researchQuestionsManager = ResearchQuestionsManager.shared
+	
 	var trials: [TrialResult] = [TrialResult]() {
 		didSet {
 			refreshState()
 		}
 	}
+	
+	var blurView: UIVisualEffectView?
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,8 +89,70 @@ extension EnrolledTrialsViewController: EnrolledTrialCellDelegate {
 	
 	func didTapCompleteTasks(atIndex index: Int) {
 		let trial = trials[index].clinicalTrial
-		NetworkManager.shared.getQuestionsForVirtualTrial(trial)
+		showLoadingView()
+		researchQuestionsManager.startVirtualTrialSurvey(trial: trial) { (survey, error) in
+			self.hideLoadingView()
+			if let error = error {
+				debugPrint(error.localizedDescription)
+				self.showNetworkError()
+			} else if let survey = survey {
+				if survey.questions.count > 0 {
+					self.beginResearchTask(withSurvey: survey)
+				} else {
+					let alert = UIAlertController(title: nil, message: "No survey questions available at this time. Check back later!", preferredStyle: .alert)
+					let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+					alert.addAction(okAction)
+					self.present(alert, animated: true, completion: nil)
+				}
+			}
+		}
 	}
 	
+	private func beginResearchTask(withSurvey survey: UserSurvey) {
+		let taskViewController = ORKTaskViewController(task: survey.surveyTask, taskRun: nil)
+		taskViewController.delegate = self
+		taskViewController.modalPresentationStyle = .overFullScreen
+		
+		addBlurView()
+		navigationController?.setNavigationBarHidden(true, animated: false)
+		present(taskViewController, animated: true, completion: nil)
+	}
 	
+	private func addBlurView() {
+		let blurEffect = UIBlurEffect(style: .light)
+		blurView = UIVisualEffectView(effect: blurEffect)
+		//always fill the view
+		blurView!.frame = self.view.bounds
+		blurView!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+		view.addSubview(blurView!)
+	}
+	
+	private func removeBlurView() {
+		blurView?.removeFromSuperview()
+		blurView = nil
+	}
+}
+
+extension EnrolledTrialsViewController: ORKTaskViewControllerDelegate {
+	func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
+		
+		if reason == .completed {
+			// Handle results with taskViewController.result
+			let responses = researchQuestionsManager.parseAnswers(fromTaskResult: taskViewController.result)
+			taskViewController.dismiss(animated: true, completion: nil)
+			
+			showLoadingView()
+			researchQuestionsManager.postVirtualTrialResponses(responses) { [weak self] (success) in
+				self?.hideLoadingView()
+				self?.navigationController?.setNavigationBarHidden(false, animated: false)
+				self?.removeBlurView()
+			}
+		} else {
+			// Survey was not completed, no need to submit responses
+			taskViewController.dismiss(animated: true, completion: nil)
+			navigationController?.setNavigationBarHidden(false, animated: false)
+			removeBlurView()
+		}
+	}
 }

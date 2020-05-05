@@ -31,7 +31,7 @@ class BasicHealthViewModel {
 	func setHeightFromString(_ heightString: String?) -> Bool {
 		guard (heightString?.count ?? 0) > 0 else {
 			height = nil
-			return true
+			return false
 		}
 		let components = heightString?.components(separatedBy: "'")
 		guard let feet = Int(components?.first ?? "") else {
@@ -53,14 +53,22 @@ class BasicHealthViewModel {
 		if let h = height {
 			return h >= 24 && h <= 96
 		} else {
-			return true
+			return false
 		}
+	}
+	
+	func heightToString() -> String? {
+		guard let height = self.height else { return nil }
+
+		let feet = Int(height/12)
+		let inches = Int(height.remainder(dividingBy: 12.0))
+		return "\(feet)'\(inches)\""
 	}
 	
 	func setWeightFromString(_ weightString: String?) -> Bool {
 		guard let weight = weightString, weight.count > 0 else {
 			self.weight = nil
-			return true
+			return false
 		}
 		guard let floatValue = Float(weight) else {
 			self.weight = -1
@@ -76,14 +84,14 @@ class BasicHealthViewModel {
 		if let weight = self.weight {
 			return weight > 0 && weight < 1000
 		} else {
-			return true
+			return false
 		}
 	}
 	
 	func formatBirthdateFromString(_ birthdateString: String?) -> Bool {
 		guard let bday = birthdateString, bday.count > 0 else {
 			birthdate = nil
-			return true
+			return false
 		}
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = "MM/dd/yyyy"
@@ -101,7 +109,7 @@ class BasicHealthViewModel {
 	
 	func isBirthdateValid() -> Bool {
 		guard let bday = birthdate else {
-			return true
+			return false
 		}
 		
 		let dateFormatter = DateFormatter()
@@ -115,11 +123,22 @@ class BasicHealthViewModel {
 		return birthdate < currentDate && birthdate > backDate
 	}
 	
+	func birthdateToDisplayString() -> String? {
+		guard let birthdate = self.birthdate else { return nil }
+		
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "yyyy-MM-dd"
+		guard let date = dateFormatter.date(from: birthdate) else { return nil }
+		dateFormatter.dateFormat = "MM/dd/yyyy"
+		
+		return dateFormatter.string(from: date)
+	}
+	
 	func isBioSexValid() -> Bool {
 		if let bioSex = self.bioSex {
 			return bioSex == "Male" || bioSex == "Female"
 		} else {
-			return true
+			return false
 		}
 	}
 }

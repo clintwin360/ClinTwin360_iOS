@@ -188,10 +188,10 @@ class SignInViewController: UIViewController {
 				if let matches = response?.value, let results = matches.results, results.count > 0 {
 					let userInfo = ["trials":results]
 					NotificationCenter.default.post(name: NSNotification.Name("MatchedTrials"), object: nil, userInfo: userInfo)
-					
-					DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-						NotificationCenter.default.post(name: Notification.Name("ShowBanner"), object: nil)
-					}
+				}
+				
+				DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+					NotificationCenter.default.post(name: Notification.Name("ShowBanner"), object: nil)
 				}
 			}
 		}
