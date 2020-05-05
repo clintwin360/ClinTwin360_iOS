@@ -44,6 +44,7 @@
 		FF5911F6245CD6A5003C0CFD /* QuestionFlowRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911F5245CD6A5003C0CFD /* QuestionFlowRequest.swift */; };
 		FF5911F8245D24A9003C0CFD /* ExpressInterestRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5911F7245D24A9003C0CFD /* ExpressInterestRequest.swift */; };
 		FF9FA4E3245E2D7A00E1D3EB /* VirtualTrialQuestionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9FA4E2245E2D7A00E1D3EB /* VirtualTrialQuestionsRequest.swift */; };
+		FF9FA4E5245FCCCF00E1D3EB /* VirtualTrialQuestionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9FA4E4245FCCCF00E1D3EB /* VirtualTrialQuestionsResponse.swift */; };
 		FFBDC97824214F9D0056F552 /* LabeledTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFBDC97724214F9D0056F552 /* LabeledTextFieldView.xib */; };
 		FFBDC97A2421505D0056F552 /* LabeledTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */; };
 		FFBDE188242163D000E81685 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBDE187242163D000E81685 /* OnboardingViewController.swift */; };
@@ -60,7 +61,6 @@
 		FFFC6A7124305F880066D11A /* GetQuestionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A7024305F880066D11A /* GetQuestionsResponse.swift */; };
 		FFFC6A762430FFE70066D11A /* PostAnswersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A752430FFE70066D11A /* PostAnswersRequest.swift */; };
 		FFFC6A792431052B0066D11A /* UserSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A782431052B0066D11A /* UserSurvey.swift */; };
-		FFFC6A7B2431400F0066D11A /* PostAnswersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A7A2431400F0066D11A /* PostAnswersResponse.swift */; };
 		FFFC6A7D243452CF0066D11A /* GetMatchesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A7C243452CF0066D11A /* GetMatchesRequest.swift */; };
 		FFFC6A7F243453EF0066D11A /* GetTrialDetailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A7E243453EF0066D11A /* GetTrialDetailsRequest.swift */; };
 		FFFC6A81243455020066D11A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A80243455020066D11A /* UIViewController+Extension.swift */; };
@@ -117,6 +117,7 @@
 		FF5911F5245CD6A5003C0CFD /* QuestionFlowRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionFlowRequest.swift; sourceTree = "<group>"; };
 		FF5911F7245D24A9003C0CFD /* ExpressInterestRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressInterestRequest.swift; sourceTree = "<group>"; };
 		FF9FA4E2245E2D7A00E1D3EB /* VirtualTrialQuestionsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualTrialQuestionsRequest.swift; sourceTree = "<group>"; };
+		FF9FA4E4245FCCCF00E1D3EB /* VirtualTrialQuestionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualTrialQuestionsResponse.swift; sourceTree = "<group>"; };
 		FFBDC97724214F9D0056F552 /* LabeledTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabeledTextFieldView.xib; sourceTree = "<group>"; };
 		FFBDC9792421505D0056F552 /* LabeledTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextFieldView.swift; sourceTree = "<group>"; };
 		FFBDE187242163D000E81685 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -133,7 +134,6 @@
 		FFFC6A7024305F880066D11A /* GetQuestionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQuestionsResponse.swift; sourceTree = "<group>"; };
 		FFFC6A752430FFE70066D11A /* PostAnswersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAnswersRequest.swift; sourceTree = "<group>"; };
 		FFFC6A782431052B0066D11A /* UserSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSurvey.swift; sourceTree = "<group>"; };
-		FFFC6A7A2431400F0066D11A /* PostAnswersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAnswersResponse.swift; sourceTree = "<group>"; };
 		FFFC6A7C243452CF0066D11A /* GetMatchesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMatchesRequest.swift; sourceTree = "<group>"; };
 		FFFC6A7E243453EF0066D11A /* GetTrialDetailsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTrialDetailsRequest.swift; sourceTree = "<group>"; };
 		FFFC6A80243455020066D11A /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -321,11 +321,11 @@
 				FF5911DB2457DD21003C0CFD /* ParticipantDataResponse.swift */,
 				FFFC6A7024305F880066D11A /* GetQuestionsResponse.swift */,
 				FF5911E724594BCF003C0CFD /* QuestionFlowResponse.swift */,
-				FFFC6A7A2431400F0066D11A /* PostAnswersResponse.swift */,
 				FFEB3193243EB2F400BB0C72 /* GetMatchesResponse.swift */,
 				FFFC6A8D2436F02E0066D11A /* RegisterUserResponse.swift */,
 				FFEB31952446AAAD00BB0C72 /* TrialDetailsResponse.swift */,
 				FF5911F3245A7C3B003C0CFD /* EnrolledTrialsResponse.swift */,
+				FF9FA4E4245FCCCF00E1D3EB /* VirtualTrialQuestionsResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -499,6 +499,7 @@
 				FFFC6A892436EC8D0066D11A /* KeychainWrapper.swift in Sources */,
 				FF5911F2245A6D6F003C0CFD /* EnrolledTrialsRequest.swift in Sources */,
 				FFEB3192243D49D200BB0C72 /* BasicHealthPickerObject.swift in Sources */,
+				FF9FA4E5245FCCCF00E1D3EB /* VirtualTrialQuestionsResponse.swift in Sources */,
 				FFFC6A7124305F880066D11A /* GetQuestionsResponse.swift in Sources */,
 				FFEB31962446AAAD00BB0C72 /* TrialDetailsResponse.swift in Sources */,
 				FF9FA4E3245E2D7A00E1D3EB /* VirtualTrialQuestionsRequest.swift in Sources */,
@@ -519,7 +520,6 @@
 				FF3D84732426D99F0013E0E4 /* MatchingTrialsListViewController.swift in Sources */,
 				FFFC6A852436EB610066D11A /* LoginRequest.swift in Sources */,
 				FFBDE188242163D000E81685 /* OnboardingViewController.swift in Sources */,
-				FFFC6A7B2431400F0066D11A /* PostAnswersResponse.swift in Sources */,
 				FF3D84702426CEB70013E0E4 /* TrialIntroViewController.swift in Sources */,
 				FF5911F0245A6B8D003C0CFD /* EnrollInTrialRequest.swift in Sources */,
 				FF4C2BC62454F7B70081F522 /* ForgotPasswordRequest.swift in Sources */,

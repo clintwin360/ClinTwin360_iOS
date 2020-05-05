@@ -53,6 +53,17 @@ class Question: Decodable {
 			options = nil
 		}
 	}
+	
+	init(virtualTrialQuestion: VirtualTrialQuestion) {
+		self.id = virtualTrialQuestion.id
+		self.followups = nil
+		self.isFollowup = 0
+		self.rank = 0
+		self.text = virtualTrialQuestion.text
+		self.type = virtualTrialQuestion.type
+		self.parent = nil
+		self.options = virtualTrialQuestion.options
+	}
 }
 
 struct LargeOptionSetData: Decodable {

@@ -20,6 +20,7 @@ class NetworkManager {
 		let interceptor = Interceptor(adapters: [adapter])
 		
 		session = Alamofire.Session(interceptor: interceptor)
+		
 	}
 	
 	func registerUser(email: String, password: String, completion: @escaping (_ error: AFError?) -> ()) {
@@ -98,6 +99,8 @@ class NetworkManager {
 	}
 
 	func getQuestionFlow(completion: @escaping (_ response: DataResponse<QuestionFlowResponse, AFError>?) -> ()) {
+		URLCache.shared.removeAllCachedResponses()
+		
 		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
 					completion(nil)
 					return
@@ -105,8 +108,8 @@ class NetworkManager {
 		//		let id = 1
 				
 		let parameters = QuestionFlowRequest(id: id)
-		
-		session.request(ApiEndpoints.base + ApiEndpoints.questionsEndpoint, parameters: parameters)
+		session.request(ApiEndpoints.base + ApiEndpoints.questionsEndpoint + "?participant_id=\(id)")
+//		session.request(ApiEndpoints.base + ApiEndpoints.questionsEndpoint, parameters: parameters)
 			// This one is helping with debugging for now
 			.responseJSON { response in
 				print("Response JSON: \(String(describing: response.value))")
@@ -118,7 +121,7 @@ class NetworkManager {
 			}
 	}
 	
-	func postSurveyResponse(_ answer: ResearchQuestionAnswer, completion: @escaping (_ response: DataResponse<PostAnswersResponse, AFError>?) -> ()) {
+	func postSurveyResponse(_ answer: ResearchQuestionAnswer, completion: @escaping (_ success: Bool) -> ()) {
 		
 		session.request(ApiEndpoints.base + ApiEndpoints.responsesEndpoint,
 						method: .post,
@@ -127,16 +130,18 @@ class NetworkManager {
 				// This one is helping with debugging for now
 				.responseJSON { response in
 					print("Response JSON: \(String(describing: response.value))")
-				}
-		
-				.responseDecodable(of: PostAnswersResponse.self) { response in
-					// Does this need a response? It is just echoing back the post parameters for now
-					debugPrint("Response: \(response)")
-					completion(response)
+					
+					if self.isStatusCodeValid(forResponse: response.response) {
+						completion(true)
+					} else {
+						completion(false)
+					}
 				}
 	}
 	
 	func getMatches(completion: @escaping (_ success: Bool, _ response: DataResponse<GetMatchesReponse, AFError>?) -> ()) {
+		URLCache.shared.removeAllCachedResponses()
+		
 		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
 			completion(false, nil)
 			return
@@ -238,6 +243,8 @@ class NetworkManager {
 	}
 	
 	func getEnrolledTrials(completion: @escaping (_ response: DataResponse<EnrolledTrialsResponse, AFError>?) -> ()) {
+		URLCache.shared.removeAllCachedResponses()
+		
 		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
 			completion(nil)
 			return
@@ -258,16 +265,39 @@ class NetworkManager {
 				}
 	}
 	
-	func getQuestionsForVirtualTrial(_ trial: TrialObject) {
-//		let request = VirtualTrialQuestionsRequest(trialId: trial.trialId)
-		let request = VirtualTrialQuestionsRequest(trialId: 4)
+	func getQuestionsForVirtualTrial(_ trial: TrialObject, completion: @escaping (_ response: DataResponse<VirtualTrialQuestionsResponse, AFError>?) -> ()) {
+		URLCache.shared.removeAllCachedResponses()
+		
+		let request = VirtualTrialQuestionsRequest(trialId: trial.trialId)
 		
 		session.request(ApiEndpoints.base + ApiEndpoints.trialQuestionsEndpoint,
 			parameters: request)
 			.responseJSON { response in
 				print("Response JSON: \(String(describing: response.value))")
-				print("\n")
 			}
+			
+			.responseDecodable(of: VirtualTrialQuestionsResponse.self) { response in
+				debugPrint("Response: \(response)")
+				completion(response)
+			}
+	}
+	
+	func postVirtualTrialSurveyResponse(_ answer: ResearchQuestionAnswer, completion: @escaping (_ success: Bool) -> ()) {
+		
+		session.request(ApiEndpoints.base + ApiEndpoints.trialResponsesEndpoint,
+						method: .post,
+						parameters: answer,
+						encoder: JSONParameterEncoder.default)
+				// This one is helping with debugging for now
+				.responseJSON { response in
+					print("Response JSON: \(String(describing: response.value))")
+					
+					if self.isStatusCodeValid(forResponse: response.response) {
+						completion(true)
+					} else {
+						completion(false)
+					}
+				}
 	}
 	
 	private func isStatusCodeValid(forResponse response: HTTPURLResponse?) -> Bool {

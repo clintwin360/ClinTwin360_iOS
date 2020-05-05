@@ -99,7 +99,14 @@ class TrialsParentViewController: UIViewController {
 				debugPrint(error.localizedDescription)
 				self.showNetworkError()
 			} else if let survey = survey {
-				self.beginResearchTask(withSurvey: survey)
+				if survey.questions.count > 0 {
+					self.beginResearchTask(withSurvey: survey)
+				} else {
+					let alert = UIAlertController(title: nil, message: "No survey questions available at this time. Check back later!", preferredStyle: .alert)
+					let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+					alert.addAction(okAction)
+					self.present(alert, animated: true, completion: nil)
+				}
 			}
 		}
 	}

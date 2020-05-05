@@ -32,19 +32,64 @@ class ResearchQuestionsManager {
 		}
 	}
 	
+	func startVirtualTrialSurvey(trial: TrialObject, completion: @escaping (_ survey: UserSurvey?, _ error: AFError?) -> ()) {
+		getVirtualTrialQuestions(trial: trial) { (success, error) in
+			if success && error == nil {
+				completion(self.currentUserSurvey, nil)
+			} else {
+				completion(nil, error)
+			}
+		}
+	}
+	
 	private func getQuestions(completion: @escaping (_ success: Bool, _ error: AFError?) -> ()) {
 		NetworkManager.shared.getQuestionFlow { (response) in
 			if let error = response?.error {
 				completion(false, error)
-			} else if let value = response?.value, let responseQuestions = value.questions {
-				var questions = self.sortQuestionsByPriority(responseQuestions)
-				questions = self.limitAmountOfPrimaryQuestions(questions)
-				self.currentUserSurvey = UserSurvey(questions: questions)
+			} else if let value = response?.value {
+				self.prepareSurveyWithResponse(value)
 				completion(true, nil)
 			} else {
 				completion(false, nil)
 			}
 		}
+	}
+	
+	private func getVirtualTrialQuestions(trial: TrialObject, completion: @escaping (_ success: Bool, _ error: AFError?) -> ()) {
+		NetworkManager.shared.getQuestionsForVirtualTrial(trial) { (response) in
+			if let error = response?.error {
+				completion(false, error)
+			} else if let value = response?.value {
+				self.prepareVirtualTrialSurveyWithResponse(value)
+				completion(true, nil)
+			} else {
+				completion(false, nil)
+			}
+		}
+	}
+	
+	private func prepareSurveyWithResponse(_ response: QuestionFlowResponse) {
+		if let responseQuestions = response.questions {
+			var questions = self.sortQuestionsByPriority(responseQuestions)
+			questions = self.limitAmountOfPrimaryQuestions(questions)
+			self.currentUserSurvey = UserSurvey(questions: questions)
+		}
+	}
+	
+	private func prepareVirtualTrialSurveyWithResponse(_ response: VirtualTrialQuestionsResponse) {
+		if let responseQuestions = response.results {
+			let questions = convertVirtualTrialQuestionsToStandard(responseQuestions)
+			self.currentUserSurvey = UserSurvey(questions: questions)
+		}
+	}
+	
+	private func convertVirtualTrialQuestionsToStandard(_ vtQuestions: [VirtualTrialQuestion]) -> [Question] {
+		var questions = [Question]()
+		vtQuestions.forEach {
+			let question = Question(virtualTrialQuestion: $0)
+			questions.append(question)
+		}
+		return questions
 	}
 	
 	private func sortQuestionsByPriority(_ questions: [Question]) -> [Question] {
@@ -216,6 +261,20 @@ class ResearchQuestionsManager {
 		}
 		
 		NetworkManager.shared.postSurveyResponse(responses!.first!) { (result) in
+			// Ignoring result for now
+			self.postResponses(Array(responses!.dropFirst())) { (success) in
+				completion(success)
+			}
+		}
+	}
+	
+	func postVirtualTrialResponses(_ responses: [ResearchQuestionAnswer]?, completion: @escaping (_ success: Bool) -> ()) {
+		guard responses?.count ?? 0 > 0 else {
+			completion(true)
+			return
+		}
+		
+		NetworkManager.shared.postVirtualTrialSurveyResponse(responses!.first!) { (result) in
 			// Ignoring result for now
 			self.postResponses(Array(responses!.dropFirst())) { (success) in
 				completion(success)

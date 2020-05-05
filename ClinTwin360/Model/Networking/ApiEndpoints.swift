@@ -23,5 +23,6 @@ struct ApiEndpoints {
 	static let signOutEndpoint = 			"api/logout/"
 	static let forgotPasswordEndpoint =		"api/password_reset/"
 	static let enrollEndpoint =				"api/enroll/"
-	static let trialQuestionsEndpoint =		"api/virtual_questions"
+	static let trialQuestionsEndpoint =		"api/virtual_questions/"
+	static let trialResponsesEndpoint = 	"api/virtual_responses/"
 }
