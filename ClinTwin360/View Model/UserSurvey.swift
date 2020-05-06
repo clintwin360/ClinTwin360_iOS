@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import ResearchKit
+
 
 class UserSurvey {
 	var questions: [Question]
