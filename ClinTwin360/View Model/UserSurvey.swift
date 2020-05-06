@@ -187,6 +187,7 @@ class UserSurvey {
 		var predicate: NSPredicate
 		
 		guard let parentIndex = questions.firstIndex(where: {$0.id == parent.id}) else { return nil }
+		guard (parentIndex + parent.followups!.count + 1) < questions.count else { return nil }
 		let followUpQuestions = Array(questions[(parentIndex + 1)..<(parentIndex + parent.followups!.count + 1)])
 		
 		guard let followUpResponseIndex = followUpQuestions.firstIndex(where: {$0.id == followUp.id}) else { return nil }
