@@ -20,6 +20,9 @@ class UserSurvey {
 		self.questions = questions
 	}
 	
+	/**
+	Creates the research survey based on the questions array.
+	*/
 	private func surveyTaskFromQuestions() -> ORKNavigableOrderedTask {
 		var steps = [ORKStep]()
 		
@@ -78,6 +81,12 @@ class UserSurvey {
 		return navigableTask
 	}
 	
+	/**
+	Converts a question data object into an ORKQuestionStep to use in the survey.
+
+	- Parameter question: The question object to convert to an ORKQuestionStep
+	- Returns: An ORKQuestionStep
+	*/
 	private func surveyStepFromQuestion(_ question: Question) -> ORKQuestionStep {
 		let title = question.text
 		let textChoices = textChoicesForQuestion(question)
@@ -105,15 +114,22 @@ class UserSurvey {
 		return questionStep
 	}
 	
-	
+	/**
+	Creates an array of choices to to display for a specified question.
+
+	- Parameter question: The question to create the text choices for.
+	- Returns: An array of ORKTextChoice
+	*/
 	private func textChoicesForQuestion(_ question: Question) -> [ORKTextChoice] {
 		var textChoices: [ORKTextChoice] = []
 		if let textOptions = question.options as? [String] {
+			// Convert string to ORKTextChoice
 			textOptions.enumerated().forEach { (index, option) in
 				let choice = ORKTextChoice(text: option, value: index as NSNumber)
 				textChoices += [choice]
 			}
 		} else if let data = question.options as? LargeOptionSetData {
+			// Create the text choices that should appear in the picker
 			let min = data.min
 			let max = data.max
 			for i in stride(from: min, through: max, by: data.increment) {
@@ -130,6 +146,13 @@ class UserSurvey {
 		return textChoices
 	}
 	
+	/**
+	Used to create a navigation rule to determine if a follow-up question should be asked, based on the response of the specified question.
+
+	- Parameter followUps: The followups of the provided question.
+	- Parameter parent: The question to evaluate.
+	- Returns: An tuple that includes an optional predicate navigation rule and optional direct navigation rule.
+	*/
 	private func generatePredicateRuleForFollowUps(_ followUps: [QuestionFollowUp], inQuestion question: Question) -> (stepNavRule: ORKPredicateStepNavigationRule?, directStepRule: ORKDirectStepNavigationRule?) {
 		var predicates = [(NSPredicate, String)]()
 		var navigationRule: ORKPredicateStepNavigationRule?
@@ -170,6 +193,10 @@ class UserSurvey {
 		}
 		
 		if predicates.count > 0 {
+			/*
+			Check if there's a next primary question to go to if none of the predicates match,
+			otherwise defaultStepIdentifier is nil to end the survey.
+			*/
 			if let nextPrimaryId = idOfNextNonFollowUpQuestion(afterQuestion: question) {
 				navigationRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: predicates, defaultStepIdentifierOrNil: "\(nextPrimaryId)")
 			} else {
@@ -179,49 +206,44 @@ class UserSurvey {
 		return (navigationRule, directRule)
 	}
 	
+	/**
+	Used to create a navigation rule to determine if any more follow-up questions should be asked, based on the responses of the multiple-choice parent question.
+
+	- Parameter followUp: The followup question to evaluate.
+	- Parameter parent: The primary question that the followUp is associated with.
+	- Parameter questions: The full array of survey questions
+	- Returns: An ORKPredicateStepNavigationRule, or nil if no followups remain.
+	*/
 	private func generatePredicateRuleForFollowUp(_ followUp: Question, forMultipleChoiceParent parent: Question, inQuestions questions: [Question]) -> ORKPredicateStepNavigationRule? {
 		
-		// TODO: Needs fix
 		var predicates = [(NSPredicate, String)]()
 		let resultSelector = ORKResultSelector(resultIdentifier: "\(parent.id)")
 		var predicate: NSPredicate
 		
-		guard let parentIndex = questions.firstIndex(where: {$0.id == parent.id}) else { return nil }
-		guard (parentIndex + parent.followups!.count + 1) < questions.count else { return nil }
-		let followUpQuestions = Array(questions[(parentIndex + 1)..<(parentIndex + parent.followups!.count + 1)])
+		guard let followups = parent.followups else { return nil }
+		guard let followUpResponseIndex = followups.lastIndex(where: {$0.nextQuestion == followUp.id}) else { return nil }
+		guard followUpResponseIndex < followups.count - 1 else { return nil }
 		
-		guard let followUpResponseIndex = followUpQuestions.firstIndex(where: {$0.id == followUp.id}) else { return nil }
-		guard followUpResponseIndex < followUpQuestions.count - 1 else { return nil }
-		
-		var remainingFollowUpIndex = followUpResponseIndex + 1
-		while remainingFollowUpIndex < followUpQuestions.count {
-			let followUpToEval = followUpQuestions[remainingFollowUpIndex]
-			guard let followUpIndexInParent = parent.followups!.firstIndex(where: {$0.nextQuestion == followUpToEval.id}) else {
-				remainingFollowUpIndex += 1
-				continue
-			}
-			predicate = ORKResultPredicate.predicateForChoiceQuestionResult(with: resultSelector, expectedAnswerValue: followUpIndexInParent as NSCoding & NSCopying & NSObjectProtocol)
-			predicates.append((predicate, "\(followUpToEval.id)"))
-			remainingFollowUpIndex += 1
+		/*
+		Only add predicates for followups that come after this followup question in the parent's followup questions list.
+		This ensures loops aren't created.
+		*/
+		for i in followUpResponseIndex..<followups.count {
+			let followup = followups[i]
+			let expectedResponseIndex = (parent.options as? [String])?.firstIndex(of: followup.response) ?? Int.max
+			predicate = ORKResultPredicate.predicateForChoiceQuestionResult(with: resultSelector, expectedAnswerValue: expectedResponseIndex as NSCoding & NSCopying & NSObjectProtocol)
+			predicates.append((predicate, "\(followup.nextQuestion)"))
 		}
-		
-//		guard let followUpResponseIndex = parent.followups?.firstIndex(where: {$0.nextQuestion == followUp.id}) else {
-//			return nil
-//		}
-//		guard followUpResponseIndex < parent.followups!.count - 1 else {
-//			return nil
-//		}
-//		var remainingFollowUpIndex = followUpResponseIndex + 1
-//		while remainingFollowUpIndex < parent.followups!.count {
-//			let followUpToEval = parent.followups![remainingFollowUpIndex]
-//			predicate = ORKResultPredicate.predicateForChoiceQuestionResult(with: resultSelector, expectedAnswerValue: remainingFollowUpIndex as NSCoding & NSCopying & NSObjectProtocol)
-//			predicates.append((predicate, "\(followUpToEval.nextQuestion)"))
-//			remainingFollowUpIndex += 1
-//		}
+	
+		// Sanity check, don't ask the same question again
 		predicates = predicates.filter({Int($0.1) != followUp.id})
 		
 		if predicates.count > 0 {
 			var navigationRule: ORKPredicateStepNavigationRule
+			/*
+			Check if there's a next primary question to go to if none of the predicates match,
+			otherwise defaultStepIdentifier is nil to end the survey.
+			*/
 			if let nextPrimaryId = idOfNextNonFollowUpQuestion(afterQuestion: followUp) {
 				navigationRule = ORKPredicateStepNavigationRule(resultPredicatesAndDestinationStepIdentifiers: predicates, defaultStepIdentifierOrNil: "\(nextPrimaryId)")
 			} else {
@@ -232,11 +254,17 @@ class UserSurvey {
 		return nil
 	}
 	
+	/**
+	Used to find the identifier of a primary (non-followup) question that comes after a specified question.
+
+	- Parameter question: The question to evaluate
+	- Returns: The id of the next primary question or nil if none exists.
+	*/
 	private func idOfNextNonFollowUpQuestion(afterQuestion question: Question) -> Int? {
 		let index = questions.firstIndex(where: {$0.id == question.id})!
 		var nextQuestionId: Int? = nil
-		for counter in (index + 1)..<questions.count {
-			let q = questions[counter]
+		for i in (index + 1)..<questions.count {
+			let q = questions[i]
 			if q.isFollowup == 0 {
 				nextQuestionId = q.id
 				break
@@ -244,51 +272,6 @@ class UserSurvey {
 		}
 		return nextQuestionId
 	}
-
-
-//	mutating func parseAnswers(fromTaskResult result: ORKTaskResult) {
-//		responses.removeAll()
-//
-//		if let results = result.results {
-//			results.forEach {
-//				guard let stepResult = $0 as? ORKStepResult else { return }
-//				guard let questionResults = stepResult.results else { return }
-//				questionResults.forEach { (questionResult) in
-//					if let choiceQuestionResult = questionResult as? ORKChoiceQuestionResult {
-//						guard let question = researchQuestions.first(where: { (question) -> Bool in
-//							return question.id == Int(questionResult.identifier)
-//						}) else { return }
-//
-//						guard let choiceAnswers = choiceQuestionResult.choiceAnswers else { return }
-//						if choiceAnswers.count == 1 {
-//							if let cqrAnswer = choiceQuestionResult.choiceAnswers?.first as? Int {
-//								if let matchedOption = getMatchedOptionFromResponse(cqrAnswer, forQuestion: question) {
-//									let answer = ResearchQuestionAnswer(question: question.id, value: matchedOption)
-//									responses.append(answer)
-//								}
-//
-//							}
-//						} else if choiceAnswers.count > 1 {
-//							var response = ""
-//							(choiceQuestionResult.choiceAnswers as? [Int])?.forEach { answer in
-//								if let matchedOption = getMatchedOptionFromResponse(answer, forQuestion: question) {
-//									if response.count == 0 {
-//										response = matchedOption
-//									} else {
-//										response += ", \(matchedOption)"
-//									}
-//								}
-//							}
-//							let answer = ResearchQuestionAnswer(question: question.id, value: response)
-//							responses.append(answer)
-//						}
-//					}
-//				}
-//			}
-//		}
-//	}
-	
-	
 	
 	func setResponses(_ responses: [ResearchQuestionAnswer]) {
 		self.responses = responses

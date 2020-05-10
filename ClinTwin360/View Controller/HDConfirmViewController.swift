@@ -73,7 +73,7 @@ class HDConfirmViewController: UIViewController {
 	@IBAction func didTapStart(_ sender: UIButton) {
 		showLoadingView()
 		
-		researchQuestionsManager.startInitialSurvey { (survey, error) in
+		researchQuestionsManager.startSurvey { (survey, error) in
 			self.hideLoadingView()
 			if let error = error {
 				debugPrint(error.localizedDescription)

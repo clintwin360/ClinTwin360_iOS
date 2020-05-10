@@ -21,7 +21,7 @@ class ResearchQuestionsManager {
 		return KeychainWrapper.standard.integer(forKey: "userId")
 	}
 	
-	func startInitialSurvey(completion: @escaping (_ survey: UserSurvey?, _ error: AFError?) -> ()) {
+	func startSurvey(completion: @escaping (_ survey: UserSurvey?, _ error: AFError?) -> ()) {
 		getQuestions { (success, error) in
 			if success && error == nil {
 				completion(self.currentUserSurvey, nil)
@@ -102,31 +102,34 @@ class ResearchQuestionsManager {
 		mutableQuestions.sort(by: {$0.rank > $1.rank})
 		mutableQuestions.forEach { question in
 			sortedQuestions.append(question)
-			if let followups = question.followups, followups.count > 0 {
-				let sortedFollowups = depthFirstSortFollowups(followups, forQuestion: question, withTable: hashTable)
-				sortedQuestions.append(contentsOf: sortedFollowups)
+			
+			if let followups = flatMapFollowUpTreeForQuestion(question, withTable: hashTable) {
+				sortedQuestions.append(contentsOf: followups)
 			}
 		}
 		return sortedQuestions
 	}
 	
-	private func depthFirstSortFollowups(_ followups: [QuestionFollowUp], forQuestion parent: Question, withTable table: [Int:Question]) -> [Question] {
+	private func flatMapFollowUpTreeForQuestion(_ question: Question, withTable table: [Int:Question]) -> [Question]? {
+		guard let followups = question.followups, followups.count > 0 else { return nil }
+
 		var sorted = [Question]()
-		
+
 		let removedDuplicates = Array(Set(followups))
 		removedDuplicates.forEach {
 			if let followupQuestion = table[$0.nextQuestion] {
-				followupQuestion.parent = parent
+				followupQuestion.parent = question
 				sorted.append(followupQuestion)
 				
-				if let moreFollowups = followupQuestion.followups, moreFollowups.count > 0 {
-					sorted.append(contentsOf: depthFirstSortFollowups(moreFollowups, forQuestion: followupQuestion, withTable: table))
+				if let mapped = flatMapFollowUpTreeForQuestion(followupQuestion, withTable: table) {
+					sorted.append(contentsOf: mapped)
 				}
 			}
 		}
+		sorted.sort { $0.id < $1.id }
 		return sorted
 	}
-	
+
 	private func limitAmountOfPrimaryQuestions(_ questions: [Question]) -> [Question] {
 		var limitedQuestions = [Question]()
 		var counter = 0
