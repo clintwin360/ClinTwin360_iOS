@@ -81,8 +81,12 @@ class NetworkManager {
 			return
 		}
 //		let id = 1
+		var bioSexValue = ""
+		if let bioSex = healthModel.bioSex, bioSex.count > 0 {
+			bioSexValue = String(bioSex.first!)
+		}
 		
-		let request = PostBasicHealthRequest(participant: id, height: healthModel.height, weight: healthModel.weight, birthdate: healthModel.birthdate)
+		let request = PostBasicHealthRequest(participant: id, height: healthModel.height, weight: healthModel.weight, birthdate: healthModel.birthdate, sex: bioSexValue)
 		session.request(ApiEndpoints.base + ApiEndpoints.basicHealthEndpoint,
 						method: .post,
 						parameters: request,

@@ -136,7 +136,7 @@ class BasicHealthViewModel {
 	
 	func isBioSexValid() -> Bool {
 		if let bioSex = self.bioSex {
-			return bioSex == "Male" || bioSex == "Female"
+			return bioSex == "Male" || bioSex == "Female" || bioSex == "Other"
 		} else {
 			return false
 		}

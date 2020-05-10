@@ -13,11 +13,13 @@ struct PostBasicHealthRequest: Encodable {
 	let height: Float?
 	let weight: Float?
 	let birthdate: String?
+	let sex: String?
 	
 	enum CodingKeys: String, CodingKey {
-	  case participant
-	  case height
-	  case weight
-	  case birthdate = "birth_date"
+		case participant
+		case height
+		case weight
+		case birthdate = "birth_date"
+		case sex
 	}
 }

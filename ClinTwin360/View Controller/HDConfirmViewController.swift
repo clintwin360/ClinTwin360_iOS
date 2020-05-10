@@ -79,7 +79,10 @@ class HDConfirmViewController: UIViewController {
 				debugPrint(error.localizedDescription)
 				self.showNetworkError()
 			} else if let survey = survey {
-				if survey.questions.count > 0 {
+				let primaryQuestionsCount = survey.questions.reduce(0) { (result, question) -> Int in
+					return question.isFollowup == 0 ? (result + 1) : result
+				}
+				if primaryQuestionsCount > 0 {
 					self.beginResearchTask(withSurvey: survey)
 				} else {
 					let alert = UIAlertController(title: nil, message: "No survey questions available at this time. Check back later!", preferredStyle: .alert)

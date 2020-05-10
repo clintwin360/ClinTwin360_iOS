@@ -20,17 +20,17 @@ class ParticipantDataResponse: Decodable {
 		case firstName = "first_name"
 		case lastName = "last_name"
 		case email
-		case completedBasicHealth = "basic_health"
+		case completedBasicHealth = "basic_health_submitted"
 	}
 	
-	required init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		id = try values.decode(Int.self, forKey: .id)
-		firstName = try? values.decode(String.self, forKey: .firstName)
-		lastName = try? values.decode(String.self, forKey: .lastName)
-		email = try? values.decode(String.self, forKey: .email)
-		
-		let basicHealth = try values.decode(Int.self, forKey: .completedBasicHealth)
-		completedBasicHealth = Bool(exactly: NSNumber(value: basicHealth))!
-	}
+//	required init(from decoder: Decoder) throws {
+//		let values = try decoder.container(keyedBy: CodingKeys.self)
+//		id = try values.decode(Int.self, forKey: .id)
+//		firstName = try? values.decode(String.self, forKey: .firstName)
+//		lastName = try? values.decode(String.self, forKey: .lastName)
+//		email = try? values.decode(String.self, forKey: .email)
+//		
+//		let basicHealth = try values.decode(Int.self, forKey: .completedBasicHealth)
+//		completedBasicHealth = Bool(exactly: NSNumber(value: basicHealth))!
+//	}
 }
