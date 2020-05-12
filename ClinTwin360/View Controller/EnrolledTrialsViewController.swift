@@ -63,7 +63,7 @@ extension EnrolledTrialsViewController: UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		let trial = trials[indexPath.row].clinicalTrial
+		let trial = trials[indexPath.row]
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "EnrolledTrialCell") as! EnrolledTrialCell
 		cell.tag = indexPath.row

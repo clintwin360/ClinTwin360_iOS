@@ -19,11 +19,13 @@ struct TrialResult: Decodable {
 	let clinicalTrial: TrialObject
 	let id: Int?
 	let expressedInterest: Bool?
+	let hasTasks: Int?
 	
 	enum CodingKeys: String, CodingKey {
 		case clinicalTrial = "clinical_trial"
 		case id
 		case expressedInterest = "expressed_interest"
+		case hasTasks = "has_tasks"
 	}
 }
 

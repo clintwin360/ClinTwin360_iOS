@@ -10,5 +10,4 @@ import Foundation
 
 struct RegisterUserResponse: Decodable {
 	let email: String
-//	let token: String
 }
