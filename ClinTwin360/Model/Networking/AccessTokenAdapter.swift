@@ -14,6 +14,9 @@ class AccessTokenAdapter: RequestAdapter {
 		return KeychainWrapper.standard.string(forKey: "token")
 	}
 	
+	/**
+	This function is used for including the user's access token as part of the authorization header, for any api call after the user has logged in.
+	*/
 	func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
 		
 		var adaptedRequest = urlRequest

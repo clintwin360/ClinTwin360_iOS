@@ -57,6 +57,11 @@ class BasicHealthViewModel {
 		}
 	}
 	
+	/**
+	Converts the height saved from Apple Health data into the user-readable format.
+
+	- Returns: A user-readable height string, if able to format.
+	*/
 	func heightToString() -> String? {
 		guard let height = self.height else { return nil }
 
@@ -88,6 +93,12 @@ class BasicHealthViewModel {
 		}
 	}
 	
+	/**
+	Converts the user-entered birthdate string into the format accepted by the api.
+
+	- Parameter birthdateString: The date string to format.
+	- Returns: A boolean for whether the provided birthdate was valid.
+	*/
 	func formatBirthdateFromString(_ birthdateString: String?) -> Bool {
 		guard let bday = birthdateString, bday.count > 0 else {
 			birthdate = nil
@@ -123,6 +134,11 @@ class BasicHealthViewModel {
 		return birthdate < currentDate && birthdate > backDate
 	}
 	
+	/**
+	Converts the birthdate saved from Apple Health data into the user-readable format.
+
+	- Returns: A user-readable birthdate string, if able to format.
+	*/
 	func birthdateToDisplayString() -> String? {
 		guard let birthdate = self.birthdate else { return nil }
 		

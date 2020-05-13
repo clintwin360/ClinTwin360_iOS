@@ -21,6 +21,7 @@ class EnrolledTrialsViewController: UIViewController {
 		}
 	}
 	
+	var selectedTrial: TrialResult?
 	var blurView: UIVisualEffectView?
 	
 	override func viewDidLoad() {
@@ -29,7 +30,6 @@ class EnrolledTrialsViewController: UIViewController {
         tableView.register(UINib(nibName: "EnrolledTrialCell", bundle: nil), forCellReuseIdentifier: "EnrolledTrialCell")
     }
     
-
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
@@ -87,13 +87,18 @@ extension EnrolledTrialsViewController: EnrolledTrialCellDelegate {
 	}
 	
 	func didTapCompleteTasks(atIndex index: Int) {
-		let trial = trials[index].clinicalTrial
+		let trialResult = trials[index]
+		let trial = trialResult.clinicalTrial
+		
+		selectedTrial = trialResult
+		
 		showLoadingView()
 		researchQuestionsManager.startVirtualTrialSurvey(trial: trial) { (survey, error) in
 			self.hideLoadingView()
 			if let error = error {
 				debugPrint(error.localizedDescription)
 				self.showNetworkError()
+				self.selectedTrial = nil
 			} else if let survey = survey {
 				let primaryQuestionsCount = survey.questions.reduce(0) { (result, question) -> Int in
 					return question.isFollowup == 0 ? (result + 1) : result
@@ -150,11 +155,15 @@ extension EnrolledTrialsViewController: ORKTaskViewControllerDelegate {
 				self?.navigationController?.setNavigationBarHidden(false, animated: false)
 				self?.removeBlurView()
 			}
+			
+			selectedTrial?.hasTasks = 0
+			tableView.reloadData()
 		} else {
 			// Survey was not completed, no need to submit responses
 			taskViewController.dismiss(animated: true, completion: nil)
 			navigationController?.setNavigationBarHidden(false, animated: false)
 			removeBlurView()
 		}
+		self.selectedTrial = nil
 	}
 }

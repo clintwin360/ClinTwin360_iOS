@@ -346,7 +346,6 @@
 		FF3D84772426DA700013E0E4 /* MatchingTrialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D84762426DA700013E0E4 /* MatchingTrialCell.swift */; };
 		FF3D84792426DF820013E0E4 /* MatchedTrialInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D84782426DF820013E0E4 /* MatchedTrialInfoViewController.swift */; };
 		FF3D847B2426E0EC0013E0E4 /* TrialNextStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D847A2426E0EC0013E0E4 /* TrialNextStepsViewController.swift */; };
-		FF3D847D2426E7C20013E0E4 /* SurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D847C2426E7C20013E0E4 /* SurveyTask.swift */; };
 		FF4C2BC4245147E50081F522 /* PushNotificationsRegistrationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C2BC3245147E50081F522 /* PushNotificationsRegistrationRequest.swift */; };
 		FF4C2BC62454F7B70081F522 /* ForgotPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C2BC52454F7B70081F522 /* ForgotPasswordRequest.swift */; };
 		FF529F48240CD4AA000A9C35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF529F47240CD4AA000A9C35 /* AppDelegate.swift */; };
@@ -376,13 +375,10 @@
 		FFEB3190243C3E7300BB0C72 /* BasicHealthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB318F243C3E7300BB0C72 /* BasicHealthViewModel.swift */; };
 		FFEB3192243D49D200BB0C72 /* BasicHealthPickerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB3191243D49D200BB0C72 /* BasicHealthPickerObject.swift */; };
 		FFEB3194243EB2F400BB0C72 /* GetMatchesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB3193243EB2F400BB0C72 /* GetMatchesResponse.swift */; };
-		FFEB31962446AAAD00BB0C72 /* TrialDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB31952446AAAD00BB0C72 /* TrialDetailsResponse.swift */; };
 		FFEB31A22449567F00BB0C72 /* HealthKitDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEB31A12449567F00BB0C72 /* HealthKitDataFetcher.swift */; };
-		FFFC6A66243053A60066D11A /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A65243053A60066D11A /* Keys.swift */; };
 		FFFC6A68243054220066D11A /* ApiEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A67243054220066D11A /* ApiEndpoints.swift */; };
 		FFFC6A6A243055BC0066D11A /* AccessTokenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A69243055BC0066D11A /* AccessTokenAdapter.swift */; };
 		FFFC6A6E243056210066D11A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A6D243056210066D11A /* NetworkManager.swift */; };
-		FFFC6A7124305F880066D11A /* GetQuestionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A7024305F880066D11A /* GetQuestionsResponse.swift */; };
 		FFFC6A762430FFE70066D11A /* PostAnswersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A752430FFE70066D11A /* PostAnswersRequest.swift */; };
 		FFFC6A792431052B0066D11A /* UserSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A782431052B0066D11A /* UserSurvey.swift */; };
 		FFFC6A7D243452CF0066D11A /* GetMatchesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6A7C243452CF0066D11A /* GetMatchesRequest.swift */; };
@@ -1098,7 +1094,6 @@
 		FF3D84762426DA700013E0E4 /* MatchingTrialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingTrialCell.swift; sourceTree = "<group>"; };
 		FF3D84782426DF820013E0E4 /* MatchedTrialInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedTrialInfoViewController.swift; sourceTree = "<group>"; };
 		FF3D847A2426E0EC0013E0E4 /* TrialNextStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialNextStepsViewController.swift; sourceTree = "<group>"; };
-		FF3D847C2426E7C20013E0E4 /* SurveyTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyTask.swift; sourceTree = "<group>"; };
 		FF4C2BC3245147E50081F522 /* PushNotificationsRegistrationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsRegistrationRequest.swift; sourceTree = "<group>"; };
 		FF4C2BC52454F7B70081F522 /* ForgotPasswordRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordRequest.swift; sourceTree = "<group>"; };
 		FF529F44240CD4AA000A9C35 /* ClinTwin360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClinTwin360.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1130,13 +1125,10 @@
 		FFEB318F243C3E7300BB0C72 /* BasicHealthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHealthViewModel.swift; sourceTree = "<group>"; };
 		FFEB3191243D49D200BB0C72 /* BasicHealthPickerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHealthPickerObject.swift; sourceTree = "<group>"; };
 		FFEB3193243EB2F400BB0C72 /* GetMatchesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMatchesResponse.swift; sourceTree = "<group>"; };
-		FFEB31952446AAAD00BB0C72 /* TrialDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialDetailsResponse.swift; sourceTree = "<group>"; };
 		FFEB31A12449567F00BB0C72 /* HealthKitDataFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitDataFetcher.swift; sourceTree = "<group>"; };
-		FFFC6A65243053A60066D11A /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		FFFC6A67243054220066D11A /* ApiEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoints.swift; sourceTree = "<group>"; };
 		FFFC6A69243055BC0066D11A /* AccessTokenAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenAdapter.swift; sourceTree = "<group>"; };
 		FFFC6A6D243056210066D11A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		FFFC6A7024305F880066D11A /* GetQuestionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQuestionsResponse.swift; sourceTree = "<group>"; };
 		FFFC6A752430FFE70066D11A /* PostAnswersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAnswersRequest.swift; sourceTree = "<group>"; };
 		FFFC6A782431052B0066D11A /* UserSurvey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSurvey.swift; sourceTree = "<group>"; };
 		FFFC6A7C243452CF0066D11A /* GetMatchesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMatchesRequest.swift; sourceTree = "<group>"; };
@@ -1931,10 +1923,7 @@
 			children = (
 				FF5911E524594BC1003C0CFD /* ResearchQuestionsManager.swift */,
 				FF5911ED245A2A33003C0CFD /* PushNotificationsManager.swift */,
-				FFEB31A12449567F00BB0C72 /* HealthKitDataFetcher.swift */,
-				FF3D8466242172EF0013E0E4 /* HealthKitSetupAssistant.swift */,
-				FF3D847C2426E7C20013E0E4 /* SurveyTask.swift */,
-				FFEB3191243D49D200BB0C72 /* BasicHealthPickerObject.swift */,
+				FF840CD8246B9F730099B224 /* BasicHealth */,
 				FFFC6A72243062280066D11A /* Networking */,
 				FFFC6A8A2436ECEC0066D11A /* Keychain */,
 			);
@@ -1986,6 +1975,41 @@
 			path = ClinTwin360;
 			sourceTree = "<group>";
 		};
+		FF840CD8246B9F730099B224 /* BasicHealth */ = {
+			isa = PBXGroup;
+			children = (
+				FFEB31A12449567F00BB0C72 /* HealthKitDataFetcher.swift */,
+				FF3D8466242172EF0013E0E4 /* HealthKitSetupAssistant.swift */,
+				FFEB3191243D49D200BB0C72 /* BasicHealthPickerObject.swift */,
+			);
+			path = BasicHealth;
+			sourceTree = "<group>";
+		};
+		FF840CD9246BA7CC0099B224 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				FF529F49240CD4AA000A9C35 /* SignInViewController.swift */,
+				FFBDE187242163D000E81685 /* OnboardingViewController.swift */,
+				FF3D8461242167D70013E0E4 /* AHConfirmViewController.swift */,
+				FF3D84632421699B0013E0E4 /* BasicInfoViewController.swift */,
+				FF3D846B242454B20013E0E4 /* HDConfirmViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		FF840CDA246BA7D70099B224 /* Trials */ = {
+			isa = PBXGroup;
+			children = (
+				FF3D846F2426CEB70013E0E4 /* TrialIntroViewController.swift */,
+				FF5911E12457E9AD003C0CFD /* TrialsParentViewController.swift */,
+				FF3D84722426D99F0013E0E4 /* MatchingTrialsListViewController.swift */,
+				FF3D84782426DF820013E0E4 /* MatchedTrialInfoViewController.swift */,
+				FF3D847A2426E0EC0013E0E4 /* TrialNextStepsViewController.swift */,
+				FF5911E32457F6B4003C0CFD /* EnrolledTrialsViewController.swift */,
+			);
+			path = Trials;
+			sourceTree = "<group>";
+		};
 		FFBDC97624214F830056F552 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2007,17 +2031,8 @@
 		FFBDE1862421639C00E81685 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FF529F49240CD4AA000A9C35 /* SignInViewController.swift */,
-				FFBDE187242163D000E81685 /* OnboardingViewController.swift */,
-				FF3D8461242167D70013E0E4 /* AHConfirmViewController.swift */,
-				FF3D84632421699B0013E0E4 /* BasicInfoViewController.swift */,
-				FF3D846B242454B20013E0E4 /* HDConfirmViewController.swift */,
-				FF3D846F2426CEB70013E0E4 /* TrialIntroViewController.swift */,
-				FF5911E12457E9AD003C0CFD /* TrialsParentViewController.swift */,
-				FF3D84722426D99F0013E0E4 /* MatchingTrialsListViewController.swift */,
-				FF3D84782426DF820013E0E4 /* MatchedTrialInfoViewController.swift */,
-				FF3D847A2426E0EC0013E0E4 /* TrialNextStepsViewController.swift */,
-				FF5911E32457F6B4003C0CFD /* EnrolledTrialsViewController.swift */,
+				FF840CD9246BA7CC0099B224 /* Onboarding */,
+				FF840CDA246BA7D70099B224 /* Trials */,
 				FFFC6A80243455020066D11A /* UIViewController+Extension.swift */,
 			);
 			path = "View Controller";
@@ -2036,7 +2051,6 @@
 			isa = PBXGroup;
 			children = (
 				FFFC6A6F24305F5B0066D11A /* ApiModels */,
-				FFFC6A65243053A60066D11A /* Keys.swift */,
 				FFFC6A67243054220066D11A /* ApiEndpoints.swift */,
 				FFFC6A69243055BC0066D11A /* AccessTokenAdapter.swift */,
 				FFFC6A6D243056210066D11A /* NetworkManager.swift */,
@@ -2069,11 +2083,9 @@
 			children = (
 				FFFC6A862436EB910066D11A /* LoginResponse.swift */,
 				FF5911DB2457DD21003C0CFD /* ParticipantDataResponse.swift */,
-				FFFC6A7024305F880066D11A /* GetQuestionsResponse.swift */,
 				FF5911E724594BCF003C0CFD /* QuestionFlowResponse.swift */,
 				FFEB3193243EB2F400BB0C72 /* GetMatchesResponse.swift */,
 				FFFC6A8D2436F02E0066D11A /* RegisterUserResponse.swift */,
-				FFEB31952446AAAD00BB0C72 /* TrialDetailsResponse.swift */,
 				FF5911F3245A7C3B003C0CFD /* EnrolledTrialsResponse.swift */,
 				FF9FA4E4245FCCCF00E1D3EB /* VirtualTrialQuestionsResponse.swift */,
 			);
@@ -2296,7 +2308,6 @@
 				FF14072A24627A6F0086032E /* HKSample+ORKJSONDictionary.m in Sources */,
 				FF1406F124627A6E0086032E /* ORKToneAudiometryStepViewController.m in Sources */,
 				FF1407B624627B740086032E /* ORKConsentSection.m in Sources */,
-				FFFC6A66243053A60066D11A /* Keys.swift in Sources */,
 				FF529F4A240CD4AA000A9C35 /* SignInViewController.swift in Sources */,
 				FF1406F224627A6E0086032E /* ORKTrailmakingContentView.m in Sources */,
 				FF1406C124627A6E0086032E /* ORKStroopResult.m in Sources */,
@@ -2318,7 +2329,6 @@
 				FF14071824627A6F0086032E /* ORKTimedWalkStep.m in Sources */,
 				FF1406E124627A6E0086032E /* ORKReactionTimeStimulusView.m in Sources */,
 				FF14077E24627B4E0086032E /* ORKBarGraphChartView.m in Sources */,
-				FF3D847D2426E7C20013E0E4 /* SurveyTask.swift in Sources */,
 				FF14054524627A070086032E /* ORKScaleRangeLabel.m in Sources */,
 				FF1406DC24627A6E0086032E /* ORKWalkingTaskStep.m in Sources */,
 				FF5911F8245D24A9003C0CFD /* ExpressInterestRequest.swift in Sources */,
@@ -2447,7 +2457,6 @@
 				FF1407D924627BA90086032E /* ORKRegistrationStep.m in Sources */,
 				FF14054C24627A070086032E /* ORKHeightPicker.m in Sources */,
 				FF14056824627A070086032E /* ORKHealthAnswerFormat.m in Sources */,
-				FFFC6A7124305F880066D11A /* GetQuestionsResponse.swift in Sources */,
 				FF14055F24627A070086032E /* ORKUnitLabel.m in Sources */,
 				FF1407BF24627B740086032E /* ORKVisualConsentTransitionAnimator.m in Sources */,
 				FF1405A924627A070086032E /* ORKCompletionStepViewController.m in Sources */,
@@ -2457,7 +2466,6 @@
 				FF14073424627A6F0086032E /* ORKActiveStepTimerView.m in Sources */,
 				FF1406F324627A6E0086032E /* ORKSpeechRecognizer.m in Sources */,
 				FF14058224627A070086032E /* ORKProgressView.m in Sources */,
-				FFEB31962446AAAD00BB0C72 /* TrialDetailsResponse.swift in Sources */,
 				FF14074C24627A6F0086032E /* ORKEnvironmentSPLMeterResult.m in Sources */,
 				FF1406E024627A6E0086032E /* ORKToneAudiometryStep.m in Sources */,
 				FF1406CC24627A6E0086032E /* ORKTouchAnywhereStep.m in Sources */,
@@ -2740,7 +2748,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7.0;
+				MARKETING_VERSION = 1.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cscie599.ClinTwin360;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ClinTwin360/ClinTwin360-Bridging-Header.h";
@@ -2765,7 +2773,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7.0;
+				MARKETING_VERSION = 1.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cscie599.ClinTwin360;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ClinTwin360/ClinTwin360-Bridging-Header.h";

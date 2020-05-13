@@ -21,6 +21,11 @@ class ResearchQuestionsManager {
 		return KeychainWrapper.standard.integer(forKey: "userId")
 	}
 	
+	/**
+	Initiates a survey for trial matching.
+
+	- Parameter completion: Completion block that hands back an optional UserSurvey and optional error.
+	*/
 	func startSurvey(completion: @escaping (_ survey: UserSurvey?, _ error: AFError?) -> ()) {
 		getQuestions { (success, error) in
 			if success && error == nil {
@@ -31,6 +36,12 @@ class ResearchQuestionsManager {
 		}
 	}
 	
+	/**
+	Initiates a survey for a specified virtual trial.
+
+	- Parameter trial: The trial object to request the questions for.
+	- Parameter completion: Completion block that hands back an optional UserSurvey and optional error.
+	*/
 	func startVirtualTrialSurvey(trial: TrialObject, completion: @escaping (_ survey: UserSurvey?, _ error: AFError?) -> ()) {
 		getVirtualTrialQuestions(trial: trial) { (success, error) in
 			if success && error == nil {
@@ -41,6 +52,11 @@ class ResearchQuestionsManager {
 		}
 	}
 	
+	/**
+	Fetches any unanswered questions for trial matching.
+
+	- Parameter completion: Completion block that hands back a success boolean and optional error.
+	*/
 	private func getQuestions(completion: @escaping (_ success: Bool, _ error: AFError?) -> ()) {
 		NetworkManager.shared.getQuestionFlow { (response) in
 			if let error = response?.error {
@@ -54,6 +70,12 @@ class ResearchQuestionsManager {
 		}
 	}
 	
+	/**
+	Fetches any unaswered questions for a specified virtual trial.
+
+	- Parameter trial: The trial object to request the questions for.
+	- Parameter completion: Completion block that hands a success boolean and an optional error.
+	*/
 	private func getVirtualTrialQuestions(trial: TrialObject, completion: @escaping (_ success: Bool, _ error: AFError?) -> ()) {
 		NetworkManager.shared.getQuestionsForVirtualTrial(trial) { (response) in
 			if let error = response?.error {
@@ -67,6 +89,11 @@ class ResearchQuestionsManager {
 		}
 	}
 	
+	/**
+	Creates a UserSurvey after fetching the trial matching questions.
+
+	- Parameter response: The response from the questions fetch.
+	*/
 	private func prepareSurveyWithResponse(_ response: QuestionFlowResponse) {
 		if let responseQuestions = response.questions {
 			var questions = self.sortQuestionsByPriority(responseQuestions)
@@ -75,6 +102,11 @@ class ResearchQuestionsManager {
 		}
 	}
 	
+	/**
+	Creates a UserSurvey after fetching the virtual trial questions.
+
+	- Parameter response: The response from the questions fetch.
+	*/
 	private func prepareVirtualTrialSurveyWithResponse(_ response: VirtualTrialQuestionsResponse) {
 		if let responseQuestions = response.results {
 			let questions = convertVirtualTrialQuestionsToStandard(responseQuestions)
@@ -82,6 +114,12 @@ class ResearchQuestionsManager {
 		}
 	}
 	
+	/**
+	Creates a mapping of virtual trial questions to trial matching questions, to more easy create a UserSurvey.
+
+	- Parameter vtQuestions: The virtual trial questions to map
+	- Returns: An array of survey questions.
+	*/
 	private func convertVirtualTrialQuestionsToStandard(_ vtQuestions: [VirtualTrialQuestion]) -> [Question] {
 		var questions = [Question]()
 		vtQuestions.forEach {
@@ -91,6 +129,12 @@ class ResearchQuestionsManager {
 		return questions
 	}
 	
+	/**
+	Sorts the questions by ranking and follow-ups so they appear in the correct order for the survey.
+
+	- Parameter questions: The questions to sort.
+	- Returns: An array of sorted survey questions.
+	*/
 	private func sortQuestionsByPriority(_ questions: [Question]) -> [Question] {
 		var sortedQuestions = [Question]()
 		
@@ -110,6 +154,13 @@ class ResearchQuestionsManager {
 		return sortedQuestions
 	}
 	
+	/**
+	This ensures that all follow-ups immediately follow their parent question in the array of survey questions, and are sorted by id number.
+
+	- Parameter questions: The parent question of the follow-ups
+	- Parameter table: A hashmap of questions to retrieve the follow-up questions
+	- Returns: An array of survey questions.
+	*/
 	private func flatMapFollowUpTreeForQuestion(_ question: Question, withTable table: [Int:Question]) -> [Question]? {
 		guard let followups = question.followups, followups.count > 0 else { return nil }
 
@@ -130,6 +181,12 @@ class ResearchQuestionsManager {
 		return sorted
 	}
 
+	/**
+	This ensures that only up to 15 primary questions + their follow-ups can be asked in a survey at any time, so as to not overwhelm the users.
+
+	- Parameter questions: The questions to limit.
+	- Returns: An array of limited questions.
+	*/
 	private func limitAmountOfPrimaryQuestions(_ questions: [Question]) -> [Question] {
 		var limitedQuestions = [Question]()
 		var counter = 0
@@ -147,6 +204,12 @@ class ResearchQuestionsManager {
 		return limitedQuestions
 	}
 	
+	/**
+	Parse the answers into usable format from the researchkit result.
+
+	- Parameter result: The ORKTastResult to parse.
+	- Returns: An array of research question answers for sending to the response api.
+	*/
 	func parseAnswers(fromTaskResult result: ORKTaskResult) -> [ResearchQuestionAnswer] {
 		var responses = [ResearchQuestionAnswer]()
 		if let results = result.results, let researchQuestions = currentUserSurvey?.questions {
@@ -188,6 +251,13 @@ class ResearchQuestionsManager {
 		return responses
 	}
 	
+	/**
+	Verifies a survey question with the provided identifier exists.
+	
+	- Parameter identifier: The question identifier to search for.
+	- Parameter questions: The array of questions to search in.
+	- Returns: A survey question, if found.
+	*/
 	private func questionWithIdentifier(_ identifier: String, inQuestions questions: [Question]) -> Question? {
 		let question = questions.first(where: { (question) -> Bool in
 			return question.id == Int(identifier)
@@ -196,6 +266,13 @@ class ResearchQuestionsManager {
 		return question
 	}
 	
+	/**
+	Parses a yes-no question response.
+	
+	- Parameter result: The ORKBooleanQuestionResult to parse.
+	- Parameter id: The associated question id.
+	- Returns: A research question answer, if able to parse.
+	*/
 	private func responseForYesNoQuestion(fromResult result: ORKBooleanQuestionResult, withQuestionId id: Int) -> ResearchQuestionAnswer? {
 		guard let participantId = self.participantId else { return nil }
 		guard let response = result.booleanAnswer else { return nil }
@@ -206,12 +283,26 @@ class ResearchQuestionsManager {
 		return ResearchQuestionAnswer(question: id, value: yesNoResponse, participant: participantId)
 	}
 	
+	/**
+	Parses a free-text question response.
+	
+	- Parameter result: The ORKTextQuestionResult to parse.
+	- Parameter id: The associated question id.
+	- Returns: A research question answer, if able to parse.
+	*/
 	private func responseForFreeTextQuestion(fromResult result: ORKTextQuestionResult, withQuestionId id: Int) -> ResearchQuestionAnswer? {
 		guard let participantId = self.participantId else { return nil }
 		guard let response = result.textAnswer else { return nil }
 		return ResearchQuestionAnswer(question: id, value: response, participant: participantId)
 	}
 	
+	/**
+	Parses a single or multiple choice question response.
+	
+	- Parameter result: The ORKChoiceQuestionResult to parse.
+	- Parameter question: The associated question.
+	- Returns: A research question answer, if able to parse.
+	*/
 	private func responseForChoiceQuestion(fromResult result: ORKChoiceQuestionResult, withQuestion question: Question) -> ResearchQuestionAnswer? {
 		guard let participantId = self.participantId else { return nil }
 		guard let choiceAnswers = result.choiceAnswers else { return nil }
@@ -231,6 +322,13 @@ class ResearchQuestionsManager {
 		return answer
 	}
 	
+	/**
+	Parses a picker (large option set) question response.
+	
+	- Parameter result: The ORKChoiceQuestionResult to parse.
+	- Parameter question: The associated question.
+	- Returns: A research question answer, if able to parse.
+	*/
 	private func responseForPickerQuestion(fromResult result: ORKChoiceQuestionResult, withQuestion question: Question) -> ResearchQuestionAnswer? {
 		guard let participantId = self.participantId else { return nil }
 		guard let choiceAnswers = result.choiceAnswers else { return nil }
@@ -248,6 +346,13 @@ class ResearchQuestionsManager {
 		return answer
 	}
 	
+	/**
+	Matches the selected option from the researchkit response, to an option in the provided question's array of options.
+	
+	- Parameter response: The int value of the response from the researchkit response.
+	- Parameter question: The associated question whose options to match.
+	- Returns: A rmatched option, in string format, if found.
+	*/
 	private func getMatchedOptionFromResponse(_ response: Int, forQuestion question: Question) -> String? {
 		guard let options = question.options as? [String] else { return nil }
 		guard options.count > response else { return nil }
@@ -256,6 +361,12 @@ class ResearchQuestionsManager {
 		return matchedOption
 	}
 	
+	/**
+	Posts the responses for a trial matching survey.
+	
+	- Parameter responses: The array of responses to post
+	- Parameter completion: The completion block with success boolean.
+	*/
 	func postResponses(_ responses: [ResearchQuestionAnswer]?, completion: @escaping (_ success: Bool) -> ()) {
 		guard responses?.count ?? 0 > 0 else {
 			completion(true)
@@ -270,6 +381,12 @@ class ResearchQuestionsManager {
 		}
 	}
 	
+	/**
+	Recursively posts responses for a virtual trial survey.
+	
+	- Parameter responses: The array of responses to post
+	- Parameter completion: The completion block with success boolean.
+	*/
 	func postVirtualTrialResponses(_ responses: [ResearchQuestionAnswer]?, completion: @escaping (_ success: Bool) -> ()) {
 		guard responses?.count ?? 0 > 0 else {
 			completion(true)
@@ -278,7 +395,7 @@ class ResearchQuestionsManager {
 		
 		NetworkManager.shared.postVirtualTrialSurveyResponse(responses!.first!) { (result) in
 			// Ignoring result for now
-			self.postResponses(Array(responses!.dropFirst())) { (success) in
+			self.postVirtualTrialResponses(Array(responses!.dropFirst())) { (success) in
 				completion(success)
 			}
 		}

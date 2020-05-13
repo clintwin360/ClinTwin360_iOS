@@ -8,18 +8,18 @@
 
 import Foundation
 
-struct GetMatchesReponse: Decodable {
+class GetMatchesReponse: Decodable {
 	let count: Int?
 	let next: String?
 	let previous: String?
 	let results: [TrialResult]?
 }
 
-struct TrialResult: Decodable {
+class TrialResult: Decodable {
 	let clinicalTrial: TrialObject
 	let id: Int?
 	let expressedInterest: Bool?
-	let hasTasks: Int?
+	var hasTasks: Int?
 	
 	enum CodingKeys: String, CodingKey {
 		case clinicalTrial = "clinical_trial"

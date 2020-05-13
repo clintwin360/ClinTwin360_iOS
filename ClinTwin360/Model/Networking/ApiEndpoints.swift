@@ -15,7 +15,6 @@ struct ApiEndpoints {
 	static let pushNotificationsEndpoint = 	"api/device/apns/"
 	static let loginEndpoint = 				"api/auth-token/"
 	static let basicHealthEndpoint = 		"api/health/"
-//	static let questionsEndpoint = 			"api/questions/"
 	static let questionsEndpoint = 			"api/question_flow/"
 	static let responsesEndpoint = 			"api/responses/"
 	static let matchesEndpoint = 			"api/matches/"

@@ -57,11 +57,7 @@ class NetworkManager {
 	
 	func getParticipantData(completion: @escaping (_ success: Bool, _ response: DataResponse<ParticipantDataResponse, AFError>?) -> ()) {
 		session.request(ApiEndpoints.base + ApiEndpoints.participantEndpoint)
-				// This one is helping with debugging for now
-				.responseJSON { response in
-					print("Response JSON: \(String(describing: response.value))")
-				}
-		
+				
 				.responseDecodable(of: ParticipantDataResponse.self) { response in
 					debugPrint("Response: \(response)")
 					
@@ -80,7 +76,6 @@ class NetworkManager {
 			completion(false, nil)
 			return
 		}
-//		let id = 1
 		var bioSexValue = ""
 		if let bioSex = healthModel.bioSex, bioSex.count > 0 {
 			bioSexValue = String(bioSex.first!)
@@ -106,19 +101,15 @@ class NetworkManager {
 		URLCache.shared.removeAllCachedResponses()
 		
 		guard let id = KeychainWrapper.standard.integer(forKey: "userId") else {
-					completion(nil)
-					return
-				}
-		//		let id = 1
+			completion(nil)
+			return
+		}
 				
-		let parameters = QuestionFlowRequest(id: id)
+//		let parameters = QuestionFlowRequest(id: id)
+		
+		// The url was not encoding correctly using the request object, so we're just appending the participant id in the url instead
 		session.request(ApiEndpoints.base + ApiEndpoints.questionsEndpoint + "?participant_id=\(id)")
-//		session.request(ApiEndpoints.base + ApiEndpoints.questionsEndpoint, parameters: parameters)
-			// This one is helping with debugging for now
-			.responseJSON { response in
-				print("Response JSON: \(String(describing: response.value))")
-			}
-	
+			
 			.responseDecodable(of: QuestionFlowResponse.self) { response in
 				debugPrint("Response: \(response)")
 				completion(response)
@@ -131,7 +122,7 @@ class NetworkManager {
 						method: .post,
 						parameters: answer,
 						encoder: JSONParameterEncoder.default)
-				// This one is helping with debugging for now
+			
 				.responseJSON { response in
 					print("Response JSON: \(String(describing: response.value))")
 					
@@ -150,7 +141,6 @@ class NetworkManager {
 			completion(false, nil)
 			return
 		}
-//		let id = 1
 		
 		let parameters = GetMatchesRequest(participant: id)
 		
@@ -175,7 +165,6 @@ class NetworkManager {
 						method: .put,
 						parameters: request)
 		
-			// This one is helping with debugging for now
 			.responseJSON { response in
 				print("Response JSON: \(String(describing: response.value))")
 				if self.isStatusCodeValid(forResponse: response.response) {
@@ -210,7 +199,7 @@ class NetworkManager {
 			}
 	}
 	
-	func forgotPassword(forUser user: String, completion: @escaping (_ response: DataResponse<Any, AFError>?) -> ()) {
+	func forgotPassword(forUser user: String, completion: @escaping (_ success: Bool) -> ()) {
 		let request = ForgotPasswordRequest(email: user)
 		
 		AF.request(ApiEndpoints.base + ApiEndpoints.forgotPasswordEndpoint,
@@ -219,7 +208,12 @@ class NetworkManager {
 				encoder: JSONParameterEncoder.default)
 				.responseJSON { response in
 					print("Response JSON: \(String(describing: response.value))")
-					completion(response)
+					
+					if self.isStatusCodeValid(forResponse: response.response) {
+						completion(true)
+					} else {
+						completion(false)
+					}
 		}
 	}
 	
@@ -228,7 +222,6 @@ class NetworkManager {
 			completion(false)
 			return
 		}
-//		let id = 1
 		
 		let request = EnrollInTrialRequest(participant: id, trialId: trialId)
 		
@@ -253,15 +246,11 @@ class NetworkManager {
 			completion(nil)
 			return
 		}
-//		let id = 1
 		
 		let request = EnrolledTrialsRequest(participant: id)
 		
 		session.request(ApiEndpoints.base + ApiEndpoints.enrollEndpoint,
 				parameters: request)
-				.responseJSON { response in
-					print("Response JSON: \(String(describing: response.value))")
-				}
 			
 				.responseDecodable(of: EnrolledTrialsResponse.self) { response in
 					debugPrint("Response: \(response)")
@@ -276,9 +265,6 @@ class NetworkManager {
 		
 		session.request(ApiEndpoints.base + ApiEndpoints.trialQuestionsEndpoint,
 			parameters: request)
-			.responseJSON { response in
-				print("Response JSON: \(String(describing: response.value))")
-			}
 			
 			.responseDecodable(of: VirtualTrialQuestionsResponse.self) { response in
 				debugPrint("Response: \(response)")
@@ -292,7 +278,7 @@ class NetworkManager {
 						method: .post,
 						parameters: answer,
 						encoder: JSONParameterEncoder.default)
-				// This one is helping with debugging for now
+			
 				.responseJSON { response in
 					print("Response JSON: \(String(describing: response.value))")
 					

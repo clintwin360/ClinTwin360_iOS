@@ -35,7 +35,6 @@ class SignInViewController: UIViewController {
 			createButtonGradient()
 		}
 		
-		// Hide for now
 		passwordField.optionalButton.isHidden = false
 		passwordField.optionalButton.setTitle("Forgot Password?", for: .normal)
 		passwordField.delegate = self
@@ -263,9 +262,9 @@ extension SignInViewController: LabeledTextFieldViewDelegate {
 	
 	private func submitForgotPassword(withEmail email: String) {
 		showLoadingView()
-		NetworkManager.shared.forgotPassword(forUser: email) { (response) in
+		NetworkManager.shared.forgotPassword(forUser: email) { (success) in
 			self.hideLoadingView()
-			if response?.response?.statusCode == 200 {
+			if success {
 				let alert = UIAlertController(title: "Thank you!", message: "If a user with the provided email address exists, you will receive an email to reset your password.", preferredStyle: .alert)
 				let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
 				alert.addAction(okAction)
